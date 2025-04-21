@@ -1,37 +1,58 @@
-<nav class="bg-white shadow-md py-4 mb-6">
-  <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center">
+<nav class="bg-gray-900 shadow-md py-4 mb-6">
+  <div class="max-w-7xl mx-auto px-4 flex justify-between items-center flex-wrap">
     
-    <!-- Logo -->
-    <a href="/" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600">
-      <svg class="w-10 h-10 text-gray-800 dark:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12L12 4L20 12M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/>
-      </svg>
-      <h1 class="text-lg font-bold">GOLD ARCHERY SAMARINDA</h1>
+    <!-- Logo dan Judul -->
+    <a href="/" class="flex items-center space-x-4">
+      <img src="{{ asset ('gambar/logo anjas.png') }}" alt="Logo" class="w-20 h-auto">
+      <h1 class="text-lg md:text-xl font-bold text-white">GOLD ARCHERY SAMARINDA</h1>
     </a>
 
     <!-- Hamburger Button -->
-    <button id="menu-toggle" class="block md:hidden text-gray-700 focus:outline-none">
+    <button id="menu-toggle" class="md:hidden text-white focus:outline-none transition-transform duration-300 ease-in-out">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
 
     <!-- Menu Links -->
-    <div id="menu" class="w-full md:flex md:items-center md:space-x-4 md:w-auto hidden flex-col md:flex-row mt-4 md:mt-0 space-y-2 md:space-y-0">
-      <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
-      <a href="/" class="text-gray-700 hover:text-blue-600">Struktur Organisasi</a>
-      <a href="/" class="text-gray-700 hover:text-blue-600">Galeri</a>
-      <a href="/" class="inline-block px-6 py-3 rounded bg-green-600 text-white text-base font-medium hover:bg-green-700 transition">Book New</a>
-  
-    </div> 
+    <div id="menu" class="w-full md:flex md:items-center md:w-auto overflow-hidden transition-all duration-500 ease-in-out max-h-0 md:max-h-none hidden md:flex-row flex-col mt-4 md:mt-0 gap-y-2 md:gap-x-6">
+      
+      <a href="#" class="relative inline-block group text-white text-base font-medium">
+        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        <span class="transition-colors duration-300 group-hover:text-yellow-400">Struktur Organisasi</span>
+      </a>
+
+      <a href="#" class="relative inline-block group text-white text-base font-medium">
+        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        <span class="transition-colors duration-300 group-hover:text-yellow-400">Galeri</span>
+      </a>
+
+      <a href="#" class="relative inline-block group text-white text-base font-medium">
+        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        <span class="transition-colors duration-300 group-hover:text-yellow-400">Pemanah</span>
+      </a>
+
+      <!-- Tetap seperti aslinya -->
+      <a href="#" class="transition-transform duration-300 ease-in-out transform hover:scale-110 inline-block px-6 py-3 rounded bg-yellow-600 text-white text-base font-medium hover:bg-yellow-700 transition">
+        Informasi dan Layanan
+      </a>
+    </div>
   </div>
 </nav>
 
 <script>
-  // Toggle menu untuk mobile
-  document.getElementById('menu-toggle').addEventListener('click', function () {
-    const menu = document.getElementById('menu');
+  // Toggle menu untuk mobile dengan animasi slide
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  toggle.addEventListener('click', () => {
     menu.classList.toggle('hidden');
+
+    if (!menu.classList.contains('hidden')) {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+    } else {
+      menu.style.maxHeight = "0px";
+    }
   });
 </script>
