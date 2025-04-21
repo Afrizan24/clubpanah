@@ -16,29 +16,30 @@
     </button>
 
     <!-- Menu Links -->
-    <div id="menu" class="w-full md:flex md:items-center md:w-auto overflow-hidden transition-all duration-500 ease-in-out max-h-0 md:max-h-none hidden md:flex-row flex-col mt-4 md:mt-0 gap-y-2 md:gap-x-6">
-      
-      <a href="#" class="relative inline-block group text-white text-base font-medium">
-        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-        <span class="transition-colors duration-300 group-hover:text-yellow-400">Struktur Organisasi</span>
-      </a>
+      <!-- Menu Links -->
+      <div id="menu"
+          class="w-full md:flex md:items-center md:w-auto overflow-hidden transition-all duration-500 ease-in-out max-h-0 md:max-h-none hidden flex-col md:flex-row mt-4 md:mt-0 space-y-4 md:space-y-0 md:space-x-6">
+        
+        <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+          <span class="transition-colors duration-300 group-hover:text-yellow-400">Struktur Organisasi</span>
+        </a>
 
-      <a href="#" class="relative inline-block group text-white text-base font-medium">
-        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-        <span class="transition-colors duration-300 group-hover:text-yellow-400">Galeri</span>
-      </a>
+        <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+          <span class="transition-colors duration-300 group-hover:text-yellow-400">Galeri</span>
+        </a>
 
-      <a href="#" class="relative inline-block group text-white text-base font-medium">
-        <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-        <span class="transition-colors duration-300 group-hover:text-yellow-400">Pemanah</span>
-      </a>
+        <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+          <span class="transition-colors duration-300 group-hover:text-yellow-400">Pemanah</span>
+        </a>
 
-      <!-- Tetap seperti aslinya -->
-      <a href="#" class="transition-transform duration-300 ease-in-out transform hover:scale-110 inline-block px-6 py-3 rounded bg-yellow-600 text-white text-base font-medium hover:bg-yellow-700 transition">
-        Informasi dan Layanan
-      </a>
-    </div>
-  </div>
+        <a href="#" class="transition-transform duration-300 ease-in-out transform hover:scale-110 inline-block px-6 py-3 rounded bg-yellow-600 text-white text-base font-medium hover:bg-yellow-700">
+          Informasi dan Layanan
+        </a>
+      </div>
+
 </nav>
 
 <script>
