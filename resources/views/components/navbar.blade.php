@@ -1,4 +1,4 @@
-<nav class="bg-gray-900 shadow-md py-4 mb-6">
+<nav class="bg-gray-900 shadow-md py-4">
   <div class="max-w-7xl mx-auto px-4 flex justify-between items-center flex-wrap">
     
     <!-- Logo dan Judul -->

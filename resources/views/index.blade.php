@@ -14,7 +14,7 @@
     
     <x-navbar></x-navbar>
 
-    <x-layout></x-layout>
+    <x-about></x-about>
 
 </body>
 

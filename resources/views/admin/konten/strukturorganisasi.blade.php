@@ -7,7 +7,7 @@
     <label class="block text-sm font-medium mb-1">Ketua</label>
     <input type="text" name="ketua" class="w-full p-3 border rounded-lg mb-4" placeholder="Nama Ketua">
     <input id="" type="file" class="w-full p-3 border rounded-lg" placeholder="https://...">
-    
+
     <!-- Wakil Ketua -->
     <label class="block text-sm font-medium mb-1">Wakil Ketua</label>
     <input type="text" name="wakil_ketua" class="w-full p-3 border rounded-lg mb-4" placeholder="Nama Wakil Ketua">
@@ -30,3 +30,20 @@
         💾 Simpan Struktur
     </button>
 </form>
+
+
+<!-- TABEL OUTPUT -->
+<h2 class="text-2xl font-bold text-gray-700 mt-10 mb-4">📋 Data Konten Struktur Organisasi</h2>
+<table class="min-w-full bg-white border border-gray-300 shadow rounded-lg overflow-hidden mb-10">
+    <thead class="bg-gray-100 text-left">
+        <tr>
+            <th class="py-2 px-4 border-b">Ketua</th>
+            <th class="py-2 px-4 border-b">Wakil Ketua</th>
+            <th class="py-2 px-4 border-b">Seketaris</th>
+            <th class="py-2 px-4 border-b">Bendahara</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</table>

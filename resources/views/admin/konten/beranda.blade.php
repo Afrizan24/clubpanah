@@ -7,7 +7,7 @@
     <!-- Judul Hero -->
     <div class="mb-4">
         <label for="judul" class="block text-sm font-medium mb-1">Judul</label>
-        <input id="judul" type="text" class="w-full p-3 border rounded-lg" placeholder="Selamat Datang di Klub Panahan XYZ">
+        <input id="judul" type="text" class="w-full p-3 border rounded-lg" placeholder="Judul hero section">
     </div>
 
     <!-- Deskripsi Hero -->
@@ -26,26 +26,26 @@
     <h2 class="text-2xl font-bold text-gray-700 mb-4 mt-8">📌 Tentang Kami</h2>
     <div class="mb-4">
         <label for="tentang_kami" class="block text-sm font-medium mb-1">Deskripsi Singkat</label>
-        <textarea id="tentang_kami" class="w-full p-3 border rounded-lg" rows="4" placeholder="Kami adalah komunitas panahan yang berdedikasi"></textarea>
+        <textarea id="tentang_kami" class="w-full p-3 border rounded-lg" rows="4" placeholder="deskripsi Section"></textarea>
     </div>
 
     <!-- Kegiatan & Program -->
     <h2 class="text-2xl font-bold text-gray-700 mb-4 mt-8">🏹 Kegiatan & Program</h2>
     <div class="mb-4">
         <label for="judul_kegiatan" class="block text-sm font-medium mb-1">Judul Kegiatan</label>
-        <input id="judul_kegiatan" type="text" class="w-full p-3 border rounded-lg" placeholder="Latihan Rutin Setiap Minggu">
+        <input id="judul_kegiatan" type="text" class="w-full p-3 border rounded-lg" placeholder="">
     </div>
 
     <div class="mb-4">
         <label for="deskripsi_kegiatan" class="block text-sm font-medium mb-1">Deskripsi Kegiatan</label>
-        <textarea id="deskripsi_kegiatan" class="w-full p-3 border rounded-lg" rows="3" placeholder="Kami mengadakan latihan setiap hari Minggu pagi di lapangan..."></textarea>
+        <textarea id="deskripsi_kegiatan" class="w-full p-3 border rounded-lg" rows="3" placeholder=""></textarea>
     </div>
 
     <!-- Galeri Foto -->
     <h2 class="text-2xl font-bold text-gray-700 mb-4 mt-8">📷 Galeri Foto</h2>
     <div class="mb-4">
         <label for="url_gambar_galeri" class="block text-sm font-medium mb-1">URL Gambar Galeri</label>
-        <input id="url_gambar_galeri" type="text" class="w-full p-3 border rounded-lg" placeholder="https://...">
+        <input id="url_gambar_galeri" type="file" class="w-full p-3 border rounded-lg" placeholder="https://...">
     </div>
 
     <!-- Kontak & Lokasi -->
@@ -58,7 +58,7 @@
 
     <div class="mb-4">
         <label for="whatsapp_kontak" class="block text-sm font-medium mb-1">WhatsApp / Kontak Person</label>
-        <input id="whatsapp_kontak" type="text" class="w-full p-3 border rounded-lg" placeholder="+62...">
+        <input id="whatsapp_kontak" type="number" class="w-full p-3 border rounded-lg" placeholder="+62...">
     </div>
 
     <!-- Tombol Simpan -->
@@ -66,6 +66,35 @@
         💾 Simpan Semua
     </button>
 </form>
+
+
+<!-- TABEL OUTPUT -->
+<h2 class="text-2xl font-bold text-gray-700 mt-10 mb-4">📋 Data Konten Beranda</h2>
+<table class="min-w-full bg-white border border-gray-300 shadow rounded-lg overflow-hidden mb-10">
+    <thead class="bg-gray-100 text-left">
+        <tr>
+            <th class="py-2 px-4 border-b">Judul Hero</th>
+            <th class="py-2 px-4 border-b">Deskripsi</th>
+            <th class="py-2 px-4 border-b">Gambar</th>
+            <th class="py-2 px-4 border-b">Tentang Kami</th>
+            <th class="py-2 px-4 border-b">Judul Kegiatan</th>
+            <th class="py-2 px-4 border-b">Deskripsi Kegiatan</th>
+            <th class="py-2 px-4 border-b">Galeri</th>
+            <th class="py-2 px-4 border-b">Alamat</th>
+            <th class="py-2 px-4 border-b">Google Maps</th>
+            <th class="py-2 px-4 border-b">WA</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</table>
+
+
+
+
+
+
 
 <script>
     // Fungsi untuk menyimpan data form Beranda
