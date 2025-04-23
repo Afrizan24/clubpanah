@@ -150,29 +150,67 @@
 <!-- end Section 3 -->
 
 <!-- Section 4 -->
-<section class="bg-white dark:bg-gray-900">
-    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-        <h2 class="mb-4 text-3xl font-extrabold text-center text-gray-900 dark:text-white md:text-4xl">Hubungi Kami</h2>
-        <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-            Kami siap membantu Anda. Kirim pesan atau pertanyaan Anda melalui formulir berikut.
-        </p>
-        <form action="#" class="space-y-8">
-            <div>
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Anda</label>
-                <input type="text" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Nama Lengkap" required>
-            </div>
-            <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email Anda</label>
-                <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="email@example.com" required>
-            </div>
-            <div>
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan Anda</label>
-                <textarea id="message" rows="6" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Tulis pesan Anda di sini..." required></textarea>
-            </div>
-            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-600 sm:w-fit hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Kirim Pesan</button>
-        </form>
-    </div>
+<section class="bg-gray-100 dark:bg-gray-800 py-12">
+  <div class="container mx-auto px-4 max-w-screen-md bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8">
+    <h2 class="mb-4 text-3xl font-extrabold text-center text-gray-900 dark:text-white md:text-4xl">
+      Contact Person
+    </h2>
+    <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+      Kami siap membantu Anda. Kirim pesan atau pertanyaan Anda melalui formulir berikut.
+    </p>
+    <form action="#" class="space-y-8">
+      <div>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Nama Anda
+        </label>
+        <input
+          type="text"
+          id="name"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="Nama Lengkap"required>
+      </div>
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Email Anda
+        </label>
+        <input
+          type="email"
+          id="email"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="email@example.com"
+          required
+        >
+      </div>
+      <div>
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+          Pesan Anda
+        </label>
+        <textarea
+          id="message"
+          rows="6"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="Tulis pesan Anda di sini..."
+          required
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-600 
+               sm:w-fit hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+               dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+      >
+        Kirim Pesan
+      </button>
+    </form>
+  </div>
 </section>
+
 
 <!-- End Section 4 -->
 

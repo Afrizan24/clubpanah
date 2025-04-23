@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <title>GAS</title>
-    
+    <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
