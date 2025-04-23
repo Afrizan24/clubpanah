@@ -14,11 +14,11 @@
         
         <!-- Galeri Lainnya (kasih kategori masing-masing) -->
         <img x-show="filter === 'all' || filter === 'latihan'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
-        <img x-show="filter === 'all' || filter === 'kompetisi'" src="{{ asset('storage/gambar/kegiatan1 (2).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
-        <img x-show="filter === 'all' || filter === 'anggota'" src="{{ asset('storage/gambar/kegiatan1 (3).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
-        <img x-show="filter === 'all' || filter === 'latihan'" src="{{ asset('storage/gambar/kegiatan1 (4).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
-        <img x-show="filter === 'all' || filter === 'kompetisi'" src="{{ asset('storage/gambar/kegiatan1 (5).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
-        <img x-show="filter === 'all' || filter === 'anggota'" src="{{ asset('storage/gambar/kegiatan1 (6).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+        <img x-show="filter === 'all' || filter === 'kompetisi'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+        <img x-show="filter === 'all' || filter === 'anggota'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+        <img x-show="filter === 'all' || filter === 'latihan'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+        <img x-show="filter === 'all' || filter === 'kompetisi'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+        <img x-show="filter === 'all' || filter === 'anggota'" src="{{ asset('storage/gambar/kegiatan1 (1).png') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
         <img x-show="filter === 'all' || filter === 'latihan'" src="{{ asset('storage/gambar/archer.jpeg') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
         <img x-show="filter === 'all' || filter === 'anggota'" src="{{ asset('storage/gambar/archer.jpeg') }}" class="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-105" alt="">
       </div>

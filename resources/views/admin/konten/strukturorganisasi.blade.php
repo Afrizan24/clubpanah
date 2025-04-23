@@ -17,14 +17,30 @@
     <label class="block text-sm font-medium mb-1">Sekretaris</label>
     <input type="text" name="sekretaris" class="w-full p-3 border rounded-lg mb-4" placeholder="Nama Sekretaris">
     <input id="" type="file" class="w-full p-3 border rounded-lg" placeholder="https://...">
+    <div>
+        <label class="block text-sm font-medium mb-1">Divisi</label>
+        <select class="w-full p-3 border rounded-lg">
+            <option value="">Pilih</option>
+            <option>DIVISI A</option>
+            <option>DIVISI B</option>
+        </select>
+    </div>
     
     <!-- Bendahara -->
     <label class="block text-sm font-medium mb-1">Bendahara</label>
     <input type="text" name="bendahara" class="w-full p-3 border rounded-lg mb-4" placeholder="Nama Bendahara">
     <input id="" type="file" class="w-full p-3 border rounded-lg" placeholder="https://...">
-
-
-
+    <div>
+        <label class="block text-sm font-medium mb-1">Divisi</label>
+        <select class="w-full p-3 border rounded-lg">
+            <option value="">Pilih</option>
+            <option>DIVISI A</option>
+            <option>DIVISI B</option>
+        </select>
+    </div>
+    
+    
+    
     <!-- Tombol Simpan -->
     <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 mt-4">
         💾 Simpan Struktur

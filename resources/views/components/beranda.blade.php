@@ -150,67 +150,85 @@
 <!-- end Section 3 -->
 
 <!-- Section 4 -->
-<section class="bg-gray-100 dark:bg-gray-800 py-12">
-  <div class="container mx-auto px-4 max-w-screen-md bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8">
-    <h2 class="mb-4 text-3xl font-extrabold text-center text-gray-900 dark:text-white md:text-4xl">
-      Contact Person
-    </h2>
-    <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-      Kami siap membantu Anda. Kirim pesan atau pertanyaan Anda melalui formulir berikut.
-    </p>
-    <form action="#" class="space-y-8">
+<section class="bg-gray-800 dark:bg-gray-800 py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Form Kontak -->
       <div>
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-          Nama Anda
-        </label>
-        <input
-          type="text"
-          id="name"
-          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-          placeholder="Nama Lengkap"required>
+        <h2 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl text-center lg:text-left">
+          Contact Person
+        </h2>
+        <p class="mb-8 lg:mb-12 font-light text-center lg:text-left text-gray-500 dark:text-gray-400 sm:text-xl">
+          Kami siap membantu Anda. Kirim pesan atau pertanyaan Anda melalui formulir berikut.
+        </p>
+        <form action="#" class="space-y-8">
+          <div>
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Anda</label>
+            <input type="text" id="name" placeholder="Nama Lengkap" required
+              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                     focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+          </div>
+          <div>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email Anda</label>
+            <input type="email" id="email" placeholder="email@example.com" required
+              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                     focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+          </div>
+          <div>
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan Anda</label>
+            <textarea id="message" rows="6" placeholder="Tulis pesan Anda di sini..." required
+              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                     focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
+          </div>
+          <button type="submit"
+            class="py-3 px-5 text-sm font-medium text-white bg-blue-600 rounded-lg 
+                   sm:w-fit hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                   dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+            Kirim Pesan
+          </button>
+        </form>
       </div>
-      <div>
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-          Email Anda
-        </label>
-        <input
-          type="email"
-          id="email"
-          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-          placeholder="email@example.com"
-          required
-        >
+
+      <!-- Info Kontak -->
+      <div class="flex flex-col justify-center">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-inner">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Club Panahan Berkuda "Horsebow"
+          </h3>
+
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-lg">
+            <li>🗺️ Jl. Belatuk</li>
+            <li>📌 Lebih rame kalo datang hari Minggu pagi</li>
+            <li>ℹ️ More Info: DM or WA <a href="https://wa.me/628125372066" class="text-blue-600 underline">+62 812-5372-066 (Purwanto)</a> - Ketua</li>
+            <li>
+              📌 <a href="https://goo.gl/maps/fWRcnzehjpSEwkwAA" target="_blank" class="text-blue-600 underline">
+                Lokasi Google Maps
+              </a>
+            </li>
+          </ul>
+
+          <!-- Google Maps Embed -->
+          <div class="mt-6">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31654.09343102626!2d110.3749391!3d-7.7955798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f492a63f2d%3A0x6c3c690a59d89ae1!2sJl.%20Belatuk!5e0!3m2!1sid!2sid!4v1611111111111!5m2!1sid!2sid" 
+              width="100%" 
+              height="300" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
       </div>
-      <div>
-        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-          Pesan Anda
-        </label>
-        <textarea
-          id="message"
-          rows="6"
-          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-          placeholder="Tulis pesan Anda di sini..."
-          required
-        ></textarea>
-      </div>
-      <button
-        type="submit"
-        class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-600 
-               sm:w-fit hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-               dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
-      >
-        Kirim Pesan
-      </button>
-    </form>
+
+    </div>
   </div>
 </section>
-
-
 <!-- End Section 4 -->
 
