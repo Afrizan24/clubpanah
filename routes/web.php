@@ -14,6 +14,10 @@ Route::get('/galeri', function () {
     return view('galeri');
 });
 
+Route::get('/strukturorganisasi', function () {
+    return view('strukturorganisasi');
+});
+
 Route::get('/admin', function () {
     return view('admin.index');  // Menampilkan halaman index.blade.php
 });
