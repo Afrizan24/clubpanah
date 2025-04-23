@@ -18,6 +18,10 @@ Route::get('/strukturorganisasi', function () {
     return view('strukturorganisasi');
 });
 
+Route::get('/informasidanlayanan', function () {
+    return view('informasidanlayanan');
+});
+
 Route::get('/admin', function () {
     return view('admin.index');  // Menampilkan halaman index.blade.php
 });

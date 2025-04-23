@@ -28,7 +28,7 @@
     <div id="menu"
       class="w-full overflow-hidden transition-[max-height] duration-500 ease-in-out max-h-0 hidden md:max-h-none md:flex md:items-center md:w-auto flex-col md:flex-row mt-4 md:mt-0 space-y-4 md:space-y-0 md:space-x-6">
       
-      <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
+      <a href="/strukturorganisasi" class="relative inline-block group text-white text-base font-medium px-2">
         <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
         <span class="transition-colors duration-300 group-hover:text-yellow-400">Struktur Organisasi</span>
       </a>
@@ -40,10 +40,10 @@
 
       <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
         <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-        <span class="transition-colors duration-300 group-hover:text-yellow-400">Pemanah</span>
+        <span class="transition-colors duration-300 group-hover:text-yellow-400">Berita</span>
       </a>
 
-      <a href="#"
+      <a href="/informasidanlayanan"
         class="inline-block px-6 py-3 rounded bg-yellow-600 text-white text-base font-medium hover:bg-yellow-700 group">
         <span class="inline-block transition-transform duration-300 ease-in-out group-hover:scale-110">
           Informasi dan Layanan
