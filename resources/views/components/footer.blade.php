@@ -7,10 +7,11 @@
       </div>
 
       <div class="flex space-x-6">
-        <a href="#" class="text-gray-400 hover:text-yellow-400 transition">Beranda</a>
-        <a href="#" class="text-gray-400 hover:text-yellow-400 transition">Tentang</a>
-        <a href="#" class="text-gray-400 hover:text-yellow-400 transition">Galeri</a>
-        <a href="#" class="text-gray-400 hover:text-yellow-400 transition">Kontak</a>
+        <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Beranda</a>
+        <a href="/strukturorganisasi" class="text-gray-400 hover:text-yellow-400 transition">Struktur Organisasi</a>
+        <a href="/galeri" class="text-gray-400 hover:text-yellow-400 transition">Galeri</a>
+        <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Pemanah</a>
+        <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Informasi dan Layanan</a>
       </div>
     </div>
 
