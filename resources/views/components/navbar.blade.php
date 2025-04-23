@@ -26,7 +26,7 @@
 
     <!-- Menu Links -->
     <div id="menu"
-      class="w-full md:flex md:items-center md:w-auto overflow-hidden transition-all duration-500 ease-in-out max-h-0 md:max-h-none hidden flex-col md:flex-row mt-4 md:mt-0 space-y-4 md:space-y-0 md:space-x-6">
+      class="w-full overflow-hidden transition-[max-height] duration-500 ease-in-out max-h-0 hidden md:max-h-none md:flex md:items-center md:w-auto flex-col md:flex-row mt-4 md:mt-0 space-y-4 md:space-y-0 md:space-x-6">
       
       <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
         <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
@@ -54,18 +54,36 @@
   </div>
 </nav>
 
-
 <script>
-  // Toggle menu untuk mobile dengan animasi slide
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
 
   toggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+    const isHidden = menu.classList.contains('hidden');
 
-    if (!menu.classList.contains('hidden')) {
+    if (isHidden) {
+      menu.classList.remove('hidden');
       menu.style.maxHeight = menu.scrollHeight + "px";
     } else {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+      setTimeout(() => {
+        menu.style.maxHeight = "0px";
+      }, 10);
+      setTimeout(() => {
+        if (window.innerWidth < 768) {
+          menu.classList.add('hidden');
+        }
+      }, 500);
+    }
+  });
+
+  // Auto reset saat resize ke desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      menu.classList.remove('hidden');
+      menu.style.maxHeight = null;
+    } else {
+      menu.classList.add('hidden');
       menu.style.maxHeight = "0px";
     }
   });
