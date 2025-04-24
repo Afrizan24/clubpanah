@@ -38,7 +38,7 @@
         <span class="transition-colors duration-300 group-hover:text-yellow-400">Galeri</span>
       </a>
 
-      <a href="#" class="relative inline-block group text-white text-base font-medium px-2">
+      <a href="/berita" class="relative inline-block group text-white text-base font-medium px-2">
         <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
         <span class="transition-colors duration-300 group-hover:text-yellow-400">Berita</span>
       </a>
