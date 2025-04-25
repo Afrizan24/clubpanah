@@ -1,7 +1,7 @@
 <!-- Section Company Profile -->
 <section class="py-12 px-4 ">
 <div class="text-center mb-8">
-    <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" alt="Logo Archery" class="w-full max-w-3xl mx-auto rounded-lg shadow-lg">
+    <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" alt="Logo Archery" class="w-full max-w-xl mx-auto rounded-lg shadow-lg">
     <h2 class="text-4xl font-bold text-center text-orange-500 mb-6">ARCHERY PROFILE</h2>
     <div class="max-w-4xl mx-auto text-center text-gray-800 space-y-4">
         <p>
@@ -48,7 +48,7 @@
     <div onclick="showTestimonial(0)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 bg-gray-200 cursor-pointer" id="tab-0">
       <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
       <div>
-        <p class="font-semibold text-gray-800">John Doe</p>
+        <p class="font-semibold text-gray-800">Afrizan</p>
         <p class="text-sm text-gray-500">CEO, Perusahaan Hebat</p>
       </div>
     </div>
@@ -56,7 +56,7 @@
     <div onclick="showTestimonial(1)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 cursor-pointer" id="tab-1">
       <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
       <div>
-        <p class="font-semibold text-gray-800">Jane Smith</p>
+        <p class="font-semibold text-gray-800">Afrizan</p>
         <p class="text-sm text-gray-500">Marketing Manager</p>
       </div>
     </div>
@@ -64,7 +64,7 @@
     <div onclick="showTestimonial(2)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 cursor-pointer" id="tab-2">
       <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
       <div>
-        <p class="font-semibold text-gray-800">Ali Rahman</p>
+        <p class="font-semibold text-gray-800">Afrizan</p>
         <p class="text-sm text-gray-500">CTO, Startup Inovatif</p>
       </div>
     </div>
@@ -84,17 +84,17 @@
 <script>
   const testimonials = [
     {
-      nama: 'John Doe',
+      nama: 'Afrizan',
       jabatan: 'CEO, Perusahaan Hebat',
       pesan: 'Layanan mereka luar biasa! Saya sangat puas dengan hasilnya dan pasti akan merekomendasikannya ke orang lain.'
     },
     {
-      nama: 'Jane Smith',
+      nama: 'Afrizan',
       jabatan: 'Marketing Manager',
       pesan: 'Timnya sangat responsif dan memberikan solusi terbaik untuk kami.'
     },
     {
-      nama: 'Ali Rahman',
+      nama: 'Afrizan',
       jabatan: 'CTO, Startup Inovatif',
       pesan: 'Teknologi dan pendekatan mereka sangat modern. Sangat direkomendasikan.'
     }

@@ -10,8 +10,8 @@
         <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Beranda</a>
         <a href="/strukturorganisasi" class="text-gray-400 hover:text-yellow-400 transition">Struktur Organisasi</a>
         <a href="/galeri" class="text-gray-400 hover:text-yellow-400 transition">Galeri</a>
-        <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Pemanah</a>
-        <a href="/" class="text-gray-400 hover:text-yellow-400 transition">Informasi dan Layanan</a>
+        <a href="/berita" class="text-gray-400 hover:text-yellow-400 transition">Berita</a>
+        <a href="/informasidanlayanan" class="text-gray-400 hover:text-yellow-400 transition">Informasi dan Layanan</a>
       </div>
     </div>
 
