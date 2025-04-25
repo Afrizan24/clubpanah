@@ -74,25 +74,4 @@
     </div>
 </form>
 
-<!-- TABEL OUTPUT -->
-<h2 class="text-2xl font-bold text-gray-700 mt-10 mb-4">📋 Data Konten Struktur Organisasi</h2>
-<table class="min-w-full bg-white border border-gray-300 shadow rounded-lg overflow-hidden mb-10">
-    <thead class="bg-gray-100 text-left">
-        <tr>
-            <th class="py-2 px-4 border-b">No</th>
-            <th class="py-2 px-4 border-b">Nama Lengkap</th>
-            <th class="py-2 px-4 border-b">Tempat, Tanggal Lahir</th>
-            <th class="py-2 px-4 border-b">Alamat Domisili</th>
-            <th class="py-2 px-4 border-b">Jenis Kelamin</th>
-            <th class="py-2 px-4 border-b">Nomor Telepon</th>
-            <th class="py-2 px-4 border-b">Tingkat Keahlian</th>
-            <th class="py-2 px-4 border-b">Divisi</th>
-            <th class="py-2 px-4 border-b">Foto Profil</th>
-            <th class="py-2 px-4 border-b">Tanggal Bergabung</th>
-            <th class="py-2 px-4 border-b">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-      
-    </tbody>
-</table>
+
