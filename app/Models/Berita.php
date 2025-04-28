@@ -1,24 +1,17 @@
 <?php
-// app/Models/SectionThree.php
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Berita extends Model
 {
-    protected $fillable = [
-        'video_url',
-        'video_title',
-        'image1',
-        'image1_caption',
-        'image2',
-        'image2_caption',
-        'highlights',
-    ];
+    use HasFactory;
 
+    protected $fillable = ['title', 'video_url', 'image1', 'image2', 'text1', 'text2', 'highlights'];
+
+    // Menambahkan casts untuk highlights agar Laravel otomatis mengubah JSON menjadi array
     protected $casts = [
-        'highlights' => 'array',
+        'highlights' => 'array',  // Ubah highlights menjadi array
     ];
 }
-
