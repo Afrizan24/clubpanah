@@ -2,24 +2,20 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class beranda extends Component
+class Beranda extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $beranda;
+    public $fotos;
+
+    public function __construct($beranda = null, $fotos = null)
     {
-        //
+        $this->beranda = $beranda;
+        $this->fotos = $fotos;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.beranda');
     }

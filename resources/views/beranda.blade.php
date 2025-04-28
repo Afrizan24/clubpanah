@@ -10,14 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     <title>GAS</title>
-    
+
 </head>
 
 <body class="scroll-smooth">
-    
+
     <x-navbar></x-navbar>
 
-    <x-beranda></x-beranda>
+    <x-beranda :beranda="$beranda" :fotos="$fotos"></x-beranda>
 
     <x-footer></x-footer>
 

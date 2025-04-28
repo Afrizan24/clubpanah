@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    
+
     <x-navbar></x-navbar>
 
-    <x-galeri></x-galeri>
+    <x-galeri :galeris="$galeris"></x-galeri>
 
     <x-footer></x-footer>
 

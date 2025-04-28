@@ -13,10 +13,12 @@
 </head>
 
 <body>
-    
+
     <x-navbar></x-navbar>
 
-    <x-strukturorganisasi></x-strukturorganisasi>
+    <x-strukturorganisasi :pembina="$pembina" :ketua="$ketua" :sekretaris="$sekretaris" :bendahara="$bendahara" :divisi="$divisi"
+        :anggota="$anggota" />
+
 
     <x-footer></x-footer>
 

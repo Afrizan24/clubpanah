@@ -2,24 +2,23 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class strukturorganisasi extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $pembina, $ketua, $sekretaris, $bendahara, $divisi, $anggota;
+
+    public function __construct($pembina = null, $ketua = null, $sekretaris = null, $bendahara = null, $divisi = null, $anggota = null)
     {
-        //
+        $this->pembina = $pembina;
+        $this->ketua = $ketua;
+        $this->sekretaris = $sekretaris;
+        $this->bendahara = $bendahara;
+        $this->divisi = $divisi;
+        $this->anggota = $anggota;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.strukturorganisasi');
     }
