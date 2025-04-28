@@ -6,21 +6,12 @@
 
     <!-- Tabs Navigasi -->
     <div class="flex flex-wrap gap-3 mb-8">
-        <button data-tab="beranda" onclick="switchTab('beranda')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Beranda</button>
-        <button data-tab="struktur" onclick="switchTab('trainers')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border  border-gray-600 bg-blue  hover:bg-blue-100">Struktur
-            Organisasi</button>
-        <button data-tab="about" onclick="switchTab('about')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue  hover:bg-blue-100">Galeri</button>
-        <button data-tab="features" onclick="switchTab('features')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border  border-gray-600 bg-blue  hover:bg-blue-100">Pemanah</button>
-        <button data-tab="news" onclick="switchTab('news')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border  border-gray-600 bg-blue  hover:bg-blue-100">Informasi
-            Layanan</button>
-        <button data-tab="pemanah" onclick="switchTab('pemanah')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border  border-gray-600 bg-blue  hover:bg-blue-100">Detail
-            Pemanah</button>
+        <button data-tab="beranda" onclick="switchTab('beranda')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Beranda</button>
+        <button data-tab="struktur" onclick="switchTab('struktur')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Struktur Organisasi</button>
+        <button data-tab="galeri" onclick="switchTab('galeri')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Galeri</button>
+        <button data-tab="pemanah" onclick="switchTab('pemanah')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Pemanah</button>
+        <button data-tab="berita" onclick="switchTab('berita')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Berita</button>
+        <button data-tab="detailpemanah" onclick="switchTab('detailpemanah')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Detail Pemanah</button>
     </div>
 
     <!-- Tab Content -->
@@ -28,59 +19,54 @@
         @include('admin.konten.beranda', ['beranda' => $beranda, 'fotos' => $fotos])
     </div>
 
-    <div id="trainers" class="tab-content hidden">
-        @include('admin.konten.strukturorganisasi', [
-            'struktur' => $struktur,
-            'editStruktur' => $editStruktur,
-        ]),
+    <div id="struktur" class="tab-content hidden">
+        @include('admin.konten.strukturorganisasi', ['struktur' => $struktur, 'editStruktur' => $editStruktur])
     </div>
 
-    <div id="about" class="tab-content hidden">
+    <div id="galeri" class="tab-content hidden">
         @include('admin.konten.galeri', ['galeris' => $galeris, 'editGaleri' => $editGaleri])
     </div>
 
-    <div id="features" class="tab-content hidden">
+    <div id="pemanah" class="tab-content hidden">
         @include('admin.konten.pemanah')
     </div>
 
-    <div id="news" class="tab-content hidden">
-        @include('admin.konten.layanan')
-    </div>
-
-    <div id="pemanah" class="tab-content hidden">
+    <div id="detailpemanah" class="tab-content hidden">
         @include('admin.konten.detailpemanah')
     </div>
 
+    <div id="berita" class="tab-content hidden">
+        @include('admin.konten.berita', ['berita' => $beritas]) <!-- Pastikan data 'beritas' dikirim dengan benar -->
+    </div>
+    
 @endsection
 
 @section('scripts')
     <script>
         function switchTab(tabId) {
-            // Hide all tabs
+            // Sembunyikan semua tab
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
 
-            // Show selected tab
+            // Tampilkan tab yang dipilih
             document.getElementById(tabId).classList.remove('hidden');
 
-            // Remove active styling from all buttons
+            // Hapus styling aktif dari semua tombol
             document.querySelectorAll('.tab-button').forEach(el => {
                 el.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
             });
 
-            // Add active styling to selected tab button
+            // Tambahkan styling aktif ke tombol tab yang dipilih
             const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
             if (activeBtn) {
                 activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
             }
         }
 
-        // Cek query parameter di URL dan tentukan tab yang aktif
+        // Periksa parameter query di URL dan tentukan tab yang aktif
         window.onload = () => {
             const urlParams = new URLSearchParams(window.location.search);
             const activeTab = urlParams.get('tab') || 'beranda'; // Default tab 'beranda' jika tidak ada query parameter
-
-            // Panggil switchTab sesuai dengan parameter yang ada di URL
-            switchTab(activeTab);
+            switchTab(activeTab); // Panggil switchTab sesuai dengan parameter yang ada di URL
         };
     </script>
 @endsection
