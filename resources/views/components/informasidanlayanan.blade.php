@@ -11,34 +11,38 @@
 </section>
 </div>
 
-<section class=" bg-gray-300 py-12 px-4 bg-dark">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+<section class=" bg-gray-300 py-12 space-x-2 bg-dark">
 
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <div class="flex items-center space-x-3 mb-4">
-        <h3 class="text-2xl font-bold text-orange-500">Informasi Layanan</h3>
-      </div>
-      <p class="text-gray-700">
-        <strong>Hari & Jam Operasional:</strong>  <br>
-        <strong>Biaya:</strong>  <br>
-        <strong>Lokasi:</strong>  <br>
-        <strong>Kontak WA:</strong> <br>
-        <strong>URL Gambar:</strong>
-      </p>
+    <div class="flex space-x-4"> <!-- Flex container dengan jarak antar item -->
+        <!-- Bagian Informasi -->
+        <div class="bg-white p-6 rounded-lg shadow-md w-1/3 mx-auto">
+            <div class="flex items-center space-x-3 mb-4">
+                <h3 class="text-2xl font-bold text-orange-500">Informasi Layanan</h3>
+            </div>
+            @foreach ($layanan as $item)
+                <p class="text-gray-700 mb-2">
+                    <strong>Hari & Jam Operasional:</strong> {{ $item->hari_jam }} <br>
+                    <strong>Biaya:</strong> {{ $item->biaya }} <br>
+                    <strong>Lokasi:</strong> {{ $item->lokasi }} <br>
+                    <strong>Kontak WA:</strong> {{ $item->kontak }} <br>
+                    <strong>URL Gambar:</strong> <img src="{{ asset('storage/' . $item->gambar) }}" alt="Image" class="w-20 h-20 object-cover mt-1">
+                </p>
+            @endforeach
+        </div>
+
+        <!-- Bagian Layanan -->
+        <div class="bg-white p-6 rounded-lg shadow-md w-1/3 mx-auto">
+            <div class="flex items-center space-x-3 mb-4">
+                <h3 class="text-2xl font-bold text-orange-500">Layanan</h3>
+            </div>
+            @foreach ($layanan as $item)
+                <p class="text-gray-700 mb-2">
+                    <strong>Judul Layanan:</strong> {{ $item->judul }} <br>
+                    <strong>Deskripsi Layanan:</strong> {{ $item->deskripsi }} <br>
+                </p>
+            @endforeach
+        </div>
     </div>
-
-  
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <div class="flex items-center space-x-3 mb-4">
-        <h3 class="text-2xl font-bold text-orange-500">Layanan</h3>
-      </div>
-      <p class="text-gray-700">
-        <strong>Judul Layanan:</strong>  <br>
-        <strong>Deskripsi Layanan:</strong>  <br>
-      </p>
-    </div>
-  </div>
-
 
   <div class="  mt-10 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
   <!-- Daftar Testimonial -->

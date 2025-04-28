@@ -7,6 +7,7 @@ use App\Models\Beranda;
 use App\Models\StrukturOrganisasi;
 use App\Models\BerandaFoto;
 use App\Models\Galeri;
+use App\Models\InformasiLayanan;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,6 +20,8 @@ class AdminController extends Controller
         $galeris = Galeri::all();
         $editGaleri = null;
         $editStruktur = null;
+
+        $layanan = InformasiLayanan::all();
 
         if ($request->has('edit')) {
             $editGaleri = Galeri::findOrFail($request->edit);
@@ -45,6 +48,6 @@ class AdminController extends Controller
         $fotos = $fotos->merge($dbFotos);
 
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri'));
+        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan'));
     }
 }

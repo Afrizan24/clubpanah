@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    
+
     <x-navbar></x-navbar>
 
-   <x-informasidanlayanan></x-informasidanlayanan>
+    <x-informasidanlayanan :layanan="$layanan"></x-informasidanlayanan>
 
     <x-footer></x-footer>
 

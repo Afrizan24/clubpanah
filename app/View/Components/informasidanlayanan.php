@@ -8,12 +8,11 @@ use Illuminate\View\Component;
 
 class informasidanlayanan extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $layanan;
+
+    public function __construct($layanan = null)
     {
-        //
+        $this->layanan = $layanan;
     }
 
     /**
