@@ -60,5 +60,7 @@ class AdminController extends Controller
         return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan','testimonials'));
         // Kembalikan view admin dengan data yang sudah diproses
         return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas'));
+        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas','layanan'));
+        // Kembalikan view admin dengan data yang
     }
 }

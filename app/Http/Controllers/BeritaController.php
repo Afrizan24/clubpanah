@@ -10,8 +10,12 @@ class BeritaController extends Controller
     public function index(Request $request)
     {
         $beritas = Berita::all(); // Ambil semua berita
+           // Mengambil data berita pertama
 
-        return view('berita', compact('berita')); // Kirim data ke view
+           $berita = Berita::all();
+
+           // Kirim data berita ke view
+           return view('berita', compact('berita'));
     }
 
 }
