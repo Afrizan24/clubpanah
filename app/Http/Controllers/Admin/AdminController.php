@@ -57,10 +57,6 @@ class AdminController extends Controller
         $fotos = $fotos->merge($dbFotos);
 
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan','testimonials'));
-        // Kembalikan view admin dengan data yang sudah diproses
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas'));
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas','layanan'));
-        // Kembalikan view admin dengan data yang
+        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
     }
 }

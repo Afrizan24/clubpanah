@@ -37,6 +37,8 @@ class BerandaController extends Controller
 
     public function update(Request $request)
     {
+
+        Log::info('Update beranda dipanggil', $request->all());
         $request->validate([
             'judul' => 'nullable|string|max:255',
             'deskripsi' => 'nullable|string',
@@ -82,9 +84,10 @@ class BerandaController extends Controller
                         $oldFoto = BerandaFoto::where('section', $section)->first();
                         if ($oldFoto) {
                             // Delete the old file from storage
-                            if (Storage::exists($oldFoto->gambar)) {
-                                Storage::delete($oldFoto->gambar);
+                            if (Storage::disk('public')->exists($oldFoto->gambar)) {
+                                Storage::disk('public')->delete($oldFoto->gambar);
                             }
+
                             $oldFoto->delete();
                         }
 
@@ -106,6 +109,6 @@ class BerandaController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Beranda content updated successfully');
+        return redirect()->route('admin.index')->with('active_tab', 'beranda')->with('success', 'Beranda berhasil ditambahkan');
     }
 }

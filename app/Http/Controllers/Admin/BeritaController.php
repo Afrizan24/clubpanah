@@ -55,6 +55,6 @@ class BeritaController extends Controller
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect()->route('admin.index',['tab' => 'berita'])->with('success', 'Berita berhasil ditambahkan');
+        return redirect()->route('admin.index')->with('active_tab', 'berita')->with('success', 'Struktur berhasil ditambahkan');
     }
 }

@@ -59,8 +59,7 @@ class GaleriController extends Controller
             'gambar' => $path,
             'video_link' => $embedLink,
         ]);
-
-        return redirect()->route('admin.index', ['tab' => 'about'])->with('success', 'Beranda content updated successfully')->with('tab', 'about');
+        return redirect()->route('admin.index')->with('active_tab', 'galeri')->with('success', 'Galeri berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)
@@ -89,7 +88,7 @@ class GaleriController extends Controller
         $galeri->video_link = $embedLink;
         $galeri->save();
 
-        return redirect()->back()->with('success', 'Galeri berhasil diperbarui');
+        return redirect()->route('admin.index')->with('active_tab', 'Galeri')->with('success', 'Galeri berhasil ditambahkan');
     }
 
     // Delete galeri
@@ -111,6 +110,6 @@ class GaleriController extends Controller
         // Hapus galeri dari database
         $galeri->delete();
 
-        return redirect()->back()->with('success', 'Galeri berhasil dihapus');
+        return redirect()->route('admin.index')->with('active_tab', 'galero')->with('success', 'Galeri berhasil ditambahkan');
     }
 }

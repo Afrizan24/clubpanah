@@ -38,7 +38,7 @@ class StrukturOrganisasiController extends Controller
         }
 
         StrukturOrganisasi::create($data);
-        return redirect()->back()->with('success', 'Beranda content updated successfully');
+        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
     }
 
     // Update data
@@ -63,7 +63,7 @@ class StrukturOrganisasiController extends Controller
         }
 
         $struktur->update($data);
-        return redirect()->route('admin.index')->with('success', 'Beranda content updated successfully')->with('tab', 'struktur');
+        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
     }
 
     // Hapus data
@@ -77,6 +77,6 @@ class StrukturOrganisasiController extends Controller
 
         $struktur->delete();
 
-        return redirect()->back()->with('success', 'Beranda content updated successfully');
+        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
     }
 }

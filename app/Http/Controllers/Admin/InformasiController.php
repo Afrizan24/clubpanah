@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -64,8 +65,6 @@ class InformasiController extends Controller
             $testimonial->save();
         }
 
-        return redirect()
-            ->route('admin.layanan.index')
-            ->with('success', 'Informasi layanan dan testimonial berhasil ditambahkan.');
+        return redirect()->route('admin.index')->with('active_tab', 'informasilayanan')->with('success', 'Informasi dan Layanan berhasil ditambahkan');
     }
 }
