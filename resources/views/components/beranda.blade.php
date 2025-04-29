@@ -19,8 +19,7 @@
             <!-- Subtitle -->
             <p class="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl">
                 {{ $beranda->deskripsi ??
-                    'Bergabunglah dengan komunitas panahan terbaik di Samarinda. Kami menawarkan pelatihan, acara komunitas,
-                                                                                                                                                                                                                                                                                                                                                dan perlengkapan berkualitas untuk semua kalangan!' }}
+                    'Bergabunglah dengan komunitas panahan terbaik di Samarinda. Kami menawarkan pelatihan, acara komunitas, dan perlengkapan berkualitas untuk semua kalangan!' }}
             </p>
             <!-- Call to Action Button -->
             <a href="#about"

@@ -109,6 +109,6 @@ class BerandaController extends Controller
             }
         }
 
-        return redirect()->route('admin.index')->with('active_tab', 'beranda')->with('success', 'Beranda berhasil ditambahkan');
+        return redirect()->route('admin.index')->with('active_tab', 'beranda')->with('successberanda', 'Beranda berhasil ditambahkan');
     }
 }

@@ -3,12 +3,12 @@
 <h2 class="text-2xl font-bold text-gray-700 mb-4">🏹 Galeri Organisasi</h2>
 
 <!-- <form id="strukturForm">
-  
+
     <label class="block text-sm font-medium mb-1">Photo</label>
     <input type="text" name="ketua" class="w-full p-3 border rounded-lg mb-4" placeholder="Deskripsi Photo">
     <input id="" type="file" class="w-full p-3 border rounded-lg" placeholder="https://...">
 
-  
+
     <label class="block text-sm font-medium mb-1">Vidio</label>
     <input type="text" name="wakil_ketua" class="w-full p-3 border rounded-lg mb-4" placeholder="link Vidio">
     <input type="text" name="wakil_ketua" class="w-full p-3 border rounded-lg mb-4" placeholder="Deskripsi Vidio">
@@ -40,9 +40,9 @@
 
     <h1 class="text-2xl font-bold mb-6">Kelola Galeri</h1>
 
-    @if (session('success'))
+    @if (session('successgaleri'))
         <div class="bg-green-500 text-white p-4 rounded mb-4">
-            {{ session('success') }}
+            {{ session('successgaleri') }}
         </div>
     @endif
 
