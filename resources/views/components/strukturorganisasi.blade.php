@@ -1,6 +1,6 @@
 <!-- Section 2 -->
 <section class="bg-gradient-to-r from-amber-300 to-yellow-500">
-    <div  class="  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <header class="text-center sm:text-left">
             <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl mb-2">STRUKTUR ORGANISASI</h2>
             <p class="text-gray-800 sm:text-lg max-w-2xl">
@@ -45,8 +45,10 @@
                         <li>
                             <a href="#"
                                 class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama }} - Pembina"
-                                    class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                                @if ($item->foto)
+                                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama }} - Pembina"
+                                        class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                                @endif
                                 <div class="p-3">
                                     <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMBINA</p>
                                     <p class="text-gray-800 text-sm leading-snug text-center">{{ $item->nama }}</p>
@@ -55,7 +57,6 @@
                         </li>
                     @endforeach
                 @else
-                    <p>Variable $pembina tidak tersedia di view</p>
                 @endif
         </div>
         <!-- End Pembina Card -->
@@ -69,8 +70,10 @@
                 <li>
                     <a href="#"
                         class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                        <img src="{{ Storage::url($ketua->foto) }}" alt="Foto Profil"
-                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @if (isset($ketua) && $ketua->foto)
+                            <img src="{{ Storage::url($ketua->foto) }}" alt="Foto Profil"
+                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @endif
                         <div class="p-3">
                             <p class="text-gray-800 font-bold text-2xl leading-snug text-center">KETUA</p>
                             <p class="text-gray-800 text-sm leading-snug text-center">{{ $ketua->nama ?? 'tidak ada' }}
@@ -93,11 +96,14 @@
                 <div class="mb-6">
                     <a href="#"
                         class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-                        <img src="{{ Storage::url($sekretaris->foto) }}" alt="Foto Profil"
-                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @if (isset($sekretaris) && $sekretaris->foto)
+                            <img src="{{ Storage::url($sekretaris->foto) }}" alt="Foto Profil"
+                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @endif
+
                         <div class="p-3">
                             <p class="text-gray-800 font-bold text-2xl text-center">SEKRETARIS</p>
-                            <p class="text-gray-800 text-sm text-center">{{ $sekretaris->nama }}</p>
+                            <p class="text-gray-800 text-sm text-center">{{ $sekretaris->nama ?? 'tidak ada' }}</p>
                         </div>
                     </a>
                 </div>
@@ -154,11 +160,13 @@
                 <div class="mb-6">
                     <a href="#"
                         class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-                        <img src="{{ Storage::url($bendahara->foto) }}" alt="Foto Profil"
-                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @if (isset($bendahara) && $bendahara->foto)
+                            <img src="{{ Storage::url($bendahara->foto) }}" alt="Foto Profil"
+                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        @endif
                         <div class="p-3">
                             <p class="text-gray-800 font-bold text-2xl text-center">BENDAHARA</p>
-                            <p class="text-gray-800 text-sm text-center">{{ $bendahara->nama }}</p>
+                            <p class="text-gray-800 text-sm text-center">{{ $bendahara->nama ?? 'Tidak ada' }}</p>
                         </div>
                     </a>
                 </div>
