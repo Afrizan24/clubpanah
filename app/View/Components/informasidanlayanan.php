@@ -9,10 +9,12 @@ use Illuminate\View\Component;
 class informasidanlayanan extends Component
 {
     public $layanan;
+    public $testimonials;
 
-    public function __construct($layanan = null)
+    public function __construct($layanan = null, $testimonials = null)
     {
         $this->layanan = $layanan;
+        $this->testimonials = $testimonials;
     }
 
     /**

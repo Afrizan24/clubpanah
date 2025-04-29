@@ -15,9 +15,12 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
-Route::get('/informasidanlayanan', function () {
-    return view('informasidanlayanan');
-});
+// Route::get('/informasidanlayanan', function () {
+//     return view('informasidanlayanan');
+// });
+
+Route::get('/informasidanlayanan', [App\Http\Controllers\InformasiController::class, 'index'])->name('informasidanlayanan');
+
 
 // Admin Routes
 
@@ -37,4 +40,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/galeri/{id}/edit', [App\Http\Controllers\Admin\GaleriController::class, 'edit'])->name('admin.galeri.edit');
     Route::put('/galeri/{id}', [App\Http\Controllers\Admin\GaleriController::class, 'update'])->name('admin.galeri.update');
     Route::delete('/galeri/{id}', [App\Http\Controllers\Admin\GaleriController::class, 'destroy'])->name('admin.galeri.destroy');
+
+    Route::get('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'index'])->name('admin.berita.index');
+    Route::get('/berita/create', [App\Http\Controllers\Admin\BeritaController::class, 'create'])->name('admin.berita.create');
+    Route::post('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'store'])->name('admin.berita.store');
+    Route::get('/berita/{id}/edit', [App\Http\Controllers\Admin\BeritaController::class, 'edit'])->name('admin.berita.edit');
+    Route::put('/berita/{id}', [App\Http\Controllers\Admin\BeritaController::class, 'update'])->name('admin.berita.update');
+
+    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
+    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
 });

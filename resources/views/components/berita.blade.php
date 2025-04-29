@@ -8,11 +8,11 @@
       <!-- Video utama + judul -->
       <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center">
         <div class="w-full max-w-md lg:max-w-lg relative" style="padding-top: 56.25%;">
-          <iframe 
+          <iframe
             class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
             src="{{ str_replace('watch?v=', 'embed/', $berita->video_url) }}"
             title="Video Kegiatan"
-            frameborder="0" 
+            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>

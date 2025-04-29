@@ -1,125 +1,110 @@
-<!-- Section Company Profile -->
-<section class="py-12 px-4 ">
-<div class="text-center mb-8">
-    <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" alt="Logo Archery" class="w-full max-w-xl mx-auto rounded-lg shadow-lg">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-6">ARCHERY PROFILE</h2>
-    <div class="max-w-4xl mx-auto text-center text-gray-800 space-y-4">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam hic illo, esse aliquam cum quos aperiam? Repellat placeat architecto consectetur aliquid consequuntur pariatur, a rerum nulla laboriosam vel, sed dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, libero. Expedita ipsa fugit harum, corporis at nesciunt quaerat, dolore laboriosam voluptate iure mollitia! Ab, nemo et in aut tenetur perferendis, voluptate nesciunt voluptas illo ratione nihil aliquid molestias modi possimus cum ex rem impedit. Veritatis ex distinctio eum sint neque deserunt pariatur tempora, exercitationem animi voluptas architecto enim aut aliquid inventore autem, quisquam soluta officiis? Eos accusamus repudiandae non voluptas mollitia, ratione autem saepe placeat id alias error vitae minus qui laudantium est doloribus iste nobis reprehenderit. Numquam porro inventore dignissimos enim commodi dolore animi aperiam! Distinctio ipsa assumenda debitis? Deserunt, eaque vitae assumenda sequi soluta harum, et deleniti, dicta totam quo delectus beatae aliquid minima vel similique nesciunt amet qui. Accusantium adipisci labore iusto facilis explicabo neque laborum maxime ipsum dolorum ullam corrupti tenetur quae ea, distinctio odio ducimus at qui veniam necessitatibus tempora. Soluta doloremque eligendi quisquam itaque commodi, corrupti iusto voluptatum atque eaque ipsam ad, dolores qui, modi similique placeat nulla. Expedita architecto soluta magnam esse repellat saepe placeat nobis. Excepturi modi accusamus nemo suscipit dolor inventore deserunt sapiente eveniet! Enim, modi nulla quam fugit minus nam impedit aspernatur corporis incidunt, ducimus molestias possimus a aliquid tempore.
-        </p>
-    </div>
-</section>
-</div>
-
-<section class=" bg-gray-300 py-12 space-x-2 bg-dark">
-
-    <div class="flex space-x-4"> <!-- Flex container dengan jarak antar item -->
-        <!-- Bagian Informasi -->
-        <div class="bg-white p-6 rounded-lg shadow-md w-1/3 mx-auto">
-            <div class="flex items-center space-x-3 mb-4">
-                <h3 class="text-2xl font-bold text-orange-500">Informasi Layanan</h3>
-            </div>
-            @foreach ($layanan as $item)
-                <p class="text-gray-700 mb-2">
-                    <strong>Hari & Jam Operasional:</strong> {{ $item->hari_jam }} <br>
-                    <strong>Biaya:</strong> {{ $item->biaya }} <br>
-                    <strong>Lokasi:</strong> {{ $item->lokasi }} <br>
-                    <strong>Kontak WA:</strong> {{ $item->kontak }} <br>
-                    <strong>URL Gambar:</strong> <img src="{{ asset('storage/' . $item->gambar) }}" alt="Image" class="w-20 h-20 object-cover mt-1">
-                </p>
-            @endforeach
-        </div>
-
-        <!-- Bagian Layanan -->
-        <div class="bg-white p-6 rounded-lg shadow-md w-1/3 mx-auto">
-            <div class="flex items-center space-x-3 mb-4">
-                <h3 class="text-2xl font-bold text-orange-500">Layanan</h3>
-            </div>
-            @foreach ($layanan as $item)
-                <p class="text-gray-700 mb-2">
-                    <strong>Judul Layanan:</strong> {{ $item->judul }} <br>
-                    <strong>Deskripsi Layanan:</strong> {{ $item->deskripsi }} <br>
-                </p>
-            @endforeach
-        </div>
-    </div>
-
-  <div class="  mt-10 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-  <!-- Daftar Testimonial -->
-  <div class="space-y-4">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-6">TESTIMONIAL</h2>
-
-    <div onclick="showTestimonial(0)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 bg-gray-200 cursor-pointer" id="tab-0">
-      <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
-      <div>
-        <p class="font-semibold text-gray-800">Afrizan</p>
-        <p class="text-sm text-gray-500">CEO, Perusahaan Hebat</p>
+  {{-- Company Profile --}}
+  <section class="py-12 px-4">
+      <div class="text-center mb-8">
+          <img src="{{ asset('gambar/logo anjas.png') }}" alt="Logo Archery"
+              class="w-full max-w-xl mx-auto rounded-lg shadow-lg">
+          <h2 class="text-4xl font-bold text-orange-500 mb-6">ARCHERY PROFILE</h2>
+          <p class="max-w-4xl mx-auto text-gray-800">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam hic illo, esse aliquam cum quos aperiam?
+              …
+          </p>
       </div>
-    </div>
+  </section>
 
-    <div onclick="showTestimonial(1)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 cursor-pointer" id="tab-1">
-      <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
-      <div>
-        <p class="font-semibold text-gray-800">Afrizan</p>
-        <p class="text-sm text-gray-500">Marketing Manager</p>
+  {{-- Layanan & Testimonial --}}
+  <section class="bg-gray-300 py-12">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-6">
+
+          {{-- Informasi Layanan --}}
+          <div class="bg-white p-6 rounded-lg shadow-md md:w-1/3 w-full">
+              <h3 class="text-2xl font-bold text-orange-500 mb-4">Informasi Layanan</h3>
+              @foreach ($layanan as $item)
+                  <div class="mb-6">
+                      <p class="text-gray-700 mb-1">
+                          <strong>Hari & Jam:</strong> {{ $item->hari_jam }}<br>
+                          <strong>Biaya:</strong> {{ $item->biaya }}<br>
+                          <strong>Lokasi:</strong> {{ $item->lokasi }}<br>
+                          <strong>Kontak WA:</strong> {{ $item->kontak }}
+                      </p>
+                      @if ($item->gambar)
+                          <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Layanan"
+                              class="w-24 h-24 object-cover rounded mb-4">
+                      @endif
+                  </div>
+              @endforeach
+          </div>
+
+          {{-- Detail Layanan --}}
+          <div class="bg-white p-6 rounded-lg shadow-md md:w-1/3 w-full">
+              <h3 class="text-2xl font-bold text-orange-500 mb-4">Layanan</h3>
+              @foreach ($layanan as $item)
+                  <div class="mb-6">
+                      <h4 class="font-semibold text-lg">{{ $item->judul }}</h4>
+                      <p class="text-gray-700">{{ $item->deskripsi }}</p>
+                  </div>
+              @endforeach
+          </div>
+
+          {{-- Testimonial --}}
+          <div class="bg-white p-6 rounded-lg shadow-md md:w-1/3 w-full">
+              <h3 class="text-2xl font-bold text-orange-500 mb-4">Testimonial</h3>
+
+              {{-- Tab list --}}
+              <div class="space-y-3">
+                  @foreach ($testimonials as $i => $t)
+                      <div id="tab-{{ $i }}" onclick="showTestimonial({{ $i }})"
+                          class="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-gray-100 {{ $i === 0 ? 'bg-gray-200' : '' }}">
+                          @if ($t->foto)
+                              <img src="{{ asset('storage/' . $t->foto) }}" class="w-12 h-12 rounded-full object-cover"
+                                  alt="{{ $t->nama }}">
+                          @else
+                              <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                          @endif
+                          <div>
+                              <p class="font-semibold">{{ $t->nama }}</p>
+                              <p class="text-sm text-gray-500">{{ $t->jabatan }}</p>
+                          </div>
+                      </div>
+                  @endforeach
+              </div>
+
+              {{-- Konten testimonial aktif --}}
+              <div id="testimonial-content" class="mt-6">
+                  <h4 id="nama" class="text-lg font-semibold"></h4>
+                  <p id="jabatan" class="text-sm text-gray-500 mb-2"></p>
+                  <p id="pesan" class="text-base text-gray-700"></p>
+              </div>
+          </div>
+
       </div>
-    </div>
+  </section>
 
-    <div onclick="showTestimonial(2)" class="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-100 cursor-pointer" id="tab-2">
-      <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" class="w-16 h-16 rounded-full object-cover">
-      <div>
-        <p class="font-semibold text-gray-800">Afrizan</p>
-        <p class="text-sm text-gray-500">CTO, Startup Inovatif</p>
-      </div>
-    </div>
-  </div>
+  {{-- Script Dinamis --}}
+  @php
+      $jsTestimonials = $testimonials
+          ->map(
+              fn($t) => [
+                  'nama' => $t->nama,
+                  'jabatan' => $t->jabatan,
+                  'pesan' => $t->isi,
+              ],
+          )
+          ->toArray();
+  @endphp
+  <script>
+      const testimonials = @json($jsTestimonials);
 
-  <!-- Konten Testimonial Aktif -->
-  <div class="md:col-span-2 bg-white shadow-md rounded-2xl p-6">
-    <h3 id="nama" class="text-lg font-semibold text-gray-800">John Doe</h3>
-    <p id="jabatan" class="text-sm text-gray-500 mb-2">CEO, Perusahaan Hebat</p>
-    <p id="pesan" class="text-base text-gray-700">
-      "Layanan mereka luar biasa! Saya sangat puas dengan hasilnya dan pasti akan merekomendasikannya ke orang lain."
-    </p>
-  </div>
-</div>
+      function showTestimonial(i) {
+          document.getElementById('nama').textContent = testimonials[i].nama;
+          document.getElementById('jabatan').textContent = testimonials[i].jabatan;
+          document.getElementById('pesan').textContent = testimonials[i].pesan;
 
-<!-- Script untuk interaktif -->
-<script>
-  const testimonials = [
-    {
-      nama: 'Afrizan',
-      jabatan: 'CEO, Perusahaan Hebat',
-      pesan: 'Layanan mereka luar biasa! Saya sangat puas dengan hasilnya dan pasti akan merekomendasikannya ke orang lain.'
-    },
-    {
-      nama: 'Afrizan',
-      jabatan: 'Marketing Manager',
-      pesan: 'Timnya sangat responsif dan memberikan solusi terbaik untuk kami.'
-    },
-    {
-      nama: 'Afrizan',
-      jabatan: 'CTO, Startup Inovatif',
-      pesan: 'Teknologi dan pendekatan mereka sangat modern. Sangat direkomendasikan.'
-    }
-  ];
+          testimonials.forEach((_, idx) => {
+              document
+                  .getElementById(`tab-${idx}`)
+                  .classList.toggle('bg-gray-200', idx === i);
+          });
+      }
 
-  function showTestimonial(index) {
-    document.getElementById('nama').textContent = testimonials[index].nama;
-    document.getElementById('jabatan').textContent = testimonials[index].jabatan;
-    document.getElementById('pesan').textContent = testimonials[index].pesan;
-
-    // Update background untuk tab aktif
-    for (let i = 0; i < 3; i++) {
-      document.getElementById(`tab-${i}`).classList.remove('bg-gray-200');
-    }
-    document.getElementById(`tab-${index}`).classList.add('bg-gray-200');
-  }
-</script>
-
-
-
-</section>
-
-
-
+      document.addEventListener('DOMContentLoaded', () => showTestimonial(0));
+  </script>

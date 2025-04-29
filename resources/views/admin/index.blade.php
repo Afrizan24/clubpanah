@@ -6,12 +6,22 @@
 
     <!-- Tabs Navigasi -->
     <div class="flex flex-wrap gap-3 mb-8">
-        <button data-tab="beranda" onclick="switchTab('beranda')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Beranda</button>
-        <button data-tab="struktur" onclick="switchTab('struktur')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Struktur Organisasi</button>
-        <button data-tab="galeri" onclick="switchTab('galeri')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Galeri</button>
-        <button data-tab="pemanah" onclick="switchTab('pemanah')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Pemanah</button>
-        <button data-tab="berita" onclick="switchTab('berita')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Berita</button>
-        <button data-tab="detailpemanah" onclick="switchTab('detailpemanah')" class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Detail Pemanah</button>
+        <button data-tab="beranda" onclick="switchTab('beranda')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Beranda</button>
+        <button data-tab="struktur" onclick="switchTab('struktur')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Struktur
+            Organisasi</button>
+        <button data-tab="galeri" onclick="switchTab('galeri')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Galeri</button>
+        <button data-tab="pemanah" onclick="switchTab('pemanah')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Pemanah</button>
+        <button data-tab="berita" onclick="switchTab('berita')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Berita</button>
+        <button data-tab="detailpemanah" onclick="switchTab('detailpemanah')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Detail
+            Pemanah</button>
+        <button data-tab="informasilayanan" onclick="switchTab('informasilayanan')"
+            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Informasi Layanan</button>
     </div>
 
     <!-- Tab Content -->
@@ -20,7 +30,10 @@
     </div>
 
     <div id="struktur" class="tab-content hidden">
-        @include('admin.konten.strukturorganisasi', ['struktur' => $struktur, 'editStruktur' => $editStruktur])
+        @include('admin.konten.strukturorganisasi', [
+            'struktur' => $struktur,
+            'editStruktur' => $editStruktur,
+        ])
     </div>
 
     <div id="galeri" class="tab-content hidden">
@@ -34,11 +47,13 @@
     <div id="detailpemanah" class="tab-content hidden">
         @include('admin.konten.detailpemanah')
     </div>
+    <div id="informasilayanan" class="tab-content hidden">
+        @include('admin.konten.layanan')
+    </div>
 
     <div id="berita" class="tab-content hidden">
-        @include('admin.konten.berita', ['berita' => $beritas]) <!-- Pastikan data 'beritas' dikirim dengan benar -->
+        @include('admin.konten.berita') <!-- Pastikan data 'beritas' dikirim dengan benar -->
     </div>
-    
 @endsection
 
 @section('scripts')

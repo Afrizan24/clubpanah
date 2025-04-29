@@ -90,10 +90,6 @@
                     <option value="Ketua"
                         {{ isset($editStruktur) && $editStruktur->jabatan == 'Ketua' ? 'selected' : '' }}>
                         Ketua</option>
-                    <option value="Wakil Ketua"
-                        {{ isset($editStruktur) && $editStruktur->jabatan == 'Wakil Ketua' ? 'selected' : '' }}>Wakil
-                        Ketua
-                    </option>
                     <option value="Sekretaris"
                         {{ isset($editStruktur) && $editStruktur->jabatan == 'Sekretaris' ? 'selected' : '' }}>
                         Sekretaris

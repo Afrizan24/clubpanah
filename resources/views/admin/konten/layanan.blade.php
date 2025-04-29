@@ -38,6 +38,26 @@
         <input type="file" name="gambar" class="w-full p-3 border rounded-lg">
     </div>
 
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Nama Testimonial</label>
+        <input type="text" name="nama" class="w-full p-3 border rounded-lg" placeholder="Nama Lengkap">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Jabatan Testimonial</label>
+        <input type="text" name="jabatan" class="w-full p-3 border rounded-lg" placeholder="Jabatan">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Isi Pesan</label>
+        <input type="text" name="isi" class="w-full p-3 border rounded-lg" placeholder="Isi Pesan">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Foto Testimonial</label>
+        <input type="file" name="foto_testimonial" class="w-full p-3 border rounded-lg">
+    </div>
+
     <button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 mt-4">
         💾 Simpan Informasi Layanan
     </button>

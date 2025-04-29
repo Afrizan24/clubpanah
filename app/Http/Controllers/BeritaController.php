@@ -9,7 +9,7 @@ class BeritaController extends Controller
 {
     public function index(Request $request)
     {
-        $berita = Berita::all(); // Ambil semua berita
+        $beritas = Berita::all(); // Ambil semua berita
 
         return view('berita', compact('berita')); // Kirim data ke view
     }
