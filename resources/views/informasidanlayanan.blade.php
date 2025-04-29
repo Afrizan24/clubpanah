@@ -16,7 +16,7 @@
 
     <x-navbar></x-navbar>
 
-    <x-informasidanlayanan :layanan="$layanan"></x-informasidanlayanan>
+    <x-informasidanlayanan></x-informasidanlayanan>
 
     <x-footer></x-footer>
 

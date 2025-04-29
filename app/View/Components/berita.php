@@ -11,16 +11,20 @@ class berita extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $berita;
+    public function __construct($berita)
     {
-        //
+        $this->berita = $berita;
     }
+ 
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.berita');
+        return view('components.berita', [
+            'berita' => $this->berita,
+        ]);
     }
 }

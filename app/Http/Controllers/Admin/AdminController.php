@@ -7,11 +7,8 @@ use App\Models\Beranda;
 use App\Models\BerandaFoto;
 use App\Models\Berita;
 use App\Models\Galeri;
-<<<<<<< HEAD
 use App\Models\InformasiLayanan;
-=======
 use App\Models\StrukturOrganisasi;
->>>>>>> fbd738b5886728c280871d2e7a7e5ca140f82e50
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -26,12 +23,9 @@ class AdminController extends Controller
         $editStruktur = null; // Variabel untuk struktur yang sedang diedit
         $beritas = Berita::latest()->first(); // Mengambil berita terbaru
 
-<<<<<<< HEAD
         $layanan = InformasiLayanan::all();
 
-=======
         // Cek apakah ada parameter 'edit' di request untuk mengedit galeri
->>>>>>> fbd738b5886728c280871d2e7a7e5ca140f82e50
         if ($request->has('edit')) {
             $editGaleri = Galeri::findOrFail($request->edit); // Ambil galeri berdasarkan ID
         }
@@ -60,12 +54,8 @@ class AdminController extends Controller
         // Gabungkan foto yang sudah dikelompokkan ke dalam koleksi $fotos
         $fotos = $fotos->merge($dbFotos);
 
-<<<<<<< HEAD
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan'));
-=======
-        // Kembalikan view admin dengan data yang sudah diproses
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas'));
->>>>>>> fbd738b5886728c280871d2e7a7e5ca140f82e50
+        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'beritas','layanan'));
+        // Kembalikan view admin dengan data yang 
     }
 }

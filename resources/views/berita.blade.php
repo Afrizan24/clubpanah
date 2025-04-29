@@ -9,14 +9,16 @@
     <title>GAS</title>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-
 </head>
 
 <body>
-    
     <x-navbar></x-navbar>
 
-    <x-berita></x-berita>
+    @if(isset($berita) && $berita->isNotEmpty())
+    <x-berita :berita="$berita" />
+@else
+    <p>Data berita tidak ditemukan.</p>
+@endif 
 
     <x-footer></x-footer>
 

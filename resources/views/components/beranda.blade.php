@@ -1,10 +1,6 @@
 @php
     $hero1 = $fotos['hero1']->first();
     $hero2 = $fotos['hero2']->first();
-    // $galeri1 = optional($fotos['galeri1']->first());
-    // $galeri2 = optional($fotos['galeri2']->first());
-    // $galeri3 = optional($fotos['galeri3']->first());
-    // $galeri4 = optional($fotos['galeri4']->first());
     $about1 = optional($fotos['about1']->first());
     $about2 = optional($fotos['about2']->first());
     $about3 = optional($fotos['about3']->first());
@@ -13,7 +9,7 @@
 <!-- SECTION 1 -->
 <section class="bg-white scroll-smooth">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div class="mr-auto place-self-center lg:col-span-7">
+        <div data-aos="fade-up" class="mr-auto place-self-center lg:col-span-7">
             <!-- Title -->
             <h1
                 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none  text-yellow-500 md:text-5xl xl:text-6xl">
@@ -42,9 +38,9 @@
                 Hubungi Kami
             </a>
         </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex items-center justify-center">
+        <div  class="hidden lg:mt-0 lg:col-span-5 lg:flex items-center justify-center">
             <!-- Image -->
-            <div class="grid grid-cols-2 gap-4 mt-8">
+            <div  class="grid grid-cols-2 gap-4 mt-8">
                 @if ($hero1 && $hero1->gambar)
                     <img class="w-full rounded-lg" src="{{ Storage::url($hero1->gambar) }}" alt="office content 1">
                 @endif
