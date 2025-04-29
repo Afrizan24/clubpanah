@@ -7,7 +7,7 @@
 
             <!-- Video utama + judul -->
             <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center">
-                @if (!empty($berita->first()?->video_url))
+                @if ($berita->first() && !empty($berita->first()->video_url)) <!-- Pastikan kita mengambil item pertama -->
                     <div class="w-full max-w-md lg:max-w-lg relative" style="padding-top: 56.25%;">
                         <iframe
                             class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
@@ -29,17 +29,6 @@
                 </h1>
             </div>
 
-      <!-- Video utama + judul -->
-      <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center">
-        <div class="w-full max-w-md lg:max-w-lg relative" style="padding-top: 56.25%;">
-          <iframe
-            class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
-            src="{{ str_replace('watch?v=', 'embed/', $berita->video_url) }}"
-            title="Video Kegiatan"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
             <!-- Gambar pendukung + highlight berita + navigasi -->
             <div class="lg:col-span-5 order-1 lg:order-2 flex flex-col items-start justify-start h-full space-y-6">
                 <!-- Gambar kecil + teks -->
@@ -67,9 +56,8 @@
                     </div>
                 </div>
 
-
                 <!-- Highlight berita -->
-                @if (!empty($berita->first()->highlights) && is_array($berita->first()->highlights))
+                @if ($berita->first() && !empty($berita->first()->highlights) && is_array($berita->first()->highlights))
                     <div class="bg-white p-4 rounded-md shadow-md w-full max-w-md">
                         <h3 class="text-lg font-semibold text-gray-800 mb-2">Highlight Berita</h3>
                         <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
