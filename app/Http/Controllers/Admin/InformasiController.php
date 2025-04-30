@@ -30,7 +30,6 @@ class InformasiController extends Controller
             'biaya'             => 'nullable|numeric',
             'lokasi'            => 'required|string|max:255',
             'kontak'            => 'required|string|max:20',
-            'gambar'            => 'nullable|image|max:2048',
         ]);
 
         // Validasi data testimonial

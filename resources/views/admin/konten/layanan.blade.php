@@ -34,11 +34,6 @@
     </div>
 
     <div class="mb-4">
-        <label class="block text-sm font-medium mb-1">URL Gambar / Ilustrasi</label>
-        <input type="file" name="gambar" class="w-full p-3 border rounded-lg">
-    </div>
-
-    <div class="mb-4">
         <label class="block text-sm font-medium mb-1">Nama Testimonial</label>
         <input type="text" name="nama" class="w-full p-3 border rounded-lg" placeholder="Nama Lengkap">
     </div>
@@ -75,7 +70,6 @@
             <th class="py-2 px-4 border-b">Biaya</th>
             <th class="py-2 px-4 border-b">Lokasi</th>
             <th class="py-2 px-4 border-b">Kontak Layanan</th>
-            <th class="py-2 px-4 border-b">URL Gambar</th>
         </tr>
     </thead>
     <tbody>
@@ -87,9 +81,6 @@
             <td class="py-2 px-4 border-b">{{ $item->biaya }}</td>
             <td class="py-2 px-4 border-b">{{ $item->lokasi }}</td>
             <td class="py-2 px-4 border-b">{{ $item->kontak }}</td>
-            <td class="py-2 px-4 border-b">
-                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Layanan" class="w-20 h-20 object-cover">
-            </td>
         </tr>
         @endforeach
     </tbody>

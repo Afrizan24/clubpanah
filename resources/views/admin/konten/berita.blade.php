@@ -1,16 +1,18 @@
 <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Link Video (YouTube)</label>
-        <input type="url" name="video_url" value=""
-        class="w-full border p-2 rounded" >
-    </div>
 
     <div class="mb-4">
+        <label class="block text-gray-700 mb-2">Link Video (YouTube)</label>
+        <input type="url" name="video_url" value="{{ old('video_url') }}"
+        class="w-full border p-2 rounded" >
+    </div>
+    
+    <div class="mb-4">
         <label class="block text-gray-700 mb-2">Judul Video</label>
-        <input type="text" name="title" value=""
+        <input type="text" name="title" value="{{ old('title') }}"
             class="w-full border p-2 rounded" >
     </div>
+    
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="mb-4">

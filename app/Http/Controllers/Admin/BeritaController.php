@@ -31,7 +31,7 @@ class BeritaController extends Controller
             'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'highlights' => 'nullable|string',
         ]);
-
+        Berita::truncate();
         // Handle file uploads
         $image1Path = null;
         if ($request->hasFile('image1')) {
@@ -51,8 +51,8 @@ class BeritaController extends Controller
             'text1' => $request->text1,
             'image2' => $image2Path,
             'text2' => $request->text2,
-            'highlights' => $request->highlights,
-        ]);
+           'highlights' => json_encode(explode(',', $request->highlights)),
+    ]);
 
         // Redirect dengan pesan sukses
         return redirect()->route('admin.index')->with('active_tab', 'berita')->with('success', 'Struktur berhasil ditambahkan');

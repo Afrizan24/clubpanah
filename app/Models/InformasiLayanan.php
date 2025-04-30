@@ -12,6 +12,6 @@ class InformasiLayanan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'judul', 'deskripsi', 'hari_jam', 'biaya', 'lokasi', 'kontak', 'gambar'
+        'judul', 'deskripsi', 'hari_jam', 'biaya', 'lokasi', 'kontak',
     ];
 }

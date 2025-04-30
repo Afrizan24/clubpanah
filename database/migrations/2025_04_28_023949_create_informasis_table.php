@@ -16,7 +16,6 @@ class CreateInformasisTable extends Migration
             $table->decimal('biaya', 10, 2);
             $table->string('lokasi');
             $table->string('kontak');
-            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
