@@ -43,7 +43,7 @@ class StrukturOrganisasiController extends Controller
         }
 
         StrukturOrganisasi::create($validated);
-        return redirect()->route('struktur.index')->with('successpemanah', 'Data berhasil disimpan.');
+        return redirect()->route('admin.index')->with('active_tab', 'pemanah')->with('successstruktur', 'Informasi dan Layanan berhasil ditambahkan');
     }
 
     public function show($id)
@@ -82,7 +82,7 @@ class StrukturOrganisasiController extends Controller
         }
 
         $data->update($validated);
-        return redirect()->route('struktur.index')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('admin.index')->with('active_tab', 'pemanah')->with('successstruktur', 'Informasi dan Layanan berhasil ditambahkan');
     }
 
     public function destroy($id)
@@ -90,6 +90,6 @@ class StrukturOrganisasiController extends Controller
         $data = StrukturOrganisasi::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('struktur.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('admin.index')->with('active_tab', 'pemanah')->with('successstruktur', 'Informasi dan Layanan berhasil ditambahkan');
     }
 }
