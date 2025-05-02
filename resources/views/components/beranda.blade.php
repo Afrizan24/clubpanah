@@ -37,9 +37,9 @@
                 Hubungi Kami
             </a>
         </div>
-        <div  class="hidden lg:mt-0 lg:col-span-5 lg:flex items-center justify-center">
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex items-center justify-center">
             <!-- Image -->
-            <div  class="grid grid-cols-2 gap-4 mt-8">
+            <div class="grid grid-cols-2 gap-4 mt-8">
                 @if ($hero1 && $hero1->gambar)
                     <img class="w-full rounded-lg" src="{{ Storage::url($hero1->gambar) }}" alt="office content 1">
                 @endif
@@ -68,34 +68,27 @@
         </header>
         <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             @for ($i = 1; $i <= 4; $i++)
-                <li>
-                    <div
-                        class="group block overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-white/30">
-                        <div class="relative">
-                            @if (isset($fotos['galeri' . $i]) && $fotos['galeri' . $i]->isNotEmpty())
+                @if (isset($fotos['galeri' . $i]) && $fotos['galeri' . $i]->isNotEmpty())
+                    <li>
+                        <div
+                            class="group block overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-white/30">
+                            <div class="relative">
                                 <img src="{{ Storage::url($fotos['galeri' . $i]->first()->gambar) }}"
                                     alt="Galeri {{ $i }}"
                                     class="h-[250px] sm:h-[300px] w-full object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105" />
-                            @else
-                                {{-- <img src="{{ asset('storage/gambar/logo aseli.jpg') }}"
-                                    alt="Default Gallery {{ $i }}"
-                                    class="h-[250px] sm:h-[300px] w-full object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105" /> --}}
-                            @endif
+                            </div>
+                            <div class="p-4">
+                                <p
+                                    class="text-gray-700 text-sm sm:text-base leading-relaxed group-hover:text-black transition">
+                                    {{ $fotos['galeri' . $i]->first()->deskripsi }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <p
-                                class="text-gray-700 text-sm sm:text-base leading-relaxed group-hover:text-black transition">
-                                {{ isset($fotos['galeri' . $i]) &&
-                                $fotos['galeri' . $i]->isNotEmpty() &&
-                                $fotos['galeri' . $i]->first()->deskripsi
-                                    ? $fotos['galeri' . $i]->first()->deskripsi
-                                    : 'Lihat keseruan dan semangat kami dalam berbagai kegiatan!' }}
-                            </p>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endif
             @endfor
         </ul>
+
         <!-- Tombol untuk lihat ke semua galeri-->
         <div class="mt-10 text-center">
             <a href="/galeri" class="relative inline-block group  text-3xl font-extrabold text-black px-2">
@@ -130,7 +123,7 @@
                 </p>
             </div>
             <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
-                <img src="{{ Storage::url($about1->gambar) }}" alt="Gold Archery Samarinda"
+                <img src="{{ Storage::url($about1->gambar) }}" alt=""
                     class="rounded-xl shadow-lg max-w-full h-auto">
             </div>
         </div>
@@ -138,7 +131,7 @@
         <!-- Row 2: Gambar kiri, teks kanan -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
             <div class="lg:col-span-5 order-1 flex justify-center">
-                <img src="{{ Storage::url($about2->gambar) }}" alt="Program Latihan"
+                <img src="{{ Storage::url($about2->gambar) }}" alt=""
                     class="rounded-xl shadow-lg max-w-full h-auto">
             </div>
             <div class="lg:col-span-7 order-2">
@@ -162,7 +155,7 @@
                 </p>
             </div>
             <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
-                <img src="{{ Storage::url($about3->gambar) }}" alt="Gold Archery Samarinda"
+                <img src="{{ Storage::url($about3->gambar) }}" alt=""
                     class="rounded-xl shadow-lg max-w-full h-auto">
             </div>
         </div>

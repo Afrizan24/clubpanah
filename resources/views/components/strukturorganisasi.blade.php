@@ -37,8 +37,9 @@
          </ul>
         </div> --}}
             <!-- Pembina Card -->
-            <ul class="flex flex-wrap gap-6 justify-center">
-                @if (isset($pembina))
+            @if (isset($pembina))
+                <ul class="flex flex-wrap gap-6 justify-center">
+
                     <!-- Data ada -->
                     @foreach ($pembina as $item)
                         <!-- Kode Anda -->
@@ -57,58 +58,60 @@
                         </li>
                     @endforeach
                 @else
-                @endif
         </div>
+        @endif
         <!-- End Pembina Card -->
 
 
 
         <!-- Ketua Card -->
+        @if (isset($ketua) && $ketua->foto)
+            <div id="ketua" class="flex justify-center mt-10">
+                <ul class="flex flex-wrap gap-6 justify-center">
+                    <li>
+                        <a href="#"
+                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
 
-        <div id="ketua" class="flex justify-center mt-10">
-            <ul class="flex flex-wrap gap-6 justify-center">
-                <li>
-                    <a href="#"
-                        class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                        @if (isset($ketua) && $ketua->foto)
                             <img src="{{ Storage::url($ketua->foto) }}" alt="Foto Profil"
                                 class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                        @endif
-                        <div class="p-3">
-                            <p class="text-gray-800 font-bold text-2xl leading-snug text-center">KETUA</p>
-                            <p class="text-gray-800 text-sm leading-snug text-center">{{ $ketua->nama ?? 'tidak ada' }}
-                            </p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
 
+                            <div class="p-3">
+                                <p class="text-gray-800 font-bold text-2xl leading-snug text-center">KETUA</p>
+                                <p class="text-gray-800 text-sm leading-snug text-center">
+                                    {{ $ketua->nama ?? 'tidak ada' }}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @endif
         <!-- End Ketua Card -->
 
 
 
         <!-- Baris Sekretaris & Bendahara -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-            <!-- Sekretaris Section -->
-            <div>
-                <!-- Sekretaris Card -->
-                <div class="mb-6">
-                    <a href="#"
-                        class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-                        @if (isset($sekretaris) && $sekretaris->foto)
+        @if (isset($sekretaris) && $sekretaris->foto)
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+                <!-- Sekretaris Section -->
+                <div>
+                    <!-- Sekretaris Card -->
+                    <div class="mb-6">
+                        <a href="#"
+                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
+
                             <img src="{{ Storage::url($sekretaris->foto) }}" alt="Foto Profil"
                                 class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                        @endif
 
-                        <div class="p-3">
-                            <p class="text-gray-800 font-bold text-2xl text-center">SEKRETARIS</p>
-                            <p class="text-gray-800 text-sm text-center">{{ $sekretaris->nama ?? 'tidak ada' }}</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Divisi Sekretaris -->
-                <ul class="flex justify-center flex-wrap gap-6">
+
+                            <div class="p-3">
+                                <p class="text-gray-800 font-bold text-2xl text-center">SEKRETARIS</p>
+                                <p class="text-gray-800 text-sm text-center">{{ $sekretaris->nama ?? 'tidak ada' }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Divisi Sekretaris -->
+                    {{-- <ul class="flex justify-center flex-wrap gap-6">
                     <!-- Divisi A bendahara -->
                     @if ($divisi->isEmpty())
                         <p>No divisi data available.</p>
@@ -151,19 +154,20 @@
                         </ul>
                     @endif
 
-                </ul>
-            </div>
-
-            <!-- Bendahara Section -->
+                </ul> --}}
+                </div>
+        @endif
+        <!-- Bendahara Section -->
+        @if (isset($bendahara) && $bendahara->foto)
             <div>
                 <!-- Bendahara Card -->
                 <div class="mb-6">
                     <a href="#"
                         class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-                        @if (isset($bendahara) && $bendahara->foto)
-                            <img src="{{ Storage::url($bendahara->foto) }}" alt="Foto Profil"
-                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                        @endif
+
+                        <img src="{{ Storage::url($bendahara->foto) }}" alt="Foto Profil"
+                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+
                         <div class="p-3">
                             <p class="text-gray-800 font-bold text-2xl text-center">BENDAHARA</p>
                             <p class="text-gray-800 text-sm text-center">{{ $bendahara->nama ?? 'Tidak ada' }}</p>
@@ -171,7 +175,7 @@
                     </a>
                 </div>
                 <!-- Divisi Bendahara -->
-                <ul class="flex justify-center flex-wrap gap-6">
+                {{-- <ul class="flex justify-center flex-wrap gap-6">
                     <!-- Divisi A bendahara -->
                     @if ($divisi->isEmpty())
                         <p>No divisi data available.</p>
@@ -214,47 +218,48 @@
                         </ul>
                     @endif
 
-                </ul>
+                </ul> --}}
             </div>
-        </div>
+        @endif
+    </div>
 
-        <!-- END  -->
-
-
-
-
-
-        <div id="anggota" class="mt-10  text-center">
-            <a href="/pemanah" class="relative inline-block group  text-3xl font-extrabold text-black px-2">
-                <span
-                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-                <span class="transition-colors duration-300 group-hover:text-black">ANGGOTA</span>
-            </a>
-        </div>
-
-        <div class="flex justify-center mt-10">
-
-
-            <ul class="flex flex-wrap gap-6 justify-center">
-                @foreach ($anggota as $a)
-                    <li>
-                        <a href="#"
-                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                            <img src="{{ Storage::url($a->foto) }}" alt="Foto Profil"
-                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                            <div class="p-3">
-                                <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMAIN</p>
-                                <p class="text-gray-800 text-sm leading-snug text-center">{{ $a->nama }}</p>
-                            </div>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+    <!-- END  -->
 
 
 
 
-        </div>
+
+    <div id="anggota" class="mt-10  text-center">
+        <a href="/pemanah" class="relative inline-block group  text-3xl font-extrabold text-black px-2">
+            <span
+                class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+            <span class="transition-colors duration-300 group-hover:text-black">ANGGOTA</span>
+        </a>
+    </div>
+
+    <div class="flex justify-center mt-10">
+
+
+        <ul class="flex flex-wrap gap-6 justify-center">
+            @foreach ($anggota as $a)
+                <li>
+                    <a href="#"
+                        class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
+                        <img src="{{ Storage::url($a->foto) }}" alt="Foto Profil"
+                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
+                        <div class="p-3">
+                            <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMANAH</p>
+                            <p class="text-gray-800 text-sm leading-snug text-center">{{ $a->nama }}</p>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+
+
+
+
+    </div>
 
     </div>
 
