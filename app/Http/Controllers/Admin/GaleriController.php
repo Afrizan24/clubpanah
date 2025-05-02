@@ -24,15 +24,33 @@ class GaleriController extends Controller
     }
     public function convertToEmbedLink($url)
     {
-        if (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
+        $videoId = null;
+
+        // https://www.youtube.com/watch?v=VIDEO_ID
+        if (str_contains($url, 'youtube.com/watch')) {
+            parse_str(parse_url($url, PHP_URL_QUERY), $queryParams);
+            $videoId = $queryParams['v'] ?? null;
+        }
+        // https://youtu.be/VIDEO_ID
+        elseif (str_contains($url, 'youtu.be/')) {
+            $videoId = trim(parse_url($url, PHP_URL_PATH), '/');
+        }
+        // https://www.youtube.com/embed/VIDEO_ID
+        elseif (str_contains($url, 'youtube.com/embed/')) {
+            $path = parse_url($url, PHP_URL_PATH);
+            $segments = explode('/', trim($path, '/'));
+            $videoId = end($segments);
+        }
+        // https://www.youtube.com/v/VIDEO_ID or other formats
+        elseif (preg_match('/youtube\.com\/(?:v|e(?:mbed)?|shorts)\/([a-zA-Z0-9_-]{11})/', $url, $matches)) {
             $videoId = $matches[1];
-        } elseif (preg_match('/youtube\.com\/(?:[^\/]+\/[^\/]+\/|(?:v|e(?:mbed)?)\/)([^"&?\/\s]{11})/', $url, $matches)) {
-            $videoId = $matches[1];
-        } else {
-            return null;
         }
 
-        return "https://www.youtube.com/embed/{$videoId}";
+        if ($videoId) {
+            return 'https://www.youtube.com/embed/' . $videoId;
+        }
+
+        return null;
     }
 
 
