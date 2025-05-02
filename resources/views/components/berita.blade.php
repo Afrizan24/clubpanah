@@ -2,10 +2,9 @@
 <section class="bg-gray-300 mt-15">
     <div class="max-w-screen-xl mx-auto py-12 lg:py-20 px-4">
         
-        <div id="beritaContainer" class="relative">
+        <div id="beritaContainer" class="relative min-h-[950px]">
             @foreach ($berita as $index => $item)
                 @php
-                    // Ambil video URL dan konversi ke embed
                     $url = $item->video_url;
                     $embedUrl = '';
                     if (str_contains($url, 'youtube.com/watch')) {
@@ -22,7 +21,7 @@
                     $highlightList = json_decode($item->highlights, true);
                 @endphp
 
-                <div class="berita-slide transition-opacity duration-700 ease-in-out {{ $index > 0 ? 'opacity-0 absolute pointer-events-none' : 'opacity-100 relative' }}">
+                <div class="berita-slide {{ $index > 0 ? 'hidden' : '' }}">
                     <div class="grid grid-cols-1 lg:grid-cols-12 items-center mb-16 gap-8">
 
                         <!-- Kiri: Video + Judul -->
@@ -82,8 +81,6 @@
                                     <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
                                         @foreach ($events as $event)
                                             <li>
-                                  
-                                                <!-- Tampilkan Gambar Event -->
                                                 @if($event->imageevent)
                                                     <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-lg overflow-hidden">
                                                         <img src="{{ asset('storage/'.$event->imageevent) }}" alt="Gambar Event" class="w-full h-full object-cover">
@@ -91,8 +88,6 @@
                                                 @else
                                                     <p class="text-sm text-gray-600">Gambar belum tersedia.</p>
                                                 @endif
-                                                
-                                                <!-- Tampilkan Deskripsi Event -->
                                                 <p class="text-gray-600 text-sm">{{ $event->description ?? 'Deskripsi event belum tersedia' }}</p>
                                             </li>
                                         @endforeach
@@ -101,20 +96,20 @@
                                     <p class="text-sm text-gray-700">Belum ada Event.</p>
                                 @endif
                             </div>
-                            
                         </div>
                     </div>
                 </div>
             @endforeach
-            
-        <!-- Tombol Navigasi --> 
-        <div class="flex justify-center ">
-            <button id="prevBtn" class="px-4 py-2 bg-gray-600 text-white rounded-l-md hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500">← Sebelumnya</button>
-            <span id="pageIndicator" class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-md">Lihat Lainnya {{ count($berita) }}</span>
-            <button id="nextBtn" class="px-4 py-2 bg-gray-600 text-white rounded-r-md hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Berita Terbaru →</button>
+
+            <!-- Tombol Navigasi -->
+            <div class="flex justify-center mt-4">
+                <button id="prevBtn" class="px-4 py-2 bg-gray-600 text-white rounded-l-md hover:bg-gray-700 transition">← Sebelumnya</button>
+                <span id="pageIndicator" class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-md">1 / {{ count($berita) }}</span>
+                <button id="nextBtn" class="px-4 py-2 bg-gray-600 text-white rounded-r-md hover:bg-gray-700 transition">Berita Terbaru →</button>
+            </div>
         </div>
 
-        {{-- Script Animasi dan Berpindah --}}
+        <!-- Script Navigasi Slide -->
         <script>
             const slides = document.querySelectorAll('.berita-slide');
             const indicator = document.getElementById('pageIndicator');
@@ -122,13 +117,7 @@
 
             function showSlide(index) {
                 slides.forEach((slide, i) => {
-                    if (i === index) {
-                        slide.classList.remove('opacity-0', 'absolute', 'pointer-events-none');
-                        slide.classList.add('opacity-100', 'relative');
-                    } else {
-                        slide.classList.add('opacity-0', 'absolute', 'pointer-events-none');
-                        slide.classList.remove('opacity-100', 'relative');
-                    }
+                    slide.classList.toggle('hidden', i !== index);
                 });
                 indicator.innerText = `${index + 1} / ${slides.length}`;
             }
@@ -143,7 +132,6 @@
                 showSlide(currentIndex);
             });
         </script>
-        </div>
 
     </div>
 </section>

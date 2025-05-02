@@ -11,9 +11,7 @@
   
       <!-- Navigasi Internal -->
       <div class="flex gap-3 mb-8 mt-6 flex-wrap scroll-smooth">
-        <a href="#pembina" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Pembina</a>
-        <a href="#ketua" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Ketua</a>
-        <a href="#sekretaris-bendahara" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Sekretaris & Bendahara</a>
+        <a href="#ketua" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Ketua | Seketaris | Bendahara</a>
         <a href="#anggota" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Anggota</a>
       </div>
   

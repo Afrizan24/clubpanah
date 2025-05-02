@@ -230,50 +230,61 @@
 
 
     {{-- Modal detail Pemanah --}}
-    <div x-show="showEditModal" x-transition
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div @click.outside="showEditModal = false" class="bg-white rounded-xl w-[90%] max-w-lg p-6 relative">
-            <button @click="showEditModal = false"
-                class="absolute top-2 right-3 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
-            <h3 class="text-xl font-semibold text-center mb-4">Detail Pemanah</h3>
-            <!-- Informasi Anggota -->
-           <!-- Nama Anggota -->
-        <div class="text-center mb-4">
-            <h3 class="text-2xl font-bold text-blue-600" x-text="detail.nama"></h3>
-        </div>
-
-        <!-- Grid Informasi -->
-        <div class="grid grid-cols-2 gap-3 text-sm text-gray-700">
-            <div class="font-medium">Jenis Kelamin</div>
-            <div x-text="detail.jenis_kelamin"></div>
-
-            <div class="font-medium">Tempat, Tanggal Lahir</div>
-            <div><span x-text="detail.tempat_lahir"></span>, <span x-text="detail.tanggal_lahir"></span></div>
-
-            <div class="font-medium">No. HP / WA</div>
-            <div x-text="detail.no_hp"></div>
-
-            <div class="font-medium">Alamat</div>
-            <div x-text="detail.alamat"></div>
-
-            <div class="font-medium">Jabatan</div>
-            <div x-text="detail.jabatan"></div>
-
-            <template x-if="detail.jabatan === 'Anggota' || detail.jabatan === 'Pembina'">
-                <template>
-                    <div class="font-medium">Divisi</div>
-                    <div x-text="detail.divisi"></div>
-
-                    <div class="font-medium">Tingkat Keahlian</div>
-                    <div x-text="detail.keahlian"></div>
-                </template>
-            </template>
-
-            <div class="font-medium">Tanggal Bergabung</div>
-            <div x-text="detail.tanggal_bergabung"></div>
-        </div>
-        
+<div x-show="showEditModal" x-transition
+class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+<div @click.outside="showEditModal = false" class="bg-white rounded-xl w-[90%] max-w-lg p-6 relative">
+    <button @click="showEditModal = false"
+        class="absolute top-2 right-3 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
+    
+    <h3 class="text-xl font-semibold text-center mb-4">Detail Pemanah</h3>
+    <!-- Foto -->
+    <div class="flex justify-center mb-4">
+        <img :src="detail.foto ? '/storage/' + detail.foto : '/images/default.jpg'" alt="Foto Pemanah"
+            class="w-32 h-32 object-cover rounded-full border-4 border-blue-500 shadow-md">
     </div>
+    <!-- Nama Anggota -->
+    <div class="text-center mb-4">
+        <h3 class="text-2xl font-bold text-blue-600" x-text="detail.nama"></h3>
+    </div>
+    <!-- Grid Informasi -->
+    <div class="grid grid-cols-2 gap-3 text-sm text-gray-700">
+        <div class="font-medium">Jenis Kelamin</div>
+        <div x-text="detail.jenis_kelamin"></div>
+
+        <div class="font-medium">Tempat, Tanggal Lahir</div>
+        <div><span x-text="detail.tempat_lahir"></span>, <span x-text="detail.tanggal_lahir"></span></div>
+
+        <div class="font-medium">No. HP / WA</div>
+        <div x-text="detail.no_hp"></div>
+
+        <div class="font-medium">Alamat</div>
+        <div x-text="detail.alamat"></div>
+
+        <div class="font-medium">Jabatan</div>
+        <div x-text="detail.jabatan"></div>
+
+        <template x-if="detail.jabatan === 'Anggota' || detail.jabatan === 'Pembina'">
+            <template>
+                <div class="font-medium">Divisi</div>
+                <div x-text="detail.divisi"></div>
+
+                <div class="font-medium">Tingkat Keahlian</div>
+                <div x-text="detail.keahlian"></div>
+            </template>
+        </template>
+
+        <div class="font-medium">Tanggal Bergabung</div>
+        <div x-text="detail.tanggal_bergabung"></div>
+    </div>
+    <div class="flex justify-end mb-4">
+        <a href=""
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow">
+            + Edit
+        </a>
+    </div>
+</div>
+
+
 
 </div>
 
