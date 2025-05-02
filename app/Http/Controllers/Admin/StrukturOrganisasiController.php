@@ -10,73 +10,86 @@ use Illuminate\Support\Facades\Storage;
 class StrukturOrganisasiController extends Controller
 {
     // Tampilkan halaman Struktur Organisasi
-    public function index(Request $request)
+    public function index()
     {
-        $struktur = StrukturOrganisasi::all();
-        $editStruktur = null;
-
-        if ($request->has('edit')) {
-            $editStruktur = StrukturOrganisasi::findOrFail($request->edit);
-        }
-
-        return view('admin.konten.strukturorganisasi', compact('struktur', 'editStruktur'));
+        $data = StrukturOrganisasi::all();
+        return view('admin.konten.pemanah', compact('data'));
     }
 
-    // Simpan data baru
+    public function create()
+    {
+        return view('admin.struktur.create');
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'foto' => 'nullable|image|max:2048',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'tempat_lahir' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'no_hp' => 'required|string|max:20',
+            'alamat' => 'required|string',
+            'jabatan' => 'required|string',
+            'keahlian' => 'nullable|string',
+            'divisi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'tanggal_bergabung' => 'required|date',
         ]);
 
-        $data = $request->only('nama', 'jabatan');
-
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('struktur', 'public');
+            $path = $request->file('foto')->store('foto_pemanah', 'public');
+            $validated['foto'] = $path;
         }
 
-        StrukturOrganisasi::create($data);
-        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
+        StrukturOrganisasi::create($validated);
+        return redirect()->route('struktur.index')->with('successpemanah', 'Data berhasil disimpan.');
     }
 
-    // Update data
+    public function show($id)
+    {
+        $data = StrukturOrganisasi::findOrFail($id);
+        return view('admin.struktur.show', compact('data'));
+    }
+
+    public function edit($id)
+    {
+        $data = StrukturOrganisasi::findOrFail($id);
+        return view('admin.struktur.edit', compact('data'));
+    }
+
     public function update(Request $request, $id)
     {
-        $struktur = StrukturOrganisasi::findOrFail($id);
+        $data = StrukturOrganisasi::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'foto' => 'nullable|image|max:2048',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'tempat_lahir' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'no_hp' => 'required|string|max:20',
+            'alamat' => 'required|string',
+            'jabatan' => 'required|string',
+            'keahlian' => 'nullable|string',
+            'divisi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'tanggal_bergabung' => 'required|date',
         ]);
 
-        $data = $request->only('nama', 'jabatan');
-
         if ($request->hasFile('foto')) {
-            // Hapus foto lama
-            if ($struktur->foto && Storage::disk('public')->exists($struktur->foto)) {
-                Storage::disk('public')->delete($struktur->foto);
-            }
-            $data['foto'] = $request->file('foto')->store('struktur', 'public');
+            $path = $request->file('foto')->store('foto_pemanah', 'public');
+            $validated['foto'] = $path;
         }
 
-        $struktur->update($data);
-        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
+        $data->update($validated);
+        return redirect()->route('struktur.index')->with('success', 'Data berhasil diperbarui.');
     }
 
-    // Hapus data
     public function destroy($id)
     {
-        $struktur = StrukturOrganisasi::findOrFail($id);
+        $data = StrukturOrganisasi::findOrFail($id);
+        $data->delete();
 
-        if ($struktur->foto && Storage::disk('public')->exists($struktur->foto)) {
-            Storage::disk('public')->delete($struktur->foto);
-        }
-
-        $struktur->delete();
-
-        return redirect()->route('admin.index')->with('active_tab', 'struktur')->with('success', 'Struktur berhasil ditambahkan');
+        return redirect()->route('struktur.index')->with('success', 'Data berhasil dihapus.');
     }
 }

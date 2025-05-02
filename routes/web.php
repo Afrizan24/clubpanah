@@ -20,7 +20,7 @@ Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
 Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
 
-Route::get('/strukturorganisasi', [StrukturOrganisasiComponentController::class, 'index'])->name('struktur.index');
+Route::get('/strukturorganisasi', [App\Http\Controllers\StrukturOrganisasiController::class, 'index'])->name('struktur.index');
 
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
@@ -71,6 +71,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
     Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
 
-    Route::get('/pemanah', [PemanahController::class, 'index'])->name('admin.pemanah.index');
-    Route::post('/pemanah', [PemanahController::class, 'store'])->name('admin.pemanah.store');
+    Route::get('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'index'])->name('admin.berita.index');
+    Route::get('/berita/create', [App\Http\Controllers\Admin\BeritaController::class, 'create'])->name('admin.berita.create');
+    Route::post('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'store'])->name('admin.berita.store');
+    Route::get('/berita/{id}/edit', [App\Http\Controllers\Admin\BeritaController::class, 'edit'])->name('admin.berita.edit');
+    Route::put('/berita/{id}', [App\Http\Controllers\Admin\BeritaController::class, 'update'])->name('admin.berita.update');
+
+    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
+    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
+
+    Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
 });

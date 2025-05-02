@@ -8,9 +8,6 @@
     <div class="flex flex-wrap gap-3 mb-8">
         <button data-tab="beranda" onclick="switchTab('beranda')"
             class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Beranda</button>
-        <button data-tab="struktur" onclick="switchTab('struktur')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Struktur
-            Organisasi</button>
         <button data-tab="galeri" onclick="switchTab('galeri')"
             class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Galeri</button>
         <button data-tab="pemanah" onclick="switchTab('pemanah')"
@@ -30,13 +27,6 @@
         @include('admin.konten.beranda', ['beranda' => $beranda, 'fotos' => $fotos])
     </div>
 
-    <div id="struktur" class="tab-content hidden">
-        @include('admin.konten.strukturorganisasi', [
-            'struktur' => $struktur,
-            'editStruktur' => $editStruktur,
-        ])
-    </div>
-
     <div id="galeri" class="tab-content hidden">
         @include('admin.konten.galeri', ['galeris' => $galeris, 'editGaleri' => $editGaleri])
     </div>
@@ -44,7 +34,7 @@
     <div id="pemanah" class="tab-content hidden">
         @include('admin.konten.pemanah')
     </div>
-    
+
         <div id="berita" class="tab-content hidden">
             @include('admin.konten.berita') <!-- Pastikan data 'beritas' dikirim dengan benar -->
         </div>

@@ -9,7 +9,23 @@ class StrukturOrganisasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jabatan', 'nama', 'foto'];
-
     protected $table = 'struktur_organisasis';
+
+    protected $fillable = [
+        'nama',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'no_hp',
+        'alamat',
+        'jabatan',
+        'keahlian',
+        'divisi',
+        'foto',
+        'tanggal_bergabung',
+    ];
+    public function statistik()
+    {
+        return $this->hasOne(StatistikLatihan::class);
+    }
 }
