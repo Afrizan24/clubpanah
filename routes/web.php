@@ -68,17 +68,9 @@ Route::prefix('admin')->group(function () {
      Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('admin.event.store'); // route event
  
      
-    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
-    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
-
-    Route::get('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'index'])->name('admin.berita.index');
-    Route::get('/berita/create', [App\Http\Controllers\Admin\BeritaController::class, 'create'])->name('admin.berita.create');
-    Route::post('/berita', [App\Http\Controllers\Admin\BeritaController::class, 'store'])->name('admin.berita.store');
-    Route::get('/berita/{id}/edit', [App\Http\Controllers\Admin\BeritaController::class, 'edit'])->name('admin.berita.edit');
-    Route::put('/berita/{id}', [App\Http\Controllers\Admin\BeritaController::class, 'update'])->name('admin.berita.update');
-
-    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
-    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
-
+     Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
+     Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
+     Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
+ 
     Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
 });

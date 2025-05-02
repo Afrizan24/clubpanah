@@ -1,90 +1,145 @@
-<h2 class="text-2xl font-bold text-gray-700 mb-6">ℹ️ Informasi Layanan Klub</h2>
+<h2 class="text-2xl font-bold text-gray-700 mb-4">ℹ️ Informasi Layanan Klub</h2>
 
-<form id="layananForm" method="POST" action="{{ route('admin.layanan.store') }}" enctype="multipart/form-data" class="space-y-6">
-    @csrf
+@if($layanan->count() >= 1)
+    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-6" role="alert">
+        <p class="font-bold">Informasi</p>
+        <p>Data layanan utama sudah terisi. Anda hanya dapat menambah/mengupdate testimonial.</p>
+    </div>
+@endif
 
-    <!-- Grid 2 kolom -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-1">Judul Layanan</label>
-            <input type="text" name="judul" class="w-full p-3 border rounded-lg" placeholder="Contoh: Latihan Rutin Mingguan">
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1">Hari & Jam Operasional</label>
-            <input type="text" name="hari_jam" class="w-full p-3 border rounded-lg" placeholder="Contoh: Senin - Jumat, 08:00 - 10:00">
-        </div>
+<form id="layananForm" method="POST" action="{{ route('admin.layanan.store') }}" enctype="multipart/form-data">
+    @csrf <!-- CSRF Token -->
 
-        <div>
-            <label class="block text-sm font-medium mb-1">Biaya / Gratis</label>
-            <input type="number" name="biaya" class="w-full p-3 border rounded-lg" placeholder="Contoh: 50000">
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1">Lokasi Layanan</label>
-            <input type="text" name="lokasi" class="w-full p-3 border rounded-lg" placeholder="Lokasi">
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium mb-1">Kontak Layanan (WA)</label>
-            <input type="text" name="kontak" class="w-full p-3 border rounded-lg" placeholder="+62...">
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1">Nama Testimonial</label>
-            <input type="text" name="nama" class="w-full p-3 border rounded-lg" placeholder="Nama Lengkap">
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium mb-1">Jabatan Testimonial</label>
-            <input type="text" name="jabatan" class="w-full p-3 border rounded-lg" placeholder="Jabatan">
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1">Isi Pesan</label>
-            <input type="text" name="isi" class="w-full p-3 border rounded-lg" placeholder="Isi Pesan">
-        </div>
+    @if($layanan->count() < 1)
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Judul Layanan</label>
+        <input type="text" name="judul" class="w-full p-3 border rounded-lg" placeholder="Contoh: Latihan Rutin Mingguan" required>
     </div>
 
-    <!-- Deskripsi panjang -->
-    <div>
+    <div class="mb-4">
         <label class="block text-sm font-medium mb-1">Deskripsi Layanan</label>
-        <textarea name="deskripsi" class="w-full p-3 border rounded-lg" rows="4" placeholder="Penjelasan tentang layanan..."></textarea>
+        <textarea name="deskripsi" class="w-full p-3 border rounded-lg" rows="3" placeholder="Penjelasan tentang layanan..." required></textarea>
     </div>
 
-    <!-- Upload -->
-    <div>
-        <label class="block text-sm font-medium mb-1">Foto Testimonial</label>
-        <input type="file" name="foto_testimonial" class="w-full p-3 border rounded-lg">
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Hari & Jam Operasional</label>
+        <input type="text" name="hari_jam" class="w-full p-3 border rounded-lg" placeholder="Contoh: Senin - Jumat, 08:00 - 10:00" required>
     </div>
 
-    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700">
-        💾 Simpan Informasi Layanan
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Biaya / Gratis</label>
+        <input type="number" name="biaya" class="w-full p-3 border rounded-lg" placeholder="Contoh: Rp50.000 per sesi" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Lokasi Layanan</label>
+        <input type="text" name="lokasi" class="w-full p-3 border rounded-lg" placeholder="Lokasi" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Kontak Layanan (WA)</label>
+        <input type="text" name="kontak" class="w-full p-3 border rounded-lg" placeholder="+62..." required>
+    </div>
+    @else
+        <input type="hidden" name="update_mode" value="testimonial_only">
+    @endif
+
+    <div class="border-t-2 border-gray-200 my-6 pt-6">
+        <h3 class="text-lg font-semibold mb-4">➕ Tambah Testimonial</h3>
+        <form action="{{ route('admin.layanan.store') }}" method="POST" enctype="multipart/form-data">
+        
+        @if($testimonials->count() >= 3)
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
+                <p class="font-bold">Perhatian</p>
+                <p>Anda sudah memiliki 3 testimonial. Testimonial baru akan menggantikan yang paling lama.</p>
+            </div>
+        @endif
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Nama Testimonial</label>
+            <input type="text" name="nama" class="w-full p-3 border rounded-lg" placeholder="Nama Lengkap" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Jabatan Testimonial</label>
+            <input type="text" name="jabatan" class="w-full p-3 border rounded-lg" placeholder="Jabatan" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Isi Pesan</label>
+            <input type="text" name="isi" class="w-full p-3 border rounded-lg" placeholder="Isi Pesan" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Foto Testimonial</label>
+            <input type="file" name="foto" class="w-full p-3 border rounded-lg" required>
+        </div>
+    </div>
+
+    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 mt-4">
+        💾 {{ $layanan->count() >= 1 ? 'Simpan Testimonial' : 'Simpan Informasi Layanan' }}
     </button>
+    </form>
 </form>
 
 <!-- TABEL OUTPUT -->
-<h2 class="text-2xl font-bold text-gray-700 mt-12 mb-4">📋 Data Konten Layanan</h2>
+<h2 class="text-2xl font-bold text-gray-700 mt-10 mb-4">📋 Data Konten Layanan</h2>
 
-<div class="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
-    <table class="min-w-full divide-y divide-gray-200 text-sm">
-        <thead class="bg-gray-50 text-gray-700">
-            <tr>
-                <th class="px-4 py-2 text-left">Judul</th>
-                <th class="px-4 py-2 text-left">Deskripsi</th>
-                <th class="px-4 py-2 text-left">Hari & Jam</th>
-                <th class="px-4 py-2 text-left">Biaya</th>
-                <th class="px-4 py-2 text-left">Lokasi</th>
-                <th class="px-4 py-2 text-left">Kontak</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">
-            @foreach ($layanan as $item)
-            <tr>
-                <td class="px-4 py-2">{{ $item->judul }}</td>
-                <td class="px-4 py-2">{{ $item->deskripsi }}</td>
-                <td class="px-4 py-2">{{ $item->hari_jam }}</td>
-                <td class="px-4 py-2">{{ $item->biaya }}</td>
-                <td class="px-4 py-2">{{ $item->lokasi }}</td>
-                <td class="px-4 py-2">{{ $item->kontak }}</td>
-            </tr>
+@if($layanan->count() > 0)
+    <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-3">Informasi Layanan Utama</h3>
+        <table class="min-w-full bg-white border border-gray-300 shadow rounded-lg overflow-hidden mb-10">
+            <thead class="bg-gray-100 text-left">
+                <tr>
+                    <th class="py-2 px-4 border-b">Judul Layanan</th>
+                    <th class="py-2 px-4 border-b">Deskripsi</th>
+                    <th class="py-2 px-4 border-b">Hari & Jam</th>
+                    <th class="py-2 px-4 border-b">Biaya</th>
+                    <th class="py-2 px-4 border-b">Lokasi</th>
+                    <th class="py-2 px-4 border-b">Kontak</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($layanan as $item)
+                <tr>
+                    <td class="py-2 px-4 border-b">{{ $item->judul }}</td>
+                    <td class="py-2 px-4 border-b">{{ Str::limit($item->deskripsi, 50) }}</td>
+                    <td class="py-2 px-4 border-b">{{ $item->hari_jam }}</td>
+                    <td class="py-2 px-4 border-b">{{ $item->biaya ? 'Rp'.number_format($item->biaya, 0, ',', '.') : 'Gratis' }}</td>
+                    <td class="py-2 px-4 border-b">{{ $item->lokasi }}</td>
+                    <td class="py-2 px-4 border-b">{{ $item->kontak }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endif
+
+@if($testimonials->count() > 0)
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Testimonial ({{ $testimonials->count() }}/3)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            @foreach($testimonials as $testimonial)
+            <div class="border rounded-lg p-4 shadow">
+                <div class="flex items-center mb-3">
+                    @if($testimonial->foto_testimonial)
+                        <img src="{{ asset('storage/'.$testimonial->foto_testimonial) }}" alt="{{ $testimonial->nama }}" class="w-12 h-12 rounded-full object-cover mr-3">
+                    @endif
+                    <div>
+                        <h4 class="font-semibold">{{ $testimonial->nama }}</h4>
+                        <p class="text-sm text-gray-600">{{ $testimonial->jabatan }}</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic">"{{ $testimonial->isi }}"</p>
+                <form action="{{ route('admin.layanan.deleteTestimonial', $testimonial->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-600 hover:text-red-800 text-sm">
+                    Hapus Testimonial
+                </button>
+            </form>
+            </div>
             @endforeach
-        </tbody>
-    </table>
-</div>
+        </div>
+    </div>
+@endif
