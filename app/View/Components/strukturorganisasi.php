@@ -16,6 +16,7 @@ class strukturorganisasi extends Component
         $this->bendahara = $bendahara;
         $this->divisi = $divisi;
         $this->anggota = $anggota;
+       
     }
 
     public function render()

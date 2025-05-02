@@ -1,5 +1,5 @@
 <!-- Section 2 -->
-<section class="bg-gradient-to-r from-amber-300 to-yellow-500">
+<section class="bg-gradient-to-r mt-20 from-amber-300 to-yellow-500">
     <div class="  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <header class="text-center sm:text-left">
             <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl mb-2">STRUKTUR ORGANISASI</h2>

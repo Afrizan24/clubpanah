@@ -15,9 +15,9 @@
     <x-navbar></x-navbar>
 
     @if(isset($berita) && $berita->isNotEmpty())
-    <x-berita :berita="$berita" />
+    <x-berita :berita="$berita" :events="$events" />
 @else
-    <p>Data berita tidak ditemukan.</p>
+    Berita gaada</p>
 @endif 
 
     <x-footer></x-footer>

@@ -18,7 +18,7 @@
 
     <x-navbar></x-navbar>
 
-    <x-beranda :beranda="$beranda" :fotos="$fotos"></x-beranda>
+    <x-beranda :beranda="$beranda" :fotos="$fotos" :events="$events" />
 
     <x-footer></x-footer>
 

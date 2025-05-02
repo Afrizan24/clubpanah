@@ -6,17 +6,19 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class berita extends Component
+class Berita extends Component
 {
     /**
      * Create a new component instance.
      */
     public $berita;
-    public function __construct($berita)
+    public $events;
+
+    public function __construct($berita, $events)
     {
         $this->berita = $berita;
+        $this->events = $events;
     }
- 
 
     /**
      * Get the view / contents that represent the component.
@@ -25,6 +27,7 @@ class berita extends Component
     {
         return view('components.berita', [
             'berita' => $this->berita,
+            'events' => $this->events,
         ]);
     }
 }

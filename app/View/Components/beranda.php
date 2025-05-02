@@ -9,10 +9,13 @@ class Beranda extends Component
     public $beranda;
     public $fotos;
 
-    public function __construct($beranda = null, $fotos = null)
+    public $events;
+
+    public function __construct($beranda = null, $fotos = null, $events = null)
     {
         $this->beranda = $beranda;
         $this->fotos = $fotos;
+        $this->events = $events;
     }
 
     public function render()

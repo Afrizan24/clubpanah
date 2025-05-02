@@ -1,5 +1,5 @@
 {{-- Company Profile --}}
-<section class="py-12 px-4">
+<section class="py-12 mt-20 px-4">
     <div class="text-center mb-8">
         <img src="{{ asset('gambar/logo anjas.png') }}" alt="Logo Archery"
             class="w-full max-w-xl mx-auto rounded-lg shadow-lg">
@@ -22,17 +22,7 @@
                 {{-- Form input layanan hanya muncul jika belum ada layanan yang terdaftar --}}
                 <form action="{{ route('admin.layanan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-4">
-                        <label for="judul" class="block text-sm font-medium">Judul Layanan</label>
-                        <input type="text" name="judul" class="w-full p-3 border rounded-lg" placeholder="Contoh: Latihan Rutin Mingguan">
-                    </div>
-                    <!-- Form lainnya untuk layanan -->
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg">
-                        Simpan Layanan
-                    </button>
                 </form>
-            @else
-                <p class="text-gray-500">Layanan sudah ditambahkan.</p>
             @endif
         </div>
 
@@ -55,10 +45,6 @@
             @if($testimonials->count() < 3)
                 <form action="{{ route('admin.layanan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <!-- Form lainnya untuk testimonial -->
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg">
-                        Simpan Testimonial
-                    </button>
                 </form>
             @else
                 <p class="text-gray-500">Anda sudah menambahkan 3 testimonial.</p>

@@ -1,19 +1,21 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
     public function index()
     {
-        // Ambil semua berita dari database
         $beritas = Berita::all();
+        $events = Event::all();
 
-        // Kembalikan view 'admin.konten.berita' dan kirim data berita
-        return view('admin.konten.berita', compact('berita'));
+        return view('admin.konten.berita', compact('beritas', 'events'));
     }
 
     public function create()
@@ -21,40 +23,72 @@ class BeritaController extends Controller
         return view('admin.konten.berita');
     }
 
-    public function store(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'video_url' => 'required|url',
-            'title' => 'required|string|max:255',
-            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'highlights' => 'nullable|string',
-        ]);
-        Berita::truncate();
-        // Handle file uploads
-        $image1Path = null;
-        if ($request->hasFile('image1')) {
-            $image1Path = $request->file('image1')->store('images', 'public');
-        }
-
-        $image2Path = null;
-        if ($request->hasFile('image2')) {
-            $image2Path = $request->file('image2')->store('images', 'public');
-        }
-
-        // Simpan data ke database
-        Berita::create([
-            'video_url' => $request->video_url,
-            'title' => $request->title,
-            'image1' => $image1Path,
-            'text1' => $request->text1,
-            'image2' => $image2Path,
-            'text2' => $request->text2,
-           'highlights' => json_encode(explode(',', $request->highlights)),
+// Menyimpan hanya berita
+public function storeBerita(Request $request)
+{
+    $request->validate([
+        'video_url' => 'nullable|url',
+        'title' => 'required|string|max:255',
+        'text1' => 'nullable|string',
+        'text2' => 'nullable|string',
+        'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'highlights' => 'nullable|string',
     ]);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.index')->with('active_tab', 'berita')->with('success', 'Struktur berhasil ditambahkan');
+    if (Berita::count() >= 5) {
+        $oldest = Berita::oldest()->first();
+        $this->deleteOldFiles($oldest);
+        $oldest->delete();
     }
+
+    $image1Path = $request->hasFile('image1') ? $request->file('image1')->store('images', 'public') : null;
+    $image2Path = $request->hasFile('image2') ? $request->file('image2')->store('images', 'public') : null;
+
+    Berita::create([
+        'video_url' => $request->video_url,
+        'title' => $request->title,
+        'image1' => $image1Path,
+        'text1' => $request->text1,
+        'image2' => $image2Path,
+        'text2' => $request->text2,
+        'highlights' => json_encode(explode(',', $request->highlights)),
+    ]);
+
+    return redirect()->route('admin.index')->with('active_tab', 'berita')->with('success', 'Berita berhasil ditambahkan');
+}
+
+
+// Menyimpan hanya event
+public function storeEvent(Request $request)
+{
+    Event::truncate();
+
+    $request->validate([
+        'textevent' => 'required|string',
+        'imageevent' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $imageeventPath = $request->hasFile('imageevent') ? $request->file('imageevent')->store('imageevent', 'public') : null;
+
+    Event::create([
+        'description' => $request->textevent,
+        'imageevent' => $imageeventPath,
+    ]);
+
+    return redirect()->route('admin.index')->with('active_tab', 'event')->with('success', 'Event berhasil ditambahkan');
+}
+        protected function deleteOldFiles($berita)
+        {
+            if ($berita->image1 && Storage::disk('public')->exists($berita->image1)) {
+                Storage::disk('public')->delete($berita->image1);
+            }
+
+            if ($berita->image2 && Storage::disk('public')->exists($berita->image2)) {
+                Storage::disk('public')->delete($berita->image2);
+            }
+            return redirect()->route('admin.index')->with('active_tab', 'berita')->with('success', 'Event berhasil ditambahkan');
+        
+        }
+
 }

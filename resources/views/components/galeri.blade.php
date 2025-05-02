@@ -1,7 +1,7 @@
 @php
     $i = 0;
 @endphp
-<section class="bg-white antialiased" x-data="{ filter: 'all' }">
+<section class="bg-white mt-13 antialiased" x-data="{ filter: 'all' }">
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
         <div class="max-w-screen-xl mx-auto">
             <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">GALERI BERSAMA ARCHERY SAMARINDA</h2>

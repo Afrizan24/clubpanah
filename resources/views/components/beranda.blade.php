@@ -7,7 +7,7 @@
 @endphp
 
 <!-- SECTION 1 -->
-<section class="bg-white scroll-smooth">
+<section class="bg-white mt-20 scroll-smooth">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div data-aos="fade-up" class="mr-auto place-self-center lg:col-span-7">
             <!-- Title -->
@@ -257,4 +257,53 @@
         </div>
     </div>
 </section>
+
+
+@if($events)
+    <div id="popupEvent" class="fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-white rounded-xl p-6 max-w-sm w-full relative shadow-2xl scale-95 transition-transform duration-500">
+            <button onclick="hidePopup()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
+
+            <h2 class="text-lg font-semibold mb-3 text-center text-gray-800">📢 Ada Event Nih</h2>
+
+            <div class="mb-3">
+                @if($events->imageevent)
+                    <img src="{{ asset('storage/' . $events->imageevent) }}" alt="Event Image"
+                         class="w-full h-40 object-cover rounded-md shadow">
+                @else
+                    <p class="text-gray-500">Gambar event tidak tersedia.</p>
+                @endif
+            </div>
+
+            <div class="text-sm text-gray-700 whitespace-pre-line">
+                {{ $events->description ?? 'Deskripsi event belum tersedia' }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function hidePopup() {
+            const popup = document.getElementById('popupEvent');
+            if (popup) {
+                popup.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+    
+        window.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('popupEvent');
+            if (popup) {
+                // Tampilkan dulu popup (kalau kamu belum munculkan secara otomatis, tambahkan di sini)
+                popup.classList.remove('opacity-0', 'pointer-events-none');
+    
+                // Setelah 2 detik, popup disembunyikan
+                setTimeout(() => {
+                    hidePopup();
+                }, 2000);
+            }
+        });
+    </script>
+    
+    
+@endif
+
 <!-- End Section 4 -->

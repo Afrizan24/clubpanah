@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Beranda;
 use App\Models\BerandaFoto;
-
+use App\Models\Berita;
+use App\Models\Event; // ✅ Pastikan baris ini ada
+use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
     public function index()
     {
-        // Ambil data dari model Beranda dan BerandaFoto
         $beranda = Beranda::first();
-
-        // Initialize koleksi kosong untuk setiap section
+        $events = Event::latest()->first(); // ✅ Sekarang ini benar
         $fotos = collect([
             'hero1' => collect(),
             'hero2' => collect(),
@@ -27,11 +27,9 @@ class BerandaController extends Controller
             'about3' => collect(),
         ]);
 
-        // Gabungkan dengan foto dari database
         $dbFotos = BerandaFoto::all()->groupBy('section');
         $fotos = $fotos->merge($dbFotos);
 
-        // Kembalikan view dan kirim data
-        return view('beranda', compact('beranda', 'fotos'));
+        return view('beranda', compact('beranda', 'fotos', 'events'));
     }
 }

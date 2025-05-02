@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('video_url');
-            $table->string('title');
+            $table->string('video_url')->nullable();
+            $table->string('title')->nullable();
             $table->string('image1')->nullable();
             $table->string('text1')->nullable();
             $table->string('image2')->nullable();

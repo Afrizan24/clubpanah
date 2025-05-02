@@ -8,8 +8,9 @@ use App\Models\BerandaFoto;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\InformasiLayanan;
-use App\Models\Testimonial;
+use App\Models\Pemanah;
 use App\Models\StrukturOrganisasi;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,6 +24,7 @@ class AdminController extends Controller
         $editGaleri = null; // Variabel untuk galeri yang sedang diedit
         $editStruktur = null; // Variabel untuk struktur yang sedang diedit
         $beritas = Berita::latest()->first(); // Mengambil berita terbaru
+        
 
         $layanan = InformasiLayanan::all();
         $testimonials = Testimonial::all();
