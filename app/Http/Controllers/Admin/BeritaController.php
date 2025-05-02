@@ -28,7 +28,7 @@ public function storeBerita(Request $request)
 {
     $request->validate([
         'video_url' => 'nullable|url',
-        'title' => 'required|string|max:255',
+        'title' => 'nullable|string|max:255',
         'text1' => 'nullable|string',
         'text2' => 'nullable|string',
         'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',

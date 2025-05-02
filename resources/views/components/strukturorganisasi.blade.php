@@ -1,267 +1,107 @@
-<!-- Section 2 -->
 <section class="bg-gradient-to-r mt-20 from-amber-300 to-yellow-500">
-    <div class="  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-        <header class="text-center sm:text-left">
-            <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl mb-2">STRUKTUR ORGANISASI</h2>
-            <p class="text-gray-800 sm:text-lg max-w-2xl">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, recusandae!
-            </p>
-        </header>
-        <div class="flex  gap-3 mb-8 mt-6 flex-wrap scroll-smooth">
-            <a href="#ketua"
-                class="px-4 py-2 rounded border border-yellow-400 text-black  hover:bg-yellow-500 hover:text-white transition">
-                Ketua dan Sekretaris Bendahara
-            </a>
-            <a href="#anggota"
-                class="px-4 py-2 rounded border border-yellow-400 text-black  hover:bg-yellow-500 hover:text-white transition">
-                Anggota
-            </a>
-        </div>
-
-
-
-        <div class="flex justify-center mt-10">
-
-            {{-- <!-- Pembina Card -->
-        <ul class="flex flex-wrap gap-6 justify-center">
-            <li>
-            <a href="#" class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                <img src="{{ asset('storage/gambar/logo aseli.jpg') }}" alt="Foto Profil"
-                    class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                <div class="p-3">
-                    <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMBINA</p>
-                    <p class="text-gray-800 text-sm leading-snug text-center">AFRIZAN AH</p>
+    <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+  
+      <!-- Judul -->
+      <header class="text-center sm:text-left">
+        <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl mb-2">STRUKTUR ORGANISASI</h2>
+        <p class="text-gray-800 sm:text-lg max-w-2xl">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, recusandae!
+        </p>
+      </header>
+  
+      <!-- Navigasi Internal -->
+      <div class="flex gap-3 mb-8 mt-6 flex-wrap scroll-smooth">
+        <a href="#pembina" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Pembina</a>
+        <a href="#ketua" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Ketua</a>
+        <a href="#sekretaris-bendahara" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Sekretaris & Bendahara</a>
+        <a href="#anggota" class="px-4 py-2 rounded border border-yellow-400 text-black hover:bg-yellow-500 hover:text-white transition">Anggota</a>
+      </div>
+  
+      <!-- Pembina -->
+      @if (isset($pembina))
+        <div id="pembina" class="mt-10">
+          <ul class="flex flex-wrap gap-6 justify-center">
+            @foreach ($pembina as $item)
+              <li>
+                <div class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
+                  @if ($item->foto)
+                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama }}" class="h-48 w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300">
+                  @endif
+                  <div class="p-3 text-center">
+                    <p class="text-gray-800 font-bold text-2xl">PEMBINA</p>
+                    <p class="text-gray-800 text-sm">{{ $item->nama }}</p>
+                  </div>
                 </div>
-                </a>
-            </li>
-         </ul>
-        </div> --}}
-            <!-- Pembina Card -->
-            @if (isset($pembina))
-                <ul class="flex flex-wrap gap-6 justify-center">
-
-                    <!-- Data ada -->
-                    @foreach ($pembina as $item)
-                        <!-- Kode Anda -->
-                        <li>
-                            <a href="#"
-                                class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                @if ($item->foto)
-                                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama }} - Pembina"
-                                        class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                                @endif
-                                <div class="p-3">
-                                    <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMBINA</p>
-                                    <p class="text-gray-800 text-sm leading-snug text-center">{{ $item->nama }}</p>
-                                </div>
-                            </a>
-                        </li>
-                    @endforeach
-                @else
-        </div>
-        @endif
-        <!-- End Pembina Card -->
-
-
-
-        <!-- Ketua Card -->
-        @if (isset($ketua) && $ketua->foto)
-            <div id="ketua" class="flex justify-center mt-10">
-                <ul class="flex flex-wrap gap-6 justify-center">
-                    <li>
-                        <a href="#"
-                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-
-                            <img src="{{ Storage::url($ketua->foto) }}" alt="Foto Profil"
-                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-
-                            <div class="p-3">
-                                <p class="text-gray-800 font-bold text-2xl leading-snug text-center">KETUA</p>
-                                <p class="text-gray-800 text-sm leading-snug text-center">
-                                    {{ $ketua->nama ?? 'tidak ada' }}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        @endif
-        <!-- End Ketua Card -->
-
-
-
-        <!-- Baris Sekretaris & Bendahara -->
-        @if (isset($sekretaris) && $sekretaris->foto)
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-                <!-- Sekretaris Section -->
-                <div>
-                    <!-- Sekretaris Card -->
-                    <div class="mb-6">
-                        <a href="#"
-                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-
-                            <img src="{{ Storage::url($sekretaris->foto) }}" alt="Foto Profil"
-                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-
-
-                            <div class="p-3">
-                                <p class="text-gray-800 font-bold text-2xl text-center">SEKRETARIS</p>
-                                <p class="text-gray-800 text-sm text-center">{{ $sekretaris->nama ?? 'tidak ada' }}</p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Divisi Sekretaris -->
-                    {{-- <ul class="flex justify-center flex-wrap gap-6">
-                    <!-- Divisi A bendahara -->
-                    @if ($divisi->isEmpty())
-                        <p>No divisi data available.</p>
-                    @else
-                        <!-- Divisi Bendahara -->
-                        <ul class="flex justify-center flex-wrap gap-6">
-                            <!-- Divisi A bendahara -->
-                            @foreach ($divisi as $item)
-                                @if (str_contains($item->jabatan, 'Sekretaris Divisi A'))
-                                    <li>
-                                        <a href="#"
-                                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                            <img src="{{ Storage::url($item->foto) }}" alt="Foto Profil"
-                                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                                            <div class="p-3">
-                                                <p class="text-gray-800 font-bold text-xl text-center">
-                                                    {{ $item->jabatan }}</p>
-                                                <p class="text-gray-800 text-sm text-center">{{ $item->nama }}</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                            @foreach ($divisi as $item)
-                                @if (str_contains($item->jabatan, 'Sekretaris Divisi B'))
-                                    <li>
-                                        <a href="#"
-                                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                            <img src="{{ Storage::url($item->foto) }}" alt="Foto Profil"
-                                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                                            <div class="p-3">
-                                                <p class="text-gray-800 font-bold text-xl text-center">
-                                                    {{ $item->jabatan }}</p>
-                                                <p class="text-gray-800 text-sm text-center">{{ $item->nama }}</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    @endif
-
-                </ul> --}}
-                </div>
-        @endif
-        <!-- Bendahara Section -->
-        @if (isset($bendahara) && $bendahara->foto)
-            <div>
-                <!-- Bendahara Card -->
-                <div class="mb-6">
-                    <a href="#"
-                        class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
-
-                        <img src="{{ Storage::url($bendahara->foto) }}" alt="Foto Profil"
-                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-
-                        <div class="p-3">
-                            <p class="text-gray-800 font-bold text-2xl text-center">BENDAHARA</p>
-                            <p class="text-gray-800 text-sm text-center">{{ $bendahara->nama ?? 'Tidak ada' }}</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Divisi Bendahara -->
-                {{-- <ul class="flex justify-center flex-wrap gap-6">
-                    <!-- Divisi A bendahara -->
-                    @if ($divisi->isEmpty())
-                        <p>No divisi data available.</p>
-                    @else
-                        <!-- Divisi Bendahara -->
-                        <ul class="flex justify-center flex-wrap gap-6">
-                            <!-- Divisi A bendahara -->
-                            @foreach ($divisi as $item)
-                                @if (str_contains($item->jabatan, 'Bendahara Divisi A'))
-                                    <li>
-                                        <a href="#"
-                                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                            <img src="{{ Storage::url($item->foto) }}" alt="Foto Profil"
-                                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                                            <div class="p-3">
-                                                <p class="text-gray-800 font-bold text-xl text-center">
-                                                    {{ $item->jabatan }}</p>
-                                                <p class="text-gray-800 text-sm text-center">{{ $item->nama }}</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                            @foreach ($divisi as $item)
-                                @if (str_contains($item->jabatan, 'Bendahara Divisi B'))
-                                    <li>
-                                        <a href="#"
-                                            class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                                            <img src="{{ Storage::url($item->foto) }}" alt="Foto Profil"
-                                                class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                                            <div class="p-3">
-                                                <p class="text-gray-800 font-bold text-xl text-center">
-                                                    {{ $item->jabatan }}</p>
-                                                <p class="text-gray-800 text-sm text-center">{{ $item->nama }}</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    @endif
-
-                </ul> --}}
-            </div>
-        @endif
-    </div>
-
-    <!-- END  -->
-
-
-
-
-
-    <div id="anggota" class="mt-10  text-center">
-        <a href="/pemanah" class="relative inline-block group  text-3xl font-extrabold text-black px-2">
-            <span
-                class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-            <span class="transition-colors duration-300 group-hover:text-black">ANGGOTA</span>
-        </a>
-    </div>
-
-    <div class="flex justify-center mt-10">
-
-
-        <ul class="flex flex-wrap gap-6 justify-center">
-            @foreach ($anggota as $a)
-                <li>
-                    <a href="#"
-                        class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
-                        <img src="{{ Storage::url($a->foto) }}" alt="Foto Profil"
-                            class="h-48 w-full object-cover rounded-t-xl transform transition-transform duration-300 group-hover:scale-105" />
-                        <div class="p-3">
-                            <p class="text-gray-800 font-bold text-2xl leading-snug text-center">PEMANAH</p>
-                            <p class="text-gray-800 text-sm leading-snug text-center">{{ $a->nama }}</p>
-                        </div>
-                    </a>
-                </li>
+              </li>
             @endforeach
+          </ul>
+        </div>
+      @endif
+  
+      <!-- Ketua -->
+      @if (isset($ketua) && $ketua->foto)
+        <div id="ketua" class="mt-10">
+          <ul class="flex justify-center">
+            <li>
+              <div class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
+                <img src="{{ Storage::url($ketua->foto) }}" alt="Ketua" class="h-48 w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300">
+                <div class="p-3 text-center">
+                  <p class="text-gray-800 font-bold text-2xl">KETUA</p>
+                  <p class="text-gray-800 text-sm">{{ $ketua->nama ?? 'Tidak ada' }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      @endif
+  
+      <!-- Sekretaris & Bendahara -->
+      @if (isset($sekretaris) || isset($bendahara))
+        <div id="sekretaris-bendahara" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 justify-items-center">
+          @if (isset($sekretaris) && $sekretaris->foto)
+            <div>
+              <div class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
+                <img src="{{ Storage::url($sekretaris->foto) }}" alt="Sekretaris" class="h-48 w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300">
+                <div class="p-3 text-center">
+                  <p class="text-gray-800 font-bold text-2xl">SEKRETARIS</p>
+                  <p class="text-gray-800 text-sm">{{ $sekretaris->nama ?? 'Tidak ada' }}</p>
+                </div>
+              </div>
+            </div>
+          @endif
+  
+          @if (isset($bendahara) && $bendahara->foto)
+            <div>
+              <div class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[250px] mx-auto">
+                <img src="{{ Storage::url($bendahara->foto) }}" alt="Bendahara" class="h-48 w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300">
+                <div class="p-3 text-center">
+                  <p class="text-gray-800 font-bold text-2xl">BENDAHARA</p>
+                  <p class="text-gray-800 text-sm">{{ $bendahara->nama ?? 'Tidak ada' }}</p>
+                </div>
+              </div>
+            </div>
+          @endif
+        </div>
+      @endif
+  
+      <!-- Anggota -->
+      <div id="anggota" class="mt-14 text-center">
+        <h3 class="text-3xl font-extrabold text-black mb-6">ANGGOTA</h3>
+        <ul class="flex flex-wrap gap-6 justify-center">
+          @foreach ($anggota as $a)
+            <li>
+              <div class="group block rounded-xl shadow-md hover:shadow-lg transition-all duration-300 max-w-[200px] mx-auto">
+                <img src="{{ Storage::url($a->foto) }}" alt="{{ $a->nama }}" class="h-48 w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300">
+                <div class="p-3 text-center">
+                  <p class="text-gray-800 font-bold text-2xl">PEMANAH</p>
+                  <p class="text-gray-800 text-sm">{{ $a->nama }}</p>
+                </div>
+              </div>
+            </li>
+          @endforeach
         </ul>
-
-
-
-
+      </div>
+  
     </div>
-
-    </div>
-
-</section>
-<!-- end Section 2 -->
+  </section>
+  
