@@ -26,7 +26,7 @@ class AdminController extends Controller
         $editStruktur = null; // Variabel untuk struktur yang sedang diedit
         $beritas = Berita::latest()->first(); // Mengambil berita terbaru
         $statistikLatihan = StatistikLatihan::all();
-        $pesans = Pesan::latest()->paginate(5);
+       
         // Konversi data ke format yang diinginkan
         $skillData = StatistikLatihan::all()->map(function ($stat) {
             return [
@@ -73,6 +73,6 @@ class AdminController extends Controller
         $fotos = $fotos->merge($dbFotos);
 
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('pesans','skillData', 'beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
+        return view('admin.index', compact('skillData', 'beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
     }
 }

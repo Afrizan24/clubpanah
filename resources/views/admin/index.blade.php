@@ -20,9 +20,6 @@
         <button data-tab="informasilayanan" onclick="switchTab('informasilayanan')"
             class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">Informasi
             Layanan</button>
-        <button data-tab="contact" onclick="switchTab('contact')"
-            class="tab-button px-5 py-2 text-sm rounded-lg border border-gray-600 bg-blue hover:bg-blue-100">
-            Contact Respon</button>
     </div>
 
     <!-- Tab Content -->
@@ -47,9 +44,7 @@
         </div>
 
         
-        <div id="contact" class="tab-content hidden">
-            @include('admin.konten.contact', ['pesans' => $pesans])
-        </div>
+    
         
         <div id="detailpemanah" class="tab-content hidden">
             @include('admin.konten.detailpemanah')

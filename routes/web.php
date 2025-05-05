@@ -30,13 +30,6 @@ Route::get('/berita', [PublicBeritaController::class, 'index'])->name('berita.in
 
 Route::get('/informasidanlayanan', [App\Http\Controllers\InformasiController::class, 'index'])->name('informasidanlayanan');
 
-Route::post('/contact/store', [KontakController::class, 'store'])->name('contact.store');
-
-
-Route::get('/potoboth', function () {
-    return view('potoboth');
-})->name('potoboth');
-
 
 // ===========================
 // Admin Routes
@@ -81,11 +74,5 @@ Route::prefix('admin')->group(function () {
      Route::put('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik.update');
      Route::put('/statistik-latihan/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik-latihan.update');
 
-        // Menampilkan pesan masuk
-        Route::get('/admin/konten/contact', [App\Http\Controllers\Admin\KontakController::class, 'index'])->name('admin.konten.contact');
-        // Menghapus pesan
-        Route::delete('/admin/pesan/{id}', [App\Http\Controllers\Admin\KontakController::class, 'destroy'])->name('admin.pesan.destroy');
-        // Membalas pesan
-        Route::post('/admin/pesan/reply', [App\Http\Controllers\Admin\KontakController::class, 'reply'])->name('admin.pesan.reply');
-
+  
 });

@@ -164,80 +164,60 @@
 </section>
 <!-- end Section 3 -->
 
-<!-- Section 4 -->
-<section id="contact" class="bg-gray-800 dark:bg-gray-800 py-12">
+<!-- Section 4: Kontak -->
+<section id="contact" class="bg-gray-900 py-16">
     <div class="container mx-auto px-4 max-w-screen-xl">
-        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-            <form action="{{ route('contact.store') }}" method="POST" class="space-y-8">
-                @csrf
-                <div>
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Anda</label>
-                    <input type="text" id="name" placeholder="Nama Lengkap" required name="name"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                         focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
-                </div>
-                <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email Anda</label>
-                    <input type="email" id="email" placeholder="email@example.com" required name="email"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                         focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
-                </div>
-                <div>
-                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan Anda</label>
-                    <textarea id="message" rows="6" placeholder="Tulis pesan Anda di sini..." required name="message"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                         focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
-                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
-                </div>
-                <button type="submit"
-                    class="py-3 px-5 text-sm font-medium text-white bg-blue-600 rounded-lg
-                   sm:w-fit hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300
-                   dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
-                    Kirim Pesan
-                </button>
-            </form>
-            
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-10">
 
             <!-- Info Kontak -->
-            <div class="flex flex-col justify-center">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-inner">
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                        Club Panahan Berkuda "Horsebow"
+            <div class="space-y-6">
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-8 shadow-inner">
+                    <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">
+                        Club Panahan Berkuda <span class="text-indigo-600">"Horsebow"</span>
                     </h3>
 
-                    <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-lg">
-                        <li>🗺️ {{ $beranda->alamat ?? 'Alamat belum tersedia' }}</li>
-                        <li>📌 Lebih rame kalo datang hari Minggu pagi</li>
-                        <li>ℹ️ More Info: DM or WA <a href="https://wa.me/{{ $beranda->whatsapp ?? '' }}"
-                                class="text-blue-600 underline">+{{ $beranda->whatsapp ?? 'No WA' }}</a> - Ketua
+                    <ul class="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        <li>
+                            🗺️ <strong>Alamat:</strong><br>
+                            {{ $beranda->alamat ?? 'Alamat belum tersedia' }}
                         </li>
                         <li>
-                            📌 <a href="https://goo.gl/maps/fWRcnzehjpSEwkwAA" target="_blank"
-                                class="text-blue-600 underline">
-                                Lokasi Google Maps
+                            📌 <strong>Catatan:</strong><br>
+                            Lebih rame kalau datang hari <span class="font-semibold text-yellow-500">Minggu pagi</span>
+                        </li>
+                        <li>
+                            ℹ️ <strong>More Info:</strong><br>
+                            DM atau WA 
+                            <a href="https://wa.me/{{ $beranda->whatsapp ?? '' }}"
+                               class="text-blue-500 hover:text-blue-700 font-semibold underline transition">
+                               +{{ $beranda->whatsapp ?? 'No WA' }}
+                            </a> - Ketua
+                        </li>
+                        <li>
+                            📍 <strong>Maps:</strong><br>
+                            <a href="https://goo.gl/maps/fWRcnzehjpSEwkwAA" target="_blank"
+                               class="text-blue-500 hover:text-blue-700 font-semibold underline transition">
+                               Lihat Lokasi di Google Maps
                             </a>
                         </li>
                     </ul>
 
                     <!-- Google Maps Embed -->
-                    <div class="mt-6">
+                    <div class="mt-6 rounded-lg overflow-hidden shadow-lg border border-gray-300 dark:border-gray-600">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31654.09343102626!2d110.3749391!3d-7.7955798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f492a63f2d%3A0x6c3c690a59d89ae1!2sJl.%20Belatuk!5e0!3m2!1sid!2sid!4v1611111111111!5m2!1sid!2sid"
                             width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-
-
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
+
 
 
 @if($events)
