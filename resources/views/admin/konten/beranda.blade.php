@@ -144,14 +144,6 @@
                 @enderror
             </div>
             <div>
-                <label for="google_maps" class="block text-sm font-medium text-gray-700 mb-1">Google Maps</label>
-                <input id="google_maps" name="google_maps" type="text"
-                    class="w-full px-4 py-2 border rounded-lg" value="{{ old('google_maps', $beranda->google_maps ?? '') }}">
-                @error('google_maps')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-            <div>
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label>
                 <input id="whatsapp" name="whatsapp" type="text"
                     class="w-full px-4 py-2 border rounded-lg" value="{{ old('whatsapp', $beranda->whatsapp ?? '') }}">

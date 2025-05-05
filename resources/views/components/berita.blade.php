@@ -36,7 +36,7 @@
                                 </div>
                             @else
                                 <div class="w-full max-w-md lg:max-w-lg h-64 bg-gray-400 flex items-center justify-center rounded-xl shadow-lg">
-                                    <span class="text-white">URL video tidak valid</span>
+                                    <span class="text-white">URL video tidak valid/Tidak Ada</span>
                                 </div>
                             @endif
 
@@ -56,7 +56,7 @@
                                                 class="w-full h-full object-cover object-center">
                                         </div>
                                         <p class="text-gray-600 text-sm text-center">
-                                            {{ $item->{'text' . $i} ?? "Deskripsi gambar $i belum tersedia" }}
+                                            {{ $item->{'text' . $i} ?? "" }}
                                         </p>
                                     </div>
                                 @endfor
@@ -86,14 +86,14 @@
                                                         <img src="{{ asset('storage/'.$event->imageevent) }}" alt="Gambar Event" class="w-full h-full object-cover">
                                                     </div>
                                                 @else
-                                                    <p class="text-sm text-gray-600">Gambar belum tersedia.</p>
+                                                    <p class="text-sm text-gray-600">Gambar belum tersedia</p>
                                                 @endif
                                                 <p class="text-gray-600 text-sm">{{ $event->description ?? 'Deskripsi event belum tersedia' }}</p>
                                             </li>
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p class="text-sm text-gray-700">Belum ada Event.</p>
+                                    <p class="text-sm text-gray-700">Belum ada Event</p>
                                 @endif
                             </div>
                         </div>

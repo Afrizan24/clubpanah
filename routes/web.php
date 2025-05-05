@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\StrukturOrganisasiController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BeritaController as PublicBeritaController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\StrukturOrganisasiComponentController;
 use Illuminate\Support\Facades\Route;
+
 
 
 // ===========================
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
-Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
+// Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
 
 Route::get('/strukturorganisasi', [App\Http\Controllers\StrukturOrganisasiController::class, 'index'])->name('struktur.index');
 
@@ -28,7 +30,7 @@ Route::get('/berita', [PublicBeritaController::class, 'index'])->name('berita.in
 
 Route::get('/informasidanlayanan', [App\Http\Controllers\InformasiController::class, 'index'])->name('informasidanlayanan');
 
-// Route::get('/admin/pemanah/detail', [PemanahController::class, 'detail'])->name('admin.pemanah.detail');
+Route::post('/contact/store', [KontakController::class, 'store'])->name('contact.store');
 
 
 Route::get('/potoboth', function () {
@@ -71,6 +73,14 @@ Route::prefix('admin')->group(function () {
      Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
      Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
      Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
- 
-    Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
+     
+     Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
+     
+        // Menampilkan pesan masuk
+        Route::get('/admin/konten/contact', [App\Http\Controllers\Admin\KontakController::class, 'index'])->name('admin.konten.contact');
+        // Menghapus pesan
+        Route::delete('/admin/pesan/{id}', [App\Http\Controllers\Admin\KontakController::class, 'destroy'])->name('admin.pesan.destroy');
+        // Membalas pesan
+        Route::post('/admin/pesan/reply', [App\Http\Controllers\Admin\KontakController::class, 'reply'])->name('admin.pesan.reply');
+
 });

@@ -9,6 +9,7 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\InformasiLayanan;
 use App\Models\Pemanah;
+use App\Models\Pesan;
 use App\Models\StrukturOrganisasi;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class AdminController extends Controller
         $editGaleri = null; // Variabel untuk galeri yang sedang diedit
         $editStruktur = null; // Variabel untuk struktur yang sedang diedit
         $beritas = Berita::latest()->first(); // Mengambil berita terbaru
-        
+        $pesans = Pesan::latest()->paginate(5); // Mengambil pesan terbaru dengan pagination
 
         $layanan = InformasiLayanan::all();
         $testimonials = Testimonial::all();
@@ -59,6 +60,6 @@ class AdminController extends Controller
         $fotos = $fotos->merge($dbFotos);
 
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
+        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan','pesans'));
     }
 }
