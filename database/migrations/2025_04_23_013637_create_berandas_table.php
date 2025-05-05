@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->text('tentang_kami')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('google_maps')->nullable();
+            $table->text('google_maps')->nullable();
             $table->string('whatsapp')->nullable();
             $table->timestamps();
         });

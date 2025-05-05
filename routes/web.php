@@ -40,37 +40,44 @@ Route::get('/potoboth', function () {
 // Admin Routes
 // ===========================
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
 
-    Route::get('/beranda', [\App\Http\Controllers\Admin\BerandaController::class, 'index'])->name('admin.beranda.index');
-    Route::put('/beranda', [\App\Http\Controllers\Admin\BerandaController::class, 'update'])->name('admin.beranda.update');
+    Route::get('/beranda', [\App\Http\Controllers\Admin\BerandaController::class, 'index'])->name('beranda.index');
+    Route::put('/beranda', [\App\Http\Controllers\Admin\BerandaController::class, 'update'])->name('beranda.update');
 
-    Route::get('/struktur', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'index'])->name('admin.struktur.index');
-    Route::post('/struktur', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'store'])->name('admin.struktur.store');
-    Route::put('/struktur/{id}', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'update'])->name('admin.struktur.update');
-    Route::delete('/struktur/{id}', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'destroy'])->name('admin.struktur.destroy');
+    Route::get('/struktur', [StrukturOrganisasiController::class, 'index'])->name('struktur.index');
+    Route::get('/struktur/{id}', [StrukturOrganisasiController::class, 'show'])->name('struktur.show');
+    Route::post('/struktur', [StrukturOrganisasiController::class, 'store'])->name('struktur.store');
+    Route::put('/struktur/{id}', [StrukturOrganisasiController::class, 'update'])->name('struktur.update');
+    Route::delete('/struktur/{id}', [StrukturOrganisasiController::class, 'destroy'])->name('struktur.destroy');
 
-    Route::get('/galeri', [\App\Http\Controllers\Admin\GaleriController::class, 'index'])->name('admin.galeri.index');
-    Route::post('/galeri', [\App\Http\Controllers\Admin\GaleriController::class, 'store'])->name('admin.galeri.store');
-    Route::get('/galeri/{id}/edit', [\App\Http\Controllers\Admin\GaleriController::class, 'edit'])->name('admin.galeri.edit');
-    Route::put('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'update'])->name('admin.galeri.update');
-    Route::delete('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'destroy'])->name('admin.galeri.destroy');
+    Route::get('/galeri', [\App\Http\Controllers\Admin\GaleriController::class, 'index'])->name('galeri.index');
+    Route::post('/galeri', [\App\Http\Controllers\Admin\GaleriController::class, 'store'])->name('galeri.store');
+    Route::get('/galeri/{id}/edit', [\App\Http\Controllers\Admin\GaleriController::class, 'edit'])->name('galeri.edit');
+    Route::put('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'update'])->name('galeri.update');
+    Route::delete('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'destroy'])->name('galeri.destroy');
 
      // --- Berita ---
-     Route::get('/berita', [AdminBeritaController::class, 'index'])->name('admin.berita.index');
-     Route::get('/berita/create', [AdminBeritaController::class, 'create'])->name('admin.berita.create');
-     Route::post('/berita', [AdminBeritaController::class, 'storeBerita'])->name('admin.berita.store'); // ganti store → storeBerita
-     Route::get('/berita/{id}/edit', [AdminBeritaController::class, 'edit'])->name('admin.berita.edit');
-     Route::put('/berita/{id}', [AdminBeritaController::class, 'update'])->name('admin.berita.update');
+     Route::get('/berita', [AdminBeritaController::class, 'index'])->name('berita.index');
+     Route::get('/berita/create', [AdminBeritaController::class, 'create'])->name('berita.create');
+     Route::post('/berita', [AdminBeritaController::class, 'storeBerita'])->name('berita.store'); // ganti store → storeBerita
+     Route::get('/berita/{id}/edit', [AdminBeritaController::class, 'edit'])->name('berita.edit');
+     Route::put('/berita/{id}', [AdminBeritaController::class, 'update'])->name('berita.update');
      // --- Event ---
-     Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('admin.event.store'); // route event
+     Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('event.store'); // route event
  
      
-     Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
-     Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
-     Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
+     Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('layanan.index');
+     Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('layanan.store');
+     Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('layanan.deleteTestimonial');
  
     Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
+
+    Route::get('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'show'])->name('statistik.show');
+    Route::post('/statistik/{strukturId}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'store'])->name('statistik.store');
+    Route::put('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik.update');
+    Route::put('/statistik-latihan/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])
+        ->name('statistik-latihan.update');
 });

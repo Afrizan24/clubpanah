@@ -159,7 +159,7 @@
 <script>
     const jabatanSelect = document.getElementById('jabatanSelect');
     const divisiField = document.getElementById('divisiField');
-    const tingkatField = document.getElementById('tingkatField')
+    const tingkatField = document.getElementById('tingkatField');
 
     function toggleDivisiField() {
         const jabatan = jabatanSelect.value;

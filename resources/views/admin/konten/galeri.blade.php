@@ -104,26 +104,31 @@
     {{-- Daftar Galeri --}}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @foreach ($galeris as $galeri)
-            <div class="bg-white p-4 rounded shadow">
-                <img src="{{ asset('storage/' . $galeri->gambar) }}" class="w-full h-48 object-cover rounded mb-4"
-                    alt="Video Dari YT">
-                <h3 class="text-lg font-bold mb-2">{{ ucfirst($galeri->kategori) }}</h3>
-
-                <div class="flex gap-2">
-                    <a href="{{ route('admin.galeri.index', ['edit' => $galeri->id]) }}"
-                        class="bg-yellow-400 hover:bg-yellow-600 text-white px-3 py-1 rounded">Edit</a>
-
-                    <form action="{{ route('admin.galeri.destroy', $galeri->id) }}" method="POST"
-                        onsubmit="return confirm('Yakin mau hapus?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded">Hapus</button>
-                    </form>
-                </div>
-            </div>
-        @endforeach
+            @if ($galeri->kategori != 'Video')
+                <div class="bg-white p-4 rounded shadow">
+                    <img src="{{ asset('storage/' . $galeri->gambar) }}" class="w-full h-48 object-cover rounded mb-4"
+                        alt="Video Dari YT">
+                    <h3 class="text-lg font-bold mb-2">{{ ucfirst($galeri->kategori) }}</h3>
+                @else
+                    <iframe src="{{ $galeri->video_link }}" frameborder="0" allowfullscreen
+                        class="w-64 h-48 video-container"></iframe>
+            @endif
     </div>
+    <div class="flex gap-2 mt-2">
+
+        <a href="{{ route('admin.galeri.index', ['edit' => $galeri->id]) }}"
+            class="bg-yellow-400 hover:bg-yellow-600 text-white px-3 py-1 rounded">Edit</a>
+
+        <form action="{{ route('admin.galeri.destroy', $galeri->id) }}" method="POST"
+            onsubmit="return confirm('Yakin mau hapus?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded">Hapus</button>
+        </form>
+    </div>
+</div>
+@endforeach
+</div>
 
 </div>
 

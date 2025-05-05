@@ -227,21 +227,58 @@
                                 class="text-blue-600 underline">+{{ $beranda->whatsapp ?? 'No WA' }}</a> - Ketua
                         </li>
                         <li>
-                            📌 <a href="https://goo.gl/maps/fWRcnzehjpSEwkwAA" target="_blank"
+                            📌 <a href="{{ $beranda->google_maps ?? 'Belum Tersedia' }} " target="_blank"
                                 class="text-blue-600 underline">
                                 Lokasi Google Maps
                             </a>
                         </li>
                     </ul>
 
-                    <!-- Google Maps Embed -->
+                    @php
+                        function convertGoogleMapsToEmbed($mapUrl)
+                        {
+                            if (empty($mapUrl) || !filter_var($mapUrl, FILTER_VALIDATE_URL)) {
+                                return '';
+                            }
+
+                            if (strpos($mapUrl, 'google.com/maps') === false) {
+                                return '';
+                            }
+
+                            // Koordinat: @-0.4758743,117.1637308,17z
+                            if (preg_match('/@(-?\d+\.\d+),(-?\d+\.\d+)/', $mapUrl, $matches)) {
+                                $lat = $matches[1];
+                                $lng = $matches[2];
+                                return "https://www.google.com/maps?q={$lat},{$lng}&output=embed";
+                            }
+
+                            // Nama tempat: /place/Gold+Archery/
+                            if (preg_match('/place\/([^\/]+)/', $mapUrl, $matches)) {
+                                $place = urlencode(str_replace('+', ' ', $matches[1]));
+                                return "https://www.google.com/maps?q={$place}&output=embed";
+                            }
+
+                            // Fallback
+                            return 'https://www.google.com/maps?q=' . urlencode($mapUrl) . '&output=embed';
+                        }
+                    @endphp
+                    @isset($beranda->google_maps)
+                        @php
+                            $embedUrl = convertGoogleMapsToEmbed($beranda->google_maps);
+                        @endphp
+                    @endisset
+
+
                     <div class="mt-6">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31654.09343102626!2d110.3749391!3d-7.7955798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f492a63f2d%3A0x6c3c690a59d89ae1!2sJl.%20Belatuk!5e0!3m2!1sid!2sid!4v1611111111111!5m2!1sid!2sid"
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                        @if (!empty($embedUrl))
+                            <iframe src="{{ $embedUrl }}" width="100%" height="300" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        @else
+                            <p>Peta tidak tersedia</p>
+                        @endif
                     </div>
+
 
 
                 </div>
@@ -252,17 +289,20 @@
 </section>
 
 
-@if($events)
-    <div id="popupEvent" class="fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-500">
-        <div class="bg-white rounded-xl p-6 max-w-sm w-full relative shadow-2xl scale-95 transition-transform duration-500">
-            <button onclick="hidePopup()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
+@if ($events)
+    <div id="popupEvent"
+        class="fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div
+            class="bg-white rounded-xl p-6 max-w-sm w-full relative shadow-2xl scale-95 transition-transform duration-500">
+            <button onclick="hidePopup()"
+                class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
 
             <h2 class="text-lg font-semibold mb-3 text-center text-gray-800">📢 Ada Event Nih</h2>
 
             <div class="mb-3">
-                @if($events->imageevent)
+                @if ($events->imageevent)
                     <img src="{{ asset('storage/' . $events->imageevent) }}" alt="Event Image"
-                         class="w-full h-40 object-cover rounded-md shadow">
+                        class="w-full h-40 object-cover rounded-md shadow">
                 @else
                     <p class="text-gray-500">Gambar event tidak tersedia.</p>
                 @endif
@@ -281,13 +321,13 @@
                 popup.classList.add('opacity-0', 'pointer-events-none');
             }
         }
-    
+
         window.addEventListener('DOMContentLoaded', () => {
             const popup = document.getElementById('popupEvent');
             if (popup) {
                 // Tampilkan dulu popup (kalau kamu belum munculkan secara otomatis, tambahkan di sini)
                 popup.classList.remove('opacity-0', 'pointer-events-none');
-    
+
                 // Setelah 2 detik, popup disembunyikan
                 setTimeout(() => {
                     hidePopup();
@@ -295,8 +335,8 @@
             }
         });
     </script>
-    
-    
+
+
 @endif
 
 <!-- End Section 4 -->

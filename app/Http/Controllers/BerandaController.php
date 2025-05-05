@@ -32,4 +32,5 @@ class BerandaController extends Controller
 
         return view('beranda', compact('beranda', 'fotos', 'events'));
     }
+
 }

@@ -42,8 +42,22 @@ class StrukturOrganisasiController extends Controller
             $validated['foto'] = $path;
         }
 
-        StrukturOrganisasi::create($validated);
-        return redirect()->route('admin.index')->with('active_tab', 'pemanah')->with('successstruktur', 'Informasi dan Layanan berhasil ditambahkan');
+        $member = StrukturOrganisasi::create($validated);
+
+        if ($request->jabatan === 'Anggota') {
+            $member->statistikLatihans()->create([
+                'push_up' => 10,
+                'tahan_nafas' => 10,
+                'on_target' => 10,
+                'off_target' => 10,
+                'latihan_konsentrasi' => 10,
+                'waktu_latihan' => 10
+            ]);
+        }
+
+        return redirect()->route('admin.index')
+            ->with('active_tab', 'pemanah')
+            ->with('successstruktur', 'Informasi dan Layanan berhasil ditambahkan');
     }
 
     public function show($id)

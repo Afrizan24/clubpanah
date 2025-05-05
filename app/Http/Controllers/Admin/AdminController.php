@@ -8,8 +8,8 @@ use App\Models\BerandaFoto;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\InformasiLayanan;
-use App\Models\Pemanah;
 use App\Models\StrukturOrganisasi;
+use App\Models\StatistikLatihan;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,20 @@ class AdminController extends Controller
         $editGaleri = null; // Variabel untuk galeri yang sedang diedit
         $editStruktur = null; // Variabel untuk struktur yang sedang diedit
         $beritas = Berita::latest()->first(); // Mengambil berita terbaru
-        
+        $statistikLatihan = StatistikLatihan::all();
+
+        // Konversi data ke format yang diinginkan
+        $skillData = StatistikLatihan::all()->map(function ($stat) {
+            return [
+                'accuracy'   => min(100, $stat->on_target * 2),
+                'power'      => min(100, $stat->push_up * 2),
+                'focus'      => min(100, $stat->latihan_konsentrasi * 2),
+                'technique'  => min(100, $stat->off_target > 0 ? 100 - $stat->off_target * 5 : 90),
+                'strength'   => min(100, $stat->push_up * 2),
+                'endurance'  => min(100, $stat->tahan_nafas * 2),
+                'stamina'    => min(100, $stat->waktu_latihan * 2),
+            ];
+        })->first();
 
         $layanan = InformasiLayanan::all();
         $testimonials = Testimonial::all();
@@ -59,6 +72,6 @@ class AdminController extends Controller
         $fotos = $fotos->merge($dbFotos);
 
         // Kembalikan view dengan data yang diperlukan
-        return view('admin.index', compact('beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
+        return view('admin.index', compact('skillData', 'beranda', 'fotos', 'struktur', 'editStruktur', 'galeris', 'editGaleri', 'layanan', 'testimonials', 'beritas', 'layanan'));
     }
 }

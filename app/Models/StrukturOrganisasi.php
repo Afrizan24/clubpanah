@@ -24,8 +24,9 @@ class StrukturOrganisasi extends Model
         'foto',
         'tanggal_bergabung',
     ];
-    public function statistik()
+    public function statistikLatihans()
     {
-        return $this->hasOne(StatistikLatihan::class);
+        return $this->hasMany(StatistikLatihan::class);
     }
 }
+    

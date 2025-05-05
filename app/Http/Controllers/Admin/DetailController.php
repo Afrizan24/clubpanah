@@ -11,7 +11,7 @@ class DetailController extends Controller
     //
     public function index()
     {
-        $struktur = StrukturOrganisasi::all();
+        $struktur = StrukturOrganisasi::with('statistikLatihans')->get();
 
         return view('admin.konten.detailpemanah', compact('struktur'));
     }
