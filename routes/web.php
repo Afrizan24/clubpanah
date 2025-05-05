@@ -76,6 +76,11 @@ Route::prefix('admin')->group(function () {
      
      Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
      
+     Route::get('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'show'])->name('statistik.show');
+     Route::post('/statistik/{strukturId}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'store'])->name('statistik.store');
+     Route::put('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik.update');
+     Route::put('/statistik-latihan/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik-latihan.update');
+
         // Menampilkan pesan masuk
         Route::get('/admin/konten/contact', [App\Http\Controllers\Admin\KontakController::class, 'index'])->name('admin.konten.contact');
         // Menghapus pesan

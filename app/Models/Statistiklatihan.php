@@ -2,28 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Statistiklatihan extends Model
+class StatistikLatihan extends Model
 {
-    //
-    protected $fillable = [/* semua kolom */];
-    public function pemanah()
-    {
-        return $this->belongsTo(StrukturOrganisasi::class);
-    }
+    use HasFactory;
 
-    public function toSkillStats(): array
+    protected $fillable = [
+        'struktur_organisasi_id',
+        'push_up',
+        'tahan_nafas',
+        'on_target',
+        'off_target',
+        'latihan_konsentrasi',
+        'waktu_latihan',
+    ];
+
+    public function struktur()
     {
-        $total = max($this->on_target + $this->off_target, 1); // avoid div/0
-        return [
-            'accuracy' => round($this->on_target / $total * 100),
-            'power' => min($this->push_up, 100),
-            'focus' => min($this->latihan_konsentrasi, 100),
-            'technique' => min(round($this->on_target * 0.6 + $this->push_up * 0.4), 100),
-            'strength' => min($this->push_up, 100),
-            'endurance' => min($this->waktu_latihan, 100),
-            'stamina' => min($this->tahan_nafas, 100),
-        ];
+        return $this->belongsTo(StrukturOrganisasi::class, 'struktur_organisasi_id');
     }
 }
