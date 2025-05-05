@@ -169,8 +169,8 @@
     <div class="container mx-auto px-4 max-w-screen-xl">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-10">
 
-            <!-- Info Kontak -->
-            <div class="space-y-6">
+            <!-- Kolom Kiri: Info Kontak -->
+            <div class="space-y-6 flex flex-col justify-center">
                 <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-8 shadow-inner">
                     <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">
                         Club Panahan Berkuda <span class="text-indigo-600">"Horsebow"</span>
@@ -201,21 +201,24 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+            </div>
 
-                    <!-- Google Maps Embed -->
-                    <div class="mt-6 rounded-lg overflow-hidden shadow-lg border border-gray-300 dark:border-gray-600">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31654.09343102626!2d110.3749391!3d-7.7955798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f492a63f2d%3A0x6c3c690a59d89ae1!2sJl.%20Belatuk!5e0!3m2!1sid!2sid!4v1611111111111!5m2!1sid!2sid"
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
+            <!-- Kolom Kanan: Google Maps -->
+            <div class="flex items-center justify-center">
+                <div class="w-full h-full rounded-xl overflow-hidden shadow-lg border border-gray-300 dark:border-gray-600">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31654.09343102626!2d110.3749391!3d-7.7955798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f492a63f2d%3A0x6c3c690a59d89ae1!2sJl.%20Belatuk!5e0!3m2!1sid!2sid!4v1611111111111!5m2!1sid!2sid"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
 
 
 
