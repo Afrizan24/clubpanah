@@ -45,16 +45,14 @@ class StrukturOrganisasiController extends Controller
 
         $member = StrukturOrganisasi::create($validated);
 
-        if ($request->jabatan === 'Anggota') {
-            $member->statistikLatihans()->create([
-                'push_up' => 10,
-                'tahan_nafas' => 10,
-                'on_target' => 10,
-                'off_target' => 10,
-                'latihan_konsentrasi' => 10,
-                'waktu_latihan' => 10
-            ]);
-        }
+        $member->statistikLatihans()->create([
+            'push_up' => 10,
+            'tahan_nafas' => 10,
+            'on_target' => 10,
+            'off_target' => 10,
+            'latihan_konsentrasi' => 10,
+            'waktu_latihan' => 10
+        ]);
 
         return redirect()->route('admin.index')
             ->with('active_tab', 'pemanah')

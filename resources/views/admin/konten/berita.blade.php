@@ -1,4 +1,9 @@
 
+@if (session('successberita'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">
+        <span>{{ session('successberita') }}</span>
+    </div>
+@endif
 <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -53,7 +58,7 @@
 
 <!-- Tombol Buka Modal Event -->
 @if(isset($beritas) && $beritas->count() > 0)
-    <button onclick="document.getElementById('eventModal').classList.remove('hidden')" 
+    <button onclick="document.getElementById('eventModal').classList.remove('hidden')"
         class="bg-yellow-600 text-white px-5 py-2 rounded hover:bg-green-700 mt-1">
         Tambah Event
     </button>
@@ -64,7 +69,7 @@
 <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6 relative">
         <!-- Tombol Close -->
-        <button onclick="document.getElementById('eventModal').classList.add('hidden')" 
+        <button onclick="document.getElementById('eventModal').classList.add('hidden')"
             class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
 
         <!-- Form Event -->

@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
-// Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
-
 Route::get('/strukturorganisasi', [App\Http\Controllers\StrukturOrganisasiController::class, 'index'])->name('struktur.index');
 
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
@@ -53,26 +51,22 @@ Route::prefix('admin')->group(function () {
     Route::put('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'update'])->name('admin.galeri.update');
     Route::delete('/galeri/{id}', [\App\Http\Controllers\Admin\GaleriController::class, 'destroy'])->name('admin.galeri.destroy');
 
-     // --- Berita ---
-     Route::get('/berita', [AdminBeritaController::class, 'index'])->name('admin.berita.index');
-     Route::get('/berita/create', [AdminBeritaController::class, 'create'])->name('admin.berita.create');
-     Route::post('/berita', [AdminBeritaController::class, 'storeBerita'])->name('admin.berita.store'); // ganti store → storeBerita
-     Route::get('/berita/{id}/edit', [AdminBeritaController::class, 'edit'])->name('admin.berita.edit');
-     Route::put('/berita/{id}', [AdminBeritaController::class, 'update'])->name('admin.berita.update');
-     // --- Event ---
-     Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('admin.event.store'); // route event
- 
-     
-     Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
-     Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
-     Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
-     
-     Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
-     
-     Route::get('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'show'])->name('statistik.show');
-     Route::post('/statistik/{strukturId}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'store'])->name('statistik.store');
-     Route::put('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik.update');
-     Route::put('/statistik-latihan/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik-latihan.update');
+    Route::get('/berita', [AdminBeritaController::class, 'index'])->name('admin.berita.index');
+    Route::get('/berita/create', [AdminBeritaController::class, 'create'])->name('admin.berita.create');
+    Route::post('/berita', [AdminBeritaController::class, 'storeBerita'])->name('admin.berita.store');
+    Route::get('/berita/{id}/edit', [AdminBeritaController::class, 'edit'])->name('admin.berita.edit');
+    Route::put('/berita/{id}', [AdminBeritaController::class, 'update'])->name('admin.berita.update');
 
-  
+    Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('admin.event.store');
+
+    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
+    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
+    Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
+
+    Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
+
+    Route::get('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'show'])->name('statistik.show');
+    Route::post('/statistik/{strukturId}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'store'])->name('statistik.store');
+    Route::put('/statistik/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik.update');
+    Route::put('/statistik-latihan/{id}', [App\Http\Controllers\Admin\StatistikLatihanController::class, 'update'])->name('statistik-latihan.update');
 });
