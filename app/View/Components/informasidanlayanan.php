@@ -10,11 +10,13 @@ class informasidanlayanan extends Component
 {
     public $layanan;
     public $testimonials;
+    public $profile;
 
-    public function __construct($layanan = null, $testimonials = null)
+    public function __construct($layanan = null, $testimonials = null, $profile = null)
     {
         $this->layanan = $layanan;
         $this->testimonials = $testimonials;
+        $this->profile = $profile;
     }
 
     /**

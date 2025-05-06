@@ -59,9 +59,12 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/event/store', [AdminBeritaController::class, 'storeEvent'])->name('admin.event.store');
 
-    Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
-    Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
-    Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
+ // --- Layanan Informasi ---
+ Route::get('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'index'])->name('admin.layanan.index');
+ Route::post('/layanan', [App\Http\Controllers\Admin\InformasiController::class, 'store'])->name('admin.layanan.store');
+ Route::delete('/testimonial/{testimonial}', [App\Http\Controllers\Admin\InformasiController::class, 'deleteTestimonial'])->name('admin.layanan.deleteTestimonial');
+ Route::get('/layanan/edit/{id}', [App\Http\Controllers\Admin\InformasiController::class, 'edit'])->name('admin.layanan.edit');
+ Route::put('/layanan/{id}', [App\Http\Controllers\Admin\InformasiController::class, 'update'])->name('admin.layanan.update');
 
     Route::get('/detailpemanah', [App\Http\Controllers\Admin\AdminController::class, 'index']);
 
