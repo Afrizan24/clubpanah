@@ -1,5 +1,3 @@
-<!-- resources/views/admin/konten/beranda.blade.php -->
-
 <h2 class="text-3xl font-bold text-gray-800 mb-6">🎯 Dashboard</h2>
 
 @if (session('successberanda'))

@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    {{-- Form Tambah / Edit --}}
+    {{-- Form Tambah --}}
     <div class="bg-white p-6 rounded shadow mb-6">
         <form action="{{ $editGaleri ? route('admin.galeri.update', $editGaleri->id) : route('admin.galeri.store') }}"
             method="POST" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 mb-2">Kategori</label>
-                <select name="kategori" class="w-full border p-2 rounded" required>
+                <select name="kategori" id="kategoriSelect" class="w-full border p-2 rounded" required>
                     <option value="">-- Pilih Kategori --</option>
                     <option value="Anggota"
                         {{ old('kategori', $editGaleri->kategori ?? '') == 'Anggota' ? 'selected' : '' }}>Anggota
@@ -48,11 +48,13 @@
                     <img src="{{ asset('storage/' . $editGaleri->gambar) }}" class="w-32 mt-2 rounded" alt="Preview">
                 @endif
             </div>
-            <div class="mb-4">
+
+            <div class="mb-4" id="videoContainer" style="display: none;">
                 <label class="block text-gray-700 mb-2">Link Video</label>
                 <input type="url" name="video_link" value="{{ old('video_link', $editGaleri->video_link ?? '') }}"
                     class="w-full border p-2 rounded">
             </div>
+
             <div class="flex gap-4">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
                     {{ $editGaleri ? 'Update' : 'Tambah' }}
@@ -154,3 +156,33 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.getElementById('kategoriSelect').addEventListener('change', function() {
+        var kategori = this.value;
+        var gambarContainer = document.getElementById('gambarContainer');
+        var videoContainer = document.getElementById('videoContainer');
+
+        if (kategori === 'Video') {
+            gambarContainer.style.display = 'none';
+            videoContainer.style.display = 'block';
+        } else {
+            gambarContainer.style.display = 'block';
+            videoContainer.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('load', function() {
+        var kategori = document.getElementById('kategoriSelect').value;
+        var gambarContainer = document.getElementById('gambarContainer');
+        var videoContainer = document.getElementById('videoContainer');
+
+        if (kategori === 'Video') {
+            gambarContainer.style.display = 'none';
+            videoContainer.style.display = 'block';
+        } else {
+            gambarContainer.style.display = 'block';
+            videoContainer.style.display = 'none';
+        }
+    });
+</script>
