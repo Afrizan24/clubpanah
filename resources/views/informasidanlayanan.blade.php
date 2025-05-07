@@ -16,8 +16,7 @@
 
     <x-navbar></x-navbar>
 
-    <x-informasidanlayanan :layanan="$layanan" :testimonials="$testimonials"></x-informasidanlayanan>
-
+    <x-informasidanlayanan :layanan="$layanan" :testimonials="$testimonials" :profile="$profiles"></x-informasidanlayanan>
 
     <x-footer></x-footer>
 
