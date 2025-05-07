@@ -35,24 +35,20 @@
         @include('admin.konten.pemanah')
     </div>
 
-        <div id="berita" class="tab-content hidden">
-            @include('admin.konten.berita') <!-- Pastikan data 'beritas' dikirim dengan benar -->
-        </div>
-        
-        <div id="informasilayanan" class="tab-content hidden">
-            @include('admin.konten.layanan')
-        </div>
+    <div id="berita" class="tab-content hidden">
+        @include('admin.konten.berita') <!-- Pastikan data 'beritas' dikirim dengan benar -->
+    </div>
 
-        
-    
-        
-        <div id="detailpemanah" class="tab-content hidden">
-            @include('admin.konten.detailpemanah')
-        </div>
-        
-        
+    <div id="informasilayanan" class="tab-content hidden">
+        @include('admin.konten.layanan')
+    </div>
 
 
+
+
+    <div id="detailpemanah" class="tab-content hidden">
+        @include('admin.konten.detailpemanah')
+    </div>
 @endsection
 
 

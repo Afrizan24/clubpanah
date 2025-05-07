@@ -66,31 +66,51 @@
     </div>
 
 
-
-    {{-- Daftar Galeri --}}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         @foreach ($galeris as $galeri)
-            <div class="bg-white p-4 rounded shadow">
-                <img src="{{ asset('storage/' . $galeri->gambar) }}" class="w-full h-48 object-cover rounded mb-4"
-                    alt="Video Dari YT">
-                <h3 class="text-lg font-bold mb-2">{{ ucfirst($galeri->kategori) }}</h3>
+            <div class="bg-white p-2 rounded shadow text-sm">
+                <img src="{{ asset('storage/' . $galeri->gambar) }}" class="w-full h-24 object-cover rounded mb-2"
+                    alt="">
+                <strong class="block text-center mb-1">{{ ucfirst($galeri->kategori) }}</strong>
 
-                <div class="flex gap-2">
-                    <a href="javascript:void(0);" onclick='openModal(@json($galeri))'
-                        class="bg-yellow-400 hover:bg-yellow-600 text-white px-3 py-1 rounded">Edit</a>
+                {{-- Form Edit --}}
+                <form action="{{ route('admin.galeri.update', $galeri->id) }}" method="POST"
+                    enctype="multipart/form-data" class="space-y-1">
+                    @csrf
+                    @method('PUT')
 
+                    <select name="kategori" class="w-full border rounded p-1 text-xs">
+                        @foreach (['Anggota', 'Kompetisi', 'Latihan', 'Video'] as $kategori)
+                            <option value="{{ $kategori }}"
+                                {{ $galeri->kategori == $kategori ? 'selected' : '' }}>{{ $kategori }}</option>
+                        @endforeach
+                    </select>
 
-                    <form action="{{ route('admin.galeri.destroy', $galeri->id) }}" method="POST"
-                        onsubmit="return confirm('Yakin mau hapus?')">
-                        @csrf
-                        @method('DELETE')
+                    @if ($galeri->kategori !== 'Video')
+                        <input type="file" name="gambar" class="w-full border rounded p-1 text-xs">
+                    @endif
+
+                    <input type="url" name="video_link" value="{{ $galeri->video_link }}" placeholder="Link video"
+                        class="w-full border rounded p-1 text-xs">
+
+                    <div class="flex justify-between gap-1">
                         <button type="submit"
-                            class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded">Hapus</button>
-                    </form>
-                </div>
+                            class="bg-blue-500 text-white px-2 py-1 rounded text-xs w-full">Simpan</button>
+                    </div>
+                </form>
+
+                {{-- Tombol Hapus --}}
+                <form action="{{ route('admin.galeri.destroy', $galeri->id) }}" method="POST"
+                    onsubmit="return confirm('Yakin?')" class="mt-1">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded text-xs w-full">Hapus</button>
+                </form>
             </div>
         @endforeach
     </div>
+
+
 
 </div>
 <!-- Modal Edit Galeri -->
@@ -98,8 +118,7 @@
     <div class="bg-white w-full max-w-lg rounded shadow p-6 relative">
         <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">&times;</button>
         <h2 class="text-xl font-bold mb-4">Edit Galeri</h2>
-        <form id="editForm" method="POST" action="{{ route('admin.galeri.update', $galeri->id) }}"
-            enctype="multipart/form-data">
+        <form id="editForm" method="POST" action="" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -135,61 +154,3 @@
         </form>
     </div>
 </div>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const kategoriSelect = document.querySelector('select[name="kategori"]');
-        const gambarInput = document.getElementById('gambarInput');
-        const gambarContainer = document.getElementById('gambarContainer');
-
-        // Function to handle hiding/showing gambar input
-        function toggleGambarInput() {
-            if (kategoriSelect.value === 'Video') {
-                gambarContainer.style.display = 'none';
-                gambarInput.removeAttribute('required'); // Remove the 'required' attribute
-            } else {
-                gambarContainer.style.display = 'block';
-                gambarInput.setAttribute('required', 'required'); // Make it required again
-            }
-        }
-
-        // Run the function when the page loads and when the category changes
-        toggleGambarInput();
-        kategoriSelect.addEventListener('change', toggleGambarInput);
-    });
-
-    // Function to open modal and populate form fields
-    function openModal(galeri) {
-        document.getElementById('editModal').classList.remove('hidden');
-
-        // Fill form data into modal
-        document.getElementById('editId').value = galeri.id;
-        document.getElementById('editForm').action = `/admin/galeri/${galeri.id}`;
-        document.getElementById('editKategori').value = galeri.kategori;
-        document.getElementById('editVideoLink').value = galeri.video_link || '';
-
-        const preview = document.getElementById('editPreview');
-        if (galeri.kategori === 'Video') {
-            document.getElementById('editGambarContainer').style.display = 'none';
-            preview.src = '';
-        } else {
-            document.getElementById('editGambarContainer').style.display = 'block';
-            preview.src = `/storage/${galeri.gambar}`;
-        }
-    }
-
-    // Function to close the modal and reset form
-    function closeModal() {
-        document.getElementById('editModal').classList.add('hidden');
-        document.getElementById('editForm').reset();
-    }
-
-    // Function to reset modal form after submission (assuming you use standard form submit)
-    function resetModalAfterSubmit(response) {
-        if (response.success) {
-            closeModal(); // Close the modal
-            location.reload(); // Reload the page to reflect changes (or use AJAX to update the view)
-        }
-    }
-</script>
