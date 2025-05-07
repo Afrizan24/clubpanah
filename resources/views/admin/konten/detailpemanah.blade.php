@@ -236,394 +236,320 @@
             </div>
         </div>
 
-        {{-- Modal detail Pemanah --}}
+        <!-- Modal detail Pemanah (Readonly with grid layout) -->
         <div x-show="showEditModal" x-transition
             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div @click.outside="showEditModal = false" class="bg-white rounded-xl w-[90%] max-w-lg p-6 relative">
+            <div @click.outside="showEditModal = false"
+                class="bg-white rounded-xl w-[95%] max-w-3xl p-8 relative shadow-lg">
                 <button @click="showEditModal = false"
-                    class="absolute top-2 right-3 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
+                    class="absolute top-3 right-4 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
 
-                <h3 class="text-xl font-semibold text-center mb-4">Detail Pemanah</h3>
+                <h3 class="text-2xl font-bold text-center mb-6 text-gray-800">Detail Pemanah</h3>
 
                 <!-- Foto -->
-                <div class="flex justify-center mb-4">
-                    <div class="relative">
-                        <img :src="currentMember ? '/storage/' + currentMember.foto : '/images/default.jpg'"
-                            alt="Foto Pemanah"
-                            class="w-32 h-32 object-cover rounded-full border-4 border-blue-500 shadow-md">
-                        <label for="foto_detail"
-                            class="absolute bottom-0 right-0 bg-blue-600 text-white p-1 rounded-full cursor-pointer hover:bg-blue-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                            </svg>
-                        </label>
-                        <input type="file" id="foto_detail" @change="handleFotoChange" accept="image/*"
-                            class="hidden">
-                    </div>
+                <div class="flex justify-center mb-6">
+                    <img :src="currentMember ? '/storage/' + currentMember.foto : '/images/default.jpg'"
+                        alt="Foto Pemanah"
+                        class="w-36 h-36 object-cover rounded-full border-4 border-blue-500 shadow-md">
                 </div>
 
-                <!-- Form Edit -->
-                <form @submit.prevent="saveMemberData" class="space-y-4">
-                    <!-- Nama -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                        <input type="text" x-model="currentMember.nama"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <!-- Info Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-800">
+                    <div><strong>Nama:</strong>
+                        <div x-text="currentMember.nama" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>Jenis Kelamin:</strong>
+                        <div x-text="currentMember.jenis_kelamin" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>Tempat Lahir:</strong>
+                        <div x-text="currentMember.tempat_lahir" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>Tanggal Lahir:</strong>
+                        <div x-text="currentMember.tanggal_lahir" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>No. HP / WA:</strong>
+                        <div x-text="currentMember.no_hp" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>Alamat:</strong>
+                        <div x-text="currentMember.alamat" class="mt-1 text-gray-700"></div>
+                    </div>
+                    <div><strong>Jabatan:</strong>
+                        <div x-text="currentMember.jabatan" class="mt-1 text-gray-700"></div>
                     </div>
 
-                    <!-- Jenis Kelamin -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
-                        <select x-model="currentMember.jenis_kelamin"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-
-                    <!-- Tempat Lahir -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
-                        <input type="text" x-model="currentMember.tempat_lahir"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    </div>
-
-                    <!-- Tanggal Lahir -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
-                        <input type="date" x-model="currentMember.tanggal_lahir"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    </div>
-
-                    <!-- No HP -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">No. HP / WA</label>
-                        <input type="text" x-model="currentMember.no_hp"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    </div>
-
-                    <!-- Alamat -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Alamat</label>
-                        <textarea x-model="currentMember.alamat" rows="2"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                    </div>
-
-                    <!-- Jabatan -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Jabatan</label>
-                        <select x-model="currentMember.jabatan"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                            <option value="Pembina">Pembina</option>
-                            <option value="Ketua">Ketua</option>
-                            <option value="Sekretaris">Sekretaris</option>
-                            <option value="Bendahara">Bendahara</option>
-                            <option value="Anggota">Anggota</option>
-                        </select>
-                    </div>
-
-                    <!-- Divisi (hanya untuk Anggota dan Pembina) -->
+                    <!-- Divisi -->
                     <template
                         x-if="currentMember && (currentMember.jabatan === 'Anggota' || currentMember.jabatan === 'Pembina')">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Divisi</label>
-                            <select x-model="currentMember.divisi"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <option value="">Pilih Divisi</option>
-                                <option value="A">Divisi A</option>
-                                <option value="B">Divisi B</option>
-                                <option value="C">Divisi C</option>
-                                <option value="D">Divisi D</option>
-                            </select>
+                        <div><strong>Divisi:</strong>
+                            <div x-text="currentMember.divisi || '-'" class="mt-1 text-gray-700"></div>
                         </div>
                     </template>
 
-                    <!-- Tingkat Keahlian (hanya untuk Anggota) -->
+                    <!-- Keahlian -->
                     <template x-if="currentMember && currentMember.jabatan === 'Anggota'">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Tingkat Keahlian</label>
-                            <select x-model="currentMember.keahlian"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <option value="">Pilih Tingkat</option>
-                                <option value="Pemula">Pemula</option>
-                                <option value="Menengah">Menengah</option>
-                                <option value="Lanjutan">Lanjutan</option>
-                            </select>
+                        <div><strong>Keahlian:</strong>
+                            <div x-text="currentMember.keahlian || '-'" class="mt-1 text-gray-700"></div>
                         </div>
                     </template>
 
-                    <!-- Tanggal Bergabung -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tanggal Bergabung</label>
-                        <input type="date" x-model="currentMember.tanggal_bergabung"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <div><strong>Tanggal Bergabung:</strong>
+                        <div x-text="currentMember.tanggal_bergabung" class="mt-1 text-gray-700"></div>
                     </div>
-
-                    <!-- Tombol Simpan -->
-                    <div class="flex justify-end">
-                        <button type="submit"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">
-                            Simpan Perubahan
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('memberData', () => ({
-            showModal: false,
-            showEditModal: false,
-            currentMember: null,
-            skillData: {},
-            chartInstance: null,
-            isEditing: false,
-            newFoto: null,
 
-            init() {
-                this.updateChart();
-            },
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('memberData', () => ({
+                    showModal: false,
+                    showEditModal: false,
+                    currentMember: null,
+                    skillData: {},
+                    chartInstance: null,
+                    isEditing: false,
+                    newFoto: null,
 
-            handleFotoChange(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    this.newFoto = file;
-                    // Preview foto
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const img = document.querySelector('img[alt="Foto Pemanah"]');
-                        img.src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            },
-
-            updateChart() {
-                const ctx = document.getElementById('radarChart').getContext('2d');
-                if (this.chartInstance) {
-                    this.chartInstance.destroy();
-                }
-
-                const stats = this.skillData;
-                const skillValues = {
-                    accuracy: stats.on_target ? Math.min(100, stats.on_target * 2) : 0,
-                    power: stats.push_up ? Math.min(100, stats.push_up * 2) : 0,
-                    focus: stats.latihan_konsentrasi ? Math.min(100, stats.latihan_konsentrasi *
-                        2) : 0,
-                    technique: stats.off_target ? Math.min(100, stats.off_target > 0 ? 100 -
-                        stats.off_target * 5 : 90) : 0,
-                    strength: stats.push_up ? Math.min(100, stats.push_up * 2) : 0,
-                    endurance: stats.tahan_nafas ? Math.min(100, stats.tahan_nafas * 2) : 0,
-                    stamina: stats.waktu_latihan ? Math.min(100, stats.waktu_latihan * 2) : 0
-                };
-
-                this.chartInstance = new Chart(ctx, {
-                    type: 'radar',
-                    data: {
-                        labels: ['Accuracy', 'Power', 'Focus', 'Technique', 'Strength',
-                            'Endurance', 'Stamina'
-                        ],
-                        datasets: [{
-                            label: 'Statistik Pemanah',
-                            data: [
-                                skillValues.accuracy,
-                                skillValues.power,
-                                skillValues.focus,
-                                skillValues.technique,
-                                skillValues.strength,
-                                skillValues.endurance,
-                                skillValues.stamina
-                            ],
-                            fill: true,
-                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                            borderColor: 'rgba(59, 130, 246, 1)',
-                            pointBackgroundColor: 'rgba(59, 130, 246, 1)',
-                            pointBorderColor: '#fff',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: 'rgba(59, 130, 246, 1)',
-                            borderWidth: 2,
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        }]
+                    init() {
+                        this.updateChart();
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                min: 0,
-                                max: 100,
-                                beginAtZero: true,
-                                pointLabels: {
-                                    color: '#374151',
-                                    font: {
-                                        size: 12,
-                                        weight: 'bold'
+
+                    handleFotoChange(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            this.newFoto = file;
+                            // Preview foto
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                const img = document.querySelector('img[alt="Foto Pemanah"]');
+                                img.src = e.target.result;
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    },
+
+                    updateChart() {
+                        const ctx = document.getElementById('radarChart').getContext('2d');
+                        if (this.chartInstance) {
+                            this.chartInstance.destroy();
+                        }
+
+                        const stats = this.skillData;
+                        const skillValues = {
+                            accuracy: stats.on_target ? Math.min(100, stats.on_target * 2) : 0,
+                            power: stats.push_up ? Math.min(100, stats.push_up * 2) : 0,
+                            focus: stats.latihan_konsentrasi ? Math.min(100, stats.latihan_konsentrasi *
+                                2) : 0,
+                            technique: stats.off_target ? Math.min(100, stats.off_target > 0 ? 100 -
+                                stats.off_target * 5 : 90) : 0,
+                            strength: stats.push_up ? Math.min(100, stats.push_up * 2) : 0,
+                            endurance: stats.tahan_nafas ? Math.min(100, stats.tahan_nafas * 2) : 0,
+                            stamina: stats.waktu_latihan ? Math.min(100, stats.waktu_latihan * 2) : 0
+                        };
+
+                        this.chartInstance = new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['Accuracy', 'Power', 'Focus', 'Technique', 'Strength',
+                                    'Endurance', 'Stamina'
+                                ],
+                                datasets: [{
+                                    label: 'Statistik Pemanah',
+                                    data: [
+                                        skillValues.accuracy,
+                                        skillValues.power,
+                                        skillValues.focus,
+                                        skillValues.technique,
+                                        skillValues.strength,
+                                        skillValues.endurance,
+                                        skillValues.stamina
+                                    ],
+                                    fill: true,
+                                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                    borderColor: 'rgba(59, 130, 246, 1)',
+                                    pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                                    pointBorderColor: '#fff',
+                                    pointHoverBackgroundColor: '#fff',
+                                    pointHoverBorderColor: 'rgba(59, 130, 246, 1)',
+                                    borderWidth: 2,
+                                    pointRadius: 4,
+                                    pointHoverRadius: 6
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    r: {
+                                        min: 0,
+                                        max: 100,
+                                        beginAtZero: true,
+                                        pointLabels: {
+                                            color: '#374151',
+                                            font: {
+                                                size: 12,
+                                                weight: 'bold'
+                                            }
+                                        },
+                                        ticks: {
+                                            backdropColor: 'transparent',
+                                            color: '#9ca3af',
+                                            stepSize: 20,
+                                            font: {
+                                                size: 10
+                                            }
+                                        },
+                                        grid: {
+                                            color: '#e5e7eb',
+                                            lineWidth: 1
+                                        },
+                                        angleLines: {
+                                            color: '#e5e7eb',
+                                            lineWidth: 1
+                                        }
                                     }
                                 },
-                                ticks: {
-                                    backdropColor: 'transparent',
-                                    color: '#9ca3af',
-                                    stepSize: 20,
-                                    font: {
-                                        size: 10
+                                plugins: {
+                                    legend: {
+                                        display: false
                                     }
-                                },
-                                grid: {
-                                    color: '#e5e7eb',
-                                    lineWidth: 1
-                                },
-                                angleLines: {
-                                    color: '#e5e7eb',
-                                    lineWidth: 1
                                 }
                             }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        }
-                    }
-                });
-            },
-
-            async saveStatistics() {
-                try {
-                    if (!this.skillData.id) {
-                        throw new Error('ID statistik tidak ditemukan');
-                    }
-
-                    // Get CSRF token from meta tag
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]');
-                    if (!csrfToken) {
-                        throw new Error('CSRF token tidak ditemukan');
-                    }
-
-                    const token = csrfToken.getAttribute('content');
-                    if (!token) {
-                        throw new Error('CSRF token kosong');
-                    }
-
-                    console.log('Sending data:', this.skillData);
-
-                    const response = await fetch(
-                        `/admin/statistik-latihan/${this.skillData.id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': token,
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                push_up: parseInt(this.skillData.push_up) || 0,
-                                tahan_nafas: parseInt(this.skillData.tahan_nafas) ||
-                                    0,
-                                on_target: parseInt(this.skillData.on_target) || 0,
-                                off_target: parseInt(this.skillData.off_target) ||
-                                    0,
-                                latihan_konsentrasi: parseInt(this.skillData
-                                    .latihan_konsentrasi) || 0,
-                                waktu_latihan: parseInt(this.skillData
-                                    .waktu_latihan) || 0
-                            })
                         });
+                    },
 
-                    const result = await response.json();
-
-                    if (response.ok) {
-                        this.isEditing = false;
-                        this.$nextTick(() => this.updateChart());
-                        alert('Data statistik berhasil disimpan');
-                    } else {
-                        throw new Error(result.message || 'Gagal menyimpan data statistik');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert(error.message || 'Gagal menyimpan data statistik');
-                }
-            },
-
-            async saveMemberData() {
-                try {
-                    // Get CSRF token from meta tag
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]');
-                    if (!csrfToken) {
-                        throw new Error('CSRF token tidak ditemukan');
-                    }
-
-                    const token = csrfToken.getAttribute('content');
-                    if (!token) {
-                        throw new Error('CSRF token kosong');
-                    }
-
-                    // Create FormData object
-                    const formData = new FormData();
-
-                    // Append all member data
-                    Object.keys(this.currentMember).forEach(key => {
-                        if (key !==
-                            'foto') { // Skip foto field as we handle it separately
-                            formData.append(key, this.currentMember[key]);
-                        }
-                    });
-
-                    // Append new foto if exists
-                    if (this.newFoto) {
-                        formData.append('foto', this.newFoto);
-                    }
-
-                    const response = await fetch(`/admin/struktur/${this.currentMember.id}`, {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': token,
-                            'X-HTTP-Method-Override': 'PUT'
-                        },
-                        body: formData
-                    });
-
-                    // Check if response is ok
-                    if (!response.ok) {
-                        // Try to get error message from response
-                        let errorMessage = 'Gagal menyimpan data anggota';
+                    async saveStatistics() {
                         try {
-                            const errorData = await response.json();
-                            errorMessage = errorData.message || errorMessage;
-                        } catch (e) {
-                            // If response is not JSON, get text
-                            const text = await response.text();
-                            if (text) {
-                                errorMessage = text;
+                            if (!this.skillData.id) {
+                                throw new Error('ID statistik tidak ditemukan');
                             }
+
+                            // Get CSRF token from meta tag
+                            const csrfToken = document.querySelector('meta[name="csrf-token"]');
+                            if (!csrfToken) {
+                                throw new Error('CSRF token tidak ditemukan');
+                            }
+
+                            const token = csrfToken.getAttribute('content');
+                            if (!token) {
+                                throw new Error('CSRF token kosong');
+                            }
+
+                            console.log('Sending data:', this.skillData);
+
+                            const response = await fetch(
+                                `/admin/statistik-latihan/${this.skillData.id}`, {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': token,
+                                        'Accept': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        push_up: parseInt(this.skillData.push_up) || 0,
+                                        tahan_nafas: parseInt(this.skillData.tahan_nafas) ||
+                                            0,
+                                        on_target: parseInt(this.skillData.on_target) || 0,
+                                        off_target: parseInt(this.skillData.off_target) ||
+                                            0,
+                                        latihan_konsentrasi: parseInt(this.skillData
+                                            .latihan_konsentrasi) || 0,
+                                        waktu_latihan: parseInt(this.skillData
+                                            .waktu_latihan) || 0
+                                    })
+                                });
+
+                            const result = await response.json();
+
+                            if (response.ok) {
+                                this.isEditing = false;
+                                this.$nextTick(() => this.updateChart());
+                                alert('Data statistik berhasil disimpan');
+                            } else {
+                                throw new Error(result.message || 'Gagal menyimpan data statistik');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert(error.message || 'Gagal menyimpan data statistik');
                         }
-                        throw new Error(errorMessage);
+                    },
+
+                    async saveMemberData() {
+                        try {
+                            // Get CSRF token from meta tag
+                            const csrfToken = document.querySelector('meta[name="csrf-token"]');
+                            if (!csrfToken) {
+                                throw new Error('CSRF token tidak ditemukan');
+                            }
+
+                            const token = csrfToken.getAttribute('content');
+                            if (!token) {
+                                throw new Error('CSRF token kosong');
+                            }
+
+                            // Create FormData object
+                            const formData = new FormData();
+
+                            // Append all member data
+                            Object.keys(this.currentMember).forEach(key => {
+                                if (key !==
+                                    'foto') { // Skip foto field as we handle it separately
+                                    formData.append(key, this.currentMember[key]);
+                                }
+                            });
+
+                            // Append new foto if exists
+                            if (this.newFoto) {
+                                formData.append('foto', this.newFoto);
+                            }
+
+                            const response = await fetch(`/admin/struktur/${this.currentMember.id}`, {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': token,
+                                    'X-HTTP-Method-Override': 'PUT'
+                                },
+                                body: formData
+                            });
+
+                            // Check if response is ok
+                            if (!response.ok) {
+                                // Try to get error message from response
+                                let errorMessage = 'Gagal menyimpan data anggota';
+                                try {
+                                    const errorData = await response.json();
+                                    errorMessage = errorData.message || errorMessage;
+                                } catch (e) {
+                                    // If response is not JSON, get text
+                                    const text = await response.text();
+                                    if (text) {
+                                        errorMessage = text;
+                                    }
+                                }
+                                throw new Error(errorMessage);
+                            }
+
+                            // Try to parse JSON response
+                            let result;
+                            try {
+                                result = await response.json();
+                            } catch (e) {
+                                // If response is not JSON, just continue
+                                result = {
+                                    success: true
+                                };
+                            }
+
+                            this.showEditModal = false;
+                            alert('Data anggota berhasil disimpan');
+                            window.location.reload();
+
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert(error.message || 'Gagal menyimpan data anggota');
+                        }
                     }
-
-                    // Try to parse JSON response
-                    let result;
-                    try {
-                        result = await response.json();
-                    } catch (e) {
-                        // If response is not JSON, just continue
-                        result = {
-                            success: true
-                        };
-                    }
-
-                    this.showEditModal = false;
-                    alert('Data anggota berhasil disimpan');
-                    window.location.reload();
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert(error.message || 'Gagal menyimpan data anggota');
-                }
-            }
-        }));
-    });
-</script>
+                }));
+            });
+        </script>

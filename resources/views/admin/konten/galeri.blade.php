@@ -76,8 +76,9 @@
                 <h3 class="text-lg font-bold mb-2">{{ ucfirst($galeri->kategori) }}</h3>
 
                 <div class="flex gap-2">
-                    <a href="{{ route('admin.galeri.index', ['edit' => $galeri->id]) }}"
+                    <a href="javascript:void(0);" onclick='openModal(@json($galeri))'
                         class="bg-yellow-400 hover:bg-yellow-600 text-white px-3 py-1 rounded">Edit</a>
+
 
                     <form action="{{ route('admin.galeri.destroy', $galeri->id) }}" method="POST"
                         onsubmit="return confirm('Yakin mau hapus?')">
@@ -92,6 +93,49 @@
     </div>
 
 </div>
+<!-- Modal Edit Galeri -->
+<div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white w-full max-w-lg rounded shadow p-6 relative">
+        <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">&times;</button>
+        <h2 class="text-xl font-bold mb-4">Edit Galeri</h2>
+        <form id="editForm" method="POST" action="{{ route('admin.galeri.update', $galeri->id) }}"
+            enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <input type="hidden" name="id" id="editId">
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Kategori</label>
+                <select name="kategori" id="editKategori" class="w-full border p-2 rounded" required>
+                    <option value="Anggota">Anggota</option>
+                    <option value="Kompetisi">Kompetisi</option>
+                    <option value="Latihan">Latihan</option>
+                    <option value="Video">Video</option>
+                </select>
+            </div>
+
+            <div class="mb-4" id="editGambarContainer">
+                <label class="block text-gray-700 mb-2">Gambar</label>
+                <input type="file" name="gambar" id="editGambar" class="w-full border p-2 rounded">
+                <img id="editPreview" src="" class="w-32 mt-2 rounded" alt="Preview">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Link Video</label>
+                <input type="url" name="video_link" id="editVideoLink" class="w-full border p-2 rounded">
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">Simpan</button>
+                <button type="button" onclick="closeModal()"
+                    class="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded">Batal</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -114,4 +158,38 @@
         toggleGambarInput();
         kategoriSelect.addEventListener('change', toggleGambarInput);
     });
+
+    // Function to open modal and populate form fields
+    function openModal(galeri) {
+        document.getElementById('editModal').classList.remove('hidden');
+
+        // Fill form data into modal
+        document.getElementById('editId').value = galeri.id;
+        document.getElementById('editForm').action = `/admin/galeri/${galeri.id}`;
+        document.getElementById('editKategori').value = galeri.kategori;
+        document.getElementById('editVideoLink').value = galeri.video_link || '';
+
+        const preview = document.getElementById('editPreview');
+        if (galeri.kategori === 'Video') {
+            document.getElementById('editGambarContainer').style.display = 'none';
+            preview.src = '';
+        } else {
+            document.getElementById('editGambarContainer').style.display = 'block';
+            preview.src = `/storage/${galeri.gambar}`;
+        }
+    }
+
+    // Function to close the modal and reset form
+    function closeModal() {
+        document.getElementById('editModal').classList.add('hidden');
+        document.getElementById('editForm').reset();
+    }
+
+    // Function to reset modal form after submission (assuming you use standard form submit)
+    function resetModalAfterSubmit(response) {
+        if (response.success) {
+            closeModal(); // Close the modal
+            location.reload(); // Reload the page to reflect changes (or use AJAX to update the view)
+        }
+    }
 </script>

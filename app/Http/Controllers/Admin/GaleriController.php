@@ -14,13 +14,8 @@ class GaleriController extends Controller
     public function index(Request $request)
     {
         $galeris = Galeri::all();
-        $editGaleri = null;
 
-        if ($request->has('edit')) {
-            $editGaleri = Galeri::findOrFail($request->edit);
-        }
-
-        return view('admin.konten.galeri', compact('galeris', 'editGaleri'));
+        return view('admin.konten.galeri', compact('galeris'));
     }
     public function convertToEmbedLink($url)
     {
@@ -77,7 +72,7 @@ class GaleriController extends Controller
             'gambar' => $path,
             'video_link' => $embedLink,
         ]);
-        return redirect()->route('admin.index')->with('active_tab', 'galeri')->with('successgaleri', 'Galeri berhasil ditambahkan');
+        return redirect()->route('admin.index')->with('active_tab', 'Galeri')->with('successgaleri', 'Galeri berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)

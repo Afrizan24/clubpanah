@@ -42,6 +42,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/struktur', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'index'])->name('admin.struktur.index');
     Route::post('/struktur', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'store'])->name('admin.struktur.store');
+    Route::get('/struktur/{id}/edit', [App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'edit'])->name('admin.struktur.edit');
     Route::put('/struktur/{id}', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'update'])->name('admin.struktur.update');
     Route::delete('/struktur/{id}', [\App\Http\Controllers\Admin\StrukturOrganisasiController::class, 'destroy'])->name('admin.struktur.destroy');
 
